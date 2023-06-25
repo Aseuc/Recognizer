@@ -11,6 +11,7 @@ from sklearn import svm
 import altair as alt
 import os
 import matplotlib.pyplot as plt
+from matplotlib import cm
 import numpy as np
 import wave
 import sys
@@ -450,8 +451,11 @@ if check == True:
             df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
             df = df.iloc[:, :10]
             st.write(df)
-            
-            
+            fig, ax = plt.subplots()
+            mfcc_data = np.swapaxes(mfcc_data, 0, 1)
+            cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
+            ax.set_title('MFCC')
+            plt.show()
 
 
 
