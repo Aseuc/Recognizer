@@ -460,7 +460,7 @@ if check == True:
         if file.endswith(".wav"):
             st.write(file)
             df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
-            df = df.iloc[:, :10]
+            df = df.iloc[:5, :10]
             st.write(df)
             plot_mfcc(df)
 
