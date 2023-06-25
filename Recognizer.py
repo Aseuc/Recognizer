@@ -452,7 +452,7 @@ if check == True:
             df = df.iloc[:, :10]
             st.write(df)
             fig, ax = plt.subplots()
-            mfcc_data = np.swapaxes(mfcc_data, 0, 1)
+            mfcc_data = np.swapaxes(df, 0, 1)
             cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
             ax.set_title('MFCC')
             plt.show()
