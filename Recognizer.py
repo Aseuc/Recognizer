@@ -443,6 +443,11 @@ def plot_mfcc(df_MFCC):
     cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
     ax.set_title('MFCC')
     st.pyplot(fig)
+    fig, ax = plt.subplots()
+    ax.plot(df_MFCC.values.T)
+    ax.set_title('MFCC')
+    st.pyplot(fig)
+
 
 
 check = upload_and_convert()
