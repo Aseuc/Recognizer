@@ -473,10 +473,10 @@ if check == True:
             st.write(df)
             plot_mfcc(df)
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
-            df_bandwitdth = df_bandwitdth.iloc[:5, :10]
+            df_bandwitdth = df_bandwitdth.iloc[:, :10]
             st.write(df_bandwitdth)
             plot_spectrogram(df_bandwitdth)
-    
+
 
 
 
