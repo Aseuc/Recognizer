@@ -453,14 +453,14 @@ def plot_mfcc(df_MFCC):
 
 def plot_bandwidth(file_name):
     bandwidth = extract_bandwidth(file_name)
-    plt.figure(figsize=(10, 4))
-    plt.imshow(bandwidth, aspect='auto', origin='lower', cmap='coolwarm')
-    plt.colorbar()
-    plt.ylabel('Frequency bands')
-    plt.xlabel('Time (frames)')
-    plt.title('Spectral bandwidth')
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.imshow(bandwidth, aspect='auto', origin='lower', cmap='coolwarm')
+    fig.colorbar()
+    ax.set_ylabel('Frequency bands')
+    ax.set_xlabel('Time (frames)')
+    ax.set_title('Spectral bandwidth')
     plt.tight_layout()
-    plt.show()
+    st.pyplot(fig)
 
 check = upload_and_convert()
 if check == True:
