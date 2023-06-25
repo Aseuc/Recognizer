@@ -444,7 +444,7 @@ if check == True:
     st.title("Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
     st.write("MFCC (Mel Frequency Cepstral Coefficients): MFCCs werden zur automatischen Spracherkennung verwendet und führen zu einer kompakten Darstellung des Frequenzspektrums. ")
 
-    for file in os.listdir("/tempDir"):
+    for file in os.listdir("/tempDir/"):
         if file.endswith(".wav"):
             st.write(file)
             df = extract_mfcc(f"/tempDir/{file}",n_mfcc=1)
