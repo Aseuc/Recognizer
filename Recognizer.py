@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
 import wave
+import seaborn as sns
 import sys
 import pandas as pd
 from tensorflow import keras
@@ -58,6 +59,7 @@ from sklearn.ensemble import RandomForestClassifier
 from datetime import datetime
 import soundfile as sf
 import librosa.display
+from scipy import signal
 
 
 def extract_zcr(file_name):
@@ -71,16 +73,13 @@ def extract_zcr(file_name):
 
 
 
-def plot_zcr(file_name):
-    y, sr = librosa.load(file_name)
-    zcr = librosa.feature.zero_crossing_rate(y)
+
 
 
 def plot_loudness(file_name):
     y, sr = librosa.load(file_name)
     S = np.abs(librosa.stft(y))
     loudness = librosa.feature.spectral_bandwidth(S=S)
-    
     plt.figure()
     plt.plot(loudness[0])
     plt.title('Loudness')
@@ -93,16 +92,6 @@ def extract_snr(file_name):
     for i in range(dfsnr.shape[1]):
         dfsnr = dfsnr.rename(columns={i: f"Spektral Kontrast{i+1}"})
     return dfsnr
-def plot_snr(file_name):
-    snr = extract_snr(file_name)
-    plt.figure(figsize=(10, 4))
-    plt.imshow(snr, aspect='auto', origin='lower', cmap='coolwarm')
-    plt.colorbar()
-    plt.ylabel('Frequency bands')
-    plt.xlabel('Time (frames)')
-    plt.title('Spectral contrast')
-    plt.tight_layout()
-    plt.show()
 
 def extract_bandwidth(file_name):
     y, sr = librosa.load(file_name)
@@ -451,20 +440,32 @@ def plot_mfcc(df_MFCC):
 #     plt.show()
 
 
-def plot_bandwidth(df, sr):
-    y = df.values
-    S = librosa.feature.melspectrogram(y=y, sr=sr)
+def plot_bandwidth(df):
     fig, ax = plt.subplots()
-    S_dB = librosa.power_to_db(S, ref=np.max)
-    img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
-    fig.colorbar(img, ax=ax, format='%+2.0f dB')
-    ax.set(title='Mel-frequency spectrogram')
+    ax.bar(df.columns, df.values[0])
+    ax.set_xticklabels(df.columns, rotation=90)
+    ax.set_title('Bandbreite')
+    st.pyplot(fig)
+
+
+def plot_zcr(df):
+    fig, ax = plt.subplots()
+    ax.plot(df.columns, df.values[0])
+    ax.set_xticklabels(df.columns, rotation=90)
+    ax.set_title('Zero Crossing Rate')
+    st.pyplot(fig)
+
+
+
+def visualize_snr(df):
+    df_melted = df.melt(var_name='Spektral Kontrast', value_name='Wert')
+    fig = sns.catplot(data=df_melted, x='Spektral Kontrast', y='Wert', kind='box')
     st.pyplot(fig)
 
 check = upload_and_convert()
 if check == True:
 
-    st.title("Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
+    st.title("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
     st.write("MFCC (Mel Frequency Cepstral Coefficients): MFCCs werden zur automatischen Spracherkennung verwendet und führen zu einer kompakten Darstellung des Frequenzspektrums. ")
 
     for file in os.listdir("tempDir/"):
@@ -474,13 +475,24 @@ if check == True:
             df = df.iloc[:5, :10]
             st.write(df)
             plot_mfcc(df)
-            st.title("Extraktion der Bandbreite einer Audioaufnahme")
+            st.title("1.2 Extraktion der Bandbreite einer Audioaufnahme")
+            st.write("Die Bandbreite einer Audioaufnahme bezieht sich auf den Frequenzbereich, der von der Datei abgedeckt wird. Normalerweise zwischen 20 Hz - 20000 Hz.")
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
+            df_bandwitdth = df_bandwitdth.iloc[:,:30]
             st.write(df_bandwitdth)
-            plot_bandwidth(f"tempDir/{file}",5)
-
-
-
+            plot_bandwidth(df_bandwitdth)
+            st.title("1.3 Extraktion der Zero Crossin Rate")
+            st.write("Die Zero Crossing Rate (ZCR) ist eine Maßzahl für die Anzahl der Male, die ein Audiosignal die Nulllinie überquert.")
+            df_zcr = extract_zcr(f"tempDir/{file}")
+            st.write(df_zcr)
+            df_zcr = df_zcr.iloc[:,:30]
+            df_zcr.columns = [f'zcr{i+1}' for i in range(len(df_zcr.columns))]
+            plot_zcr(df_zcr)
+            st.title("1.4 Extraktion des Spektral Kontrasts")
+            st.write("Der Spektralkontrast einer Audioaufnahme gibt Aufschluss über die Verteilung der Energie im Frequenzspektrum der Aufnahme. Er misst den Unterschied zwischen den Spitzen und Tälern im Spektrum und kann verwendet werden, um verschiedene Eigenschaften der Aufnahme zu analysieren. Ein hoher Spektralkontrast bedeutet, dass es große Unterschiede zwischen den Spitzen und Tälern im Spektrum gibt, während ein niedriger Spektralkontrast bedeutet, dass die Energie gleichmäßiger verteilt ist.")
+            df_snr = extract_snr(f"tempDir/{file}")
+            st.write(df_snr)
+            visualize_spectral_contrast(f"tempDir/{file}")
 
 
 
