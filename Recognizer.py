@@ -477,7 +477,6 @@ if check == True:
             plot_mfcc(df)
             st.title("Extraktion der Bandbreite einer Audioaufnahme")
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
-            df_bandwitdth = df_bandwitdth.iloc[:, :10]
             st.write(df_bandwitdth)
             plot_bandwidth(df_bandwitdth)
 
