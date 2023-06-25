@@ -477,7 +477,7 @@ if check == True:
             st.title("Extraktion der Bandbreite einer Audioaufnahme")
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
             st.write(df_bandwitdth)
-            plot_bandwidth(f"tempDir/{file}")
+            plot_bandwidth(f"tempDir/{file}",5)
 
 
 
