@@ -437,6 +437,12 @@ def split_wav(wav_file, segment_length=3000):
 
 
 
+def plot_mfcc(df_MFCC):
+    fig, ax = plt.subplots()
+    mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
+    cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
+    ax.set_title('MFCC')
+    st.pyplot(fig)
 
 
 check = upload_and_convert()
@@ -451,12 +457,7 @@ if check == True:
             df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
             df = df.iloc[:, :10]
             st.write(df)
-            fig, ax = plt.subplots()
-            mfcc_data = np.swapaxes(df, 0, 1)
-            cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
-            ax.set_title('MFCC')
-            plt.show()
-
+            plot_mfcc(df)
 
 
 
