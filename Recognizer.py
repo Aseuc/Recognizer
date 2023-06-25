@@ -447,7 +447,8 @@ if check == True:
     for file in os.listdir("C:/Users/busse/Recognizer/Recognizer/tempDir"):
         if file.endswith(".wav"):
             st.write(file)
-            df = extract_mfcc(f"C:/Users/busse/Recognizer/Recognizer/tempDir/{file}",n_mfcc=13)
+            df = extract_mfcc(f"C:/Users/busse/Recognizer/Recognizer/tempDir/{file}",n_mfcc=10)
+            df = df.iloc[:, :10]
             st.write(df)
             
 
