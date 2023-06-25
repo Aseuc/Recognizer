@@ -3,7 +3,7 @@ scikit-learn
 openpyxl
 SpeechRecognition
 matplotlib
-numpy==1.24
+numpy==1.22
 wave
 pandas
 tensorflow
