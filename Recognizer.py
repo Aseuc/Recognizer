@@ -451,15 +451,14 @@ def plot_mfcc(df_MFCC):
 #     plt.show()
 
 
-def plot_bandwidth(file_name):
-    bandwidth = extract_bandwidth(file_name)
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.imshow(bandwidth, aspect='auto', origin='lower', cmap='coolwarm')
-    fig.colorbar()
-    ax.set_ylabel('Frequency bands')
-    ax.set_xlabel('Time (frames)')
-    ax.set_title('Spectral bandwidth')
-    plt.tight_layout()
+def plot_bandwidth(df, sr):
+    y = df.values
+    S = librosa.feature.melspectrogram(y=y, sr=sr)
+    fig, ax = plt.subplots()
+    S_dB = librosa.power_to_db(S, ref=np.max)
+    img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
+    fig.colorbar(img, ax=ax, format='%+2.0f dB')
+    ax.set(title='Mel-frequency spectrogram')
     st.pyplot(fig)
 
 check = upload_and_convert()
