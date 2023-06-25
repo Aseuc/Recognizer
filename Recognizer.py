@@ -112,16 +112,7 @@ def extract_bandwidth(file_name):
     for i in range(dfBandwith.shape[1]):
         dfBandwith = dfBandwith.rename(columns={i: f"Bandbreite{i+1}"})
     return dfBandwith
-def plot_bandwidth(file_name):
-    bandwidth = extract_bandwidth(file_name)
-    plt.figure(figsize=(10, 4))
-    plt.imshow(bandwidth, aspect='auto', origin='lower', cmap='coolwarm')
-    plt.colorbar()
-    plt.ylabel('Frequency bands')
-    plt.xlabel('Time (frames)')
-    plt.title('Spectral bandwidth')
-    plt.tight_layout()
-    plt.show()
+
     
 
 def get_current_date_time():
@@ -449,14 +440,26 @@ def plot_mfcc(df_MFCC):
     ax.set_title('MFCC')
     st.pyplot(fig)
 
-def plot_spectrogram(file_name):
-    y, sr = librosa.load(file_name)
-    S = librosa.feature.melspectrogram(y=y, sr=sr)
-    fig, ax = plt.subplots()
-    S_dB = librosa.power_to_db(S, ref=np.max)
-    img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
-    fig.colorbar(img, ax=ax, format='%+2.0f dB')
-    ax.set(title='Mel-frequency spectrogram')
+# def plot_spectrogram(file_name):
+#     y, sr = librosa.load(file_name)
+#     S = librosa.feature.melspectrogram(y=y, sr=sr)
+#     fig, ax = plt.subplots()
+#     S_dB = librosa.power_to_db(S, ref=np.max)
+#     img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
+#     fig.colorbar(img, ax=ax, format='%+2.0f dB')
+#     ax.set(title='Mel-frequency spectrogram')
+#     plt.show()
+
+
+def plot_bandwidth(file_name):
+    bandwidth = extract_bandwidth(file_name)
+    plt.figure(figsize=(10, 4))
+    plt.imshow(bandwidth, aspect='auto', origin='lower', cmap='coolwarm')
+    plt.colorbar()
+    plt.ylabel('Frequency bands')
+    plt.xlabel('Time (frames)')
+    plt.title('Spectral bandwidth')
+    plt.tight_layout()
     plt.show()
 
 check = upload_and_convert()
@@ -476,7 +479,7 @@ if check == True:
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
             df_bandwitdth = df_bandwitdth.iloc[:, :10]
             st.write(df_bandwitdth)
-            plot_spectrogram(df_bandwitdth)
+            plot_bandwidth(df_bandwitdth)
 
 
 
