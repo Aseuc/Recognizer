@@ -447,7 +447,7 @@ if check == True:
     for file in os.listdir("tempDir/"):
         if file.endswith(".wav"):
             st.write(file)
-            df = extract_mfcc(f"tempDir/{file}",n_mfcc=1)
+            df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
             df = df.iloc[:, :10]
             st.write(df)
             
