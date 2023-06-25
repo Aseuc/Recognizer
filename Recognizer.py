@@ -457,7 +457,7 @@ def plot_spectrogram(file_name):
     img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
     fig.colorbar(img, ax=ax, format='%+2.0f dB')
     ax.set(title='Mel-frequency spectrogram')
-    st.pyplot(fig)
+    plt.show()
 
 check = upload_and_convert()
 if check == True:
@@ -472,6 +472,7 @@ if check == True:
             df = df.iloc[:5, :10]
             st.write(df)
             plot_mfcc(df)
+            st.title("Extraktion der Bandbreite einer Audioaufnahme")
             df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
             df_bandwitdth = df_bandwitdth.iloc[:, :10]
             st.write(df_bandwitdth)
