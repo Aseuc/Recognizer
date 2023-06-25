@@ -463,6 +463,8 @@ if check == True:
             df = df.iloc[:5, :10]
             st.write(df)
             plot_mfcc(df)
+            df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
+            st.write(df_bandwitdth)
 
 
 
