@@ -592,7 +592,7 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
 
                 # with open('model1.pkl', 'rb') as file:
                     # model = pickle.load(file)
-
+                model.save('my_model.h5')
                 y_pred = model.predict(X2_scaler2_data)
                 # y_pred2 = model.predict(X_data2)
                 y_pred = (y_pred > 0.5).astype(int)
@@ -600,21 +600,28 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
 
                 # countZero = 0
                 # countOne = 0
-                # acc = history.history['accuracy']
-                # val_acc = history.history['val_accuracy']
-                # st.write("Trainingsgenauigkeit", acc)
-                # st.write("Validierungsgeanuigkeit", val_acc)
+                acc = history.history['accuracy']
+                val_acc = history.history['val_accuracy']
+                st.write("Trainingsgenauigkeit", acc)
+                st.write("Validierungsgeanuigkeit", val_acc)
                 st.write(y_pred)
-      
-                # if(i == 0):
-                #     countZero = countZero + 1
-                # else:
-                #     countOne = countOne + 1
-                # if(countZero > countOne):
-                #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich ein Mann!")
-                # elif(countOne > countZero):
-                #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich eine Frau!
-                return
+                countZero = 0 
+                countOne = 0
+                for i in y_pred:
+                    if(i == 0):
+                        countZero = countZero + 1
+                    else:
+                        countOne = countOne + 1
+                    st.write("hi")
+               
+                if(countZero > countOne):
+                    st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich ein Mann!")
+                elif(countOne > countZero):
+                    st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich eine Frau!")
+                
+                
+                
+                return 
 
 
 
@@ -705,13 +712,17 @@ if check == True and check2 == True:
                 st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
                 neuronal_network("TrainDataForNeuronalesNetz (1).xlsx",excelFile)
-                st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
+                # st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
 
-                excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
-                st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
-                excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+                # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
+
+
+                # st.write("2.1.3 Im vergleich zu 2.1.2 ändert sich nun die Anzahl der Schichten von 1 auf 2 Schichten. Dabei wird in der ersten Schicht 8 Neuronen verwendet und in der zweiten Schicht 16 Neuronen verwendet.")
+                # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+
+
                 file_name = file
                 check2 == False
                 for file in os.listdir("tempDir/"):

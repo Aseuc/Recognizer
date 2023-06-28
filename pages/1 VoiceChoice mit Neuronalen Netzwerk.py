@@ -63,7 +63,8 @@ from scipy import signal
 import tempfile
 import openpyxl
 from keras.regularizers import l1_l2
-
+from keras.models import load_model
+# import st.components.v1.html as components
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -71,7 +72,6 @@ def extract_zcr(file_name):
     for i in range(df_ZCR.shape[1]):
         df_ZCR = df_ZCR.rename(columns={i: f"Zero Crossing Rate{i+1}"})
     return df_ZCR
-
 def extract_snr(file_name):
     y, sr = librosa.load(file_name)
     S = np.abs(librosa.stft(y))
@@ -80,7 +80,6 @@ def extract_snr(file_name):
     for i in range(dfsnr.shape[1]):
         dfsnr = dfsnr.rename(columns={i: f"Spektral Kontrast{i+1}"})
     return dfsnr
-
 def extract_bandwidth(file_name):
     y, sr = librosa.load(file_name)
     S = np.abs(librosa.stft(y))
@@ -89,20 +88,16 @@ def extract_bandwidth(file_name):
     for i in range(dfBandwith.shape[1]):
         dfBandwith = dfBandwith.rename(columns={i: f"Bandbreite{i+1}"})
     return dfBandwith
-
 def get_current_date_time():
     now = datetime.now()
     date_time_str =now.strftime("%d_%m_%Y_%H_%M_%S_%f_%Z")
     return date_time_str + "_"
-
 def split_wav(destinationPath, wav_file, segment_length=3000):
     audio = AudioSegment.from_wav(wav_file)
 
     for i in range(0, len(audio), segment_length):
         segment = audio[i:i+segment_length]
         segment.export(f"{destinationPath}segment__{i-10//segment_length}.wav", format="wav")
-        
-
 def getDuration(input_file_path,duration):
     with wave.open(input_file_path, 'rb') as input_wav:
         n_channels = input_wav.getnchannels()
@@ -112,7 +107,6 @@ def getDuration(input_file_path,duration):
 
         n_frames_duration = int(frame_rate * duration)
         return n_frames_duration 
-    
 def get_n_frames_duration (input_file_path,duration):
     with wave.open(input_file_path, 'rb') as input_wav:
         n_channels = input_wav.getnchannels()
@@ -122,7 +116,6 @@ def get_n_frames_duration (input_file_path,duration):
 
         n_frames_duration = int(frame_rate * duration)
         return n_frames_duration 
-    
 # Falls diese Funktion und die split_multiple_frames() nicht mehr funktioniert lösche nameOfXLSX
 def extract_random_sequence(input_file_path, output_file_path,duration=3):
     with wave.open(input_file_path, 'rb') as input_wav:
@@ -145,7 +138,6 @@ def extract_random_sequence(input_file_path, output_file_path,duration=3):
     with wave.open(f"{output_file_path}"+".wav", 'wb') as output_wav:
         output_wav.setparams((n_channels, sample_width, frame_rate, n_frames_duration, 'NONE', 'not compressed'))
         output_wav.writeframes(frames)
-
 def get_n_frames(input_file_path):
       with wave.open(input_file_path, 'rb') as input_wav:
         n_channels = input_wav.getnchannels()
@@ -155,8 +147,6 @@ def get_n_frames(input_file_path):
 
         # n_frames_duration = int(frame_rate * duration)
         return n_frames 
-
-
 def split_multiple_frames(input_file_path,output_file_path,duration=3):
     i = 0
     for files in os.listdir(input_file_path):
@@ -168,9 +158,6 @@ def split_multiple_frames(input_file_path,output_file_path,duration=3):
                 
                 print(f"Random{i}duration_{duration}")
                 i = i+1
-
-
-
 def rename_data(file_path="MenSequences" or "WomenSequences",files_to_rename="Random"):
     i = 0
     for files in os.listdir(file_path):
@@ -178,7 +165,6 @@ def rename_data(file_path="MenSequences" or "WomenSequences",files_to_rename="Ra
             new_name = f"{files_to_rename}_{i}.wav"
             os.rename(os.path.join(file_path, files), os.path.join(file_path, new_name))
             i += 1
-
 def upload_and_convert():
     uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["mp4", "wav"], key="file_uploader")
     print(uploaded_file)
@@ -193,12 +179,6 @@ def upload_and_convert():
         else:
             st.success("Hochgeladene Datei ist bereits im WAV-Format")
             return True
-
-
-
-
-
-
 def get_features_df_csv(nameOfCsv,ordner_path):
     i = 0
     for file in os.listdir(ordner_path):
@@ -264,7 +244,6 @@ def extract_mfcc(file_name, n_mfcc=13):
     for i in range(df_MFCC.shape[1]):
         df_MFCC = df_MFCC.rename(columns={i: f"MFCC{i+1}"})
     return df_MFCC
-
 # Berechnet die Lautstärke des Audiosignals mit der Root-Mean-Square Methode.
 # Die RMS-Methode berechnet die quadratische Mittelwertwurzel der Amplitudenwerte des Audiosignals, um die Lautstärke zu schätzen.
 # Die zurückgegebenen Werte sind in einem DataFrame gespeichert, wobei jede Spalte die Lautstärke 
@@ -278,7 +257,6 @@ def extract_loudness(file_name):
     for i in range(df_loudness.shape[1]):
         df_loudness = df_loudness.rename(columns={i: f"Tonstärke{i+1}"})
     return df_loudness
-
 def plot_loudness(file_name):
     fs, data = wavfile.read(file_name)
     t = np.arange(0, len(data)/fs, 1/fs)
@@ -287,10 +265,6 @@ def plot_loudness(file_name):
     ax.set_xlabel('Zeit [s]')
     ax.set_ylabel('Amplitude')
     st.pyplot(fig)
-
-
-
-
 def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSXData, labelType, numberOfColumns):
     i = 0
     for file in os.listdir(ordner_path):
@@ -345,9 +319,6 @@ def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSX
                
             
         i = i+1
-
-
-                        
 def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", numberOfColumns=10):
     i = 0
 
@@ -388,25 +359,15 @@ def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", 
         mergeForth['label'] = ['']
         mergeForth.to_excel( f"{nameOfWAVFile}{nameOfXLSX}{i}" + ".xlsx")
         return f"{nameOfWAVFile}{nameOfXLSX}{i}" + ".xlsx"
-
         i = i+1
-        
-
-
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
     audio.export(f"tempDir/{wav_file}", format="wav")
-
-
-
 def split_wav(wav_file, segment_length=3000):
     audio = AudioSegment.from_wav(wav_file)
     for i in range(0, len(audio), segment_length):
         segment = audio[i:i+segment_length]
         segment.export(f"segment_{i//segment_length}.wav", format="wav")
-
-
-
 def plot_mfcc(df_MFCC):
     fig, ax = plt.subplots()
     mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
@@ -417,33 +378,18 @@ def plot_mfcc(df_MFCC):
     ax.plot(df_MFCC.values.T)
     ax.set_title('MFCC')
     st.pyplot(fig)
-
-# def plot_spectrogram(file_name):
-#     y, sr = librosa.load(file_name)
-#     S = librosa.feature.melspectrogram(y=y, sr=sr)
-#     fig, ax = plt.subplots()
-#     S_dB = librosa.power_to_db(S, ref=np.max)
-#     img = librosa.display.specshow(S_dB, x_axis='time', y_axis='mel', sr=sr, fmax=8000, ax=ax)
-#     fig.colorbar(img, ax=ax, format='%+2.0f dB')
-#     ax.set(title='Mel-frequency spectrogram')
-#     plt.show()
-
-
 def plot_bandwidth(df):
     fig, ax = plt.subplots()
     ax.bar(df.columns, df.values[0])
     ax.set_xticklabels(df.columns, rotation=90)
     ax.set_title('Bandbreite')
     st.pyplot(fig)
-
-
 def plot_zcr(df):
     fig, ax = plt.subplots()
     ax.plot(df.columns, df.values[0])
     ax.set_xticklabels(df.columns, rotation=90)
     ax.set_title('Zero Crossing Rate')
     st.pyplot(fig)
-
 def visualize_mfcc(file_name):
     y, sr = librosa.load(file_name)
     
@@ -454,24 +400,20 @@ def visualize_mfcc(file_name):
     fig.colorbar(img, ax=ax)
     ax.set(title='MFCC', xlabel='Zeit', ylabel='MFCC')
     st.pyplot(fig)
-
-
 def visualize_snr(df):
     df_snr = df_snr.iloc[:,:10]
     ax = sns.heatmap(df_snr)
     ax.title("Spektral Kontrast")
     st.pyplot(ax.figure)
-
-
 def delete_first_column_excel(file_path: str):
     wb = openpyxl.load_workbook(file_path)
     sheet = wb.active
     sheet.delete_cols(1)
     wb.save(file_path)
+    return file_path
 def duplicate_rows(df: pd.DataFrame, n: int) -> pd.DataFrame:
     df = df.loc[df.index.repeat(n)].reset_index(drop=True)
     return df
-
 def get_single_excel_with_features_no_label(inputfile_path, outputfile_path,features_size, duplicatesRows = True):
 
     file = inputfile_path
@@ -527,15 +469,16 @@ def get_single_excel_with_features_no_label(inputfile_path, outputfile_path,feat
     mergeForth.to_excel(f"{outputfile_path}{marker}"+".xlsx")
     
     return outputfile_path + marker + ".xlsx"
-
-
 def create_model(layers, neurons):
     model = Sequential()
     for i in range(layers):
         model.add(Dense(neurons[i], activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
     return model
-
+def add_id_column(excel_file: str):
+    df = pd.read_excel(excel_file)
+    df.insert(0, 'ID', range(1, len(df) + 1))
+    df.to_excel(excel_file, index=False)
 def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neurons=0 ):
                 delete_first_column_excel(excel_file_test_data)
                 # add_id_column(excelFile)
@@ -581,40 +524,62 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
 
                 # with open('model1.pkl', 'rb') as file:
                     # model = pickle.load(file)
-
+                
                 y_pred = model.predict(X2_scaler2_data)
                 # y_pred2 = model.predict(X_data2)
                 y_pred = (y_pred > 0.5).astype(int)
                 # y_pred = pd.DataFrame(y_pred)
+                
+                # model.save("1row2.h5")
+                acc = history.history['accuracy']
+                val_acc = history.history['val_accuracy']
+                # with st.expander("Trainingsgenauigkeit"):
+                #     st.write("Trainingsgenauigkeit", acc)
+                
+                # with st.expander("Validierungsgenauigkeit"):
+                #     st.write("Validierungsgeanuigkeit", val_acc)
+                global m;
+                global f;
 
-                # countZero = 0
-                # countOne = 0
-                # acc = history.history['accuracy']
-                # val_acc = history.history['val_accuracy']
-                # st.write("Trainingsgenauigkeit", acc)
-                # st.write("Validierungsgeanuigkeit", val_acc)
                 st.write(y_pred)
-      
-                # if(i == 0):
-                #     countZero = countZero + 1
-                # else:
-                #     countOne = countOne + 1
-                # if(countZero > countOne):
-                #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich ein Mann!")
-                # elif(countOne > countZero):
-                #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich eine Frau!
+                countZero = 0 
+                countOne = 0
+                for i in y_pred:
+                    if(i == 0):
+                        countZero = countZero + 1
+                        m += 1
+                    else:
+                        countOne = countOne + 1
+                        f += 1
+                if(countZero > countOne):
+                    
+                    st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich ein Mann!")
+                    
+                elif(countOne > countZero):
+                    st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich eine Frau!")
+                                    
+                
+                return acc, val_acc
 
-def add_id_column(excel_file: str):
-    df = pd.read_excel(excel_file)
-    df.insert(0, 'ID', range(1, len(df) + 1))
-    df.to_excel(excel_file, index=False)
+
+
 
 check = upload_and_convert()
 file_name = None
-if check == True:
+check2 = True
+
+m = 0
+f = 0
+
+
+
+
+
+if check == True and check2 == True:
     
     for file in os.listdir("tempDir/"):
         if file.endswith(".wav"):
+            st.title("1.0 Datenextraktion und Visualisierung der hochgeladenen Datei")
             with st.expander("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei"):      
                 st.title("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
                 st.write("MFCC (Mel Frequency Cepstral Coefficients): MFCCs werden zur automatischen Spracherkennung verwendet und führen zu einer kompakten Darstellung des Frequenzspektrums. ")
@@ -683,34 +648,91 @@ if check == True:
                 st.title("1.10 Visualisierung der Tonstärke")
                 st.write("Die Tonstärke wurde durch die Root-Mean-Square (RMS) Methode berechnet. Diese eignen sich zur Darstellung der Lautstärke für bestimmte Zeiträume.")
                 plot_loudness(f"tempDir/{file}")
-            
-            
             with st.expander("2.0 Machine Learning Modelle"):
                 st.title("2.0 Machine Learning Modelle")
+                st.write("Um die Genauigkeit zu erhöhen, ob die Person auf der gesprochenen Aufnahme einem Mann oder einer Frau entspricht, wird im folgenden mit verschiedenen Varianten eines neuronalen Netzes gearbeitet.")
+                
+            with st.expander("2.1 Neuronales Netzwerk"):
+                
                 st.title("2.1 Neuronales Netzwerk")
                 st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
-                neuronal_network("TrainDataForNeuronalesNetz (1).xlsx",excelFile)
-                st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
+                # # excelFile = delete_first_column_excel(excelFile)
+                # # data = pd.read_excel(excelFile)
+                # # data = data.drop(["label"],axis=1)
+                # # model = load_model('1row2.h5')
+                # # predictions = model.predict(data)
+                # # st.write(predictions)
 
+                val_acc , acc = neuronal_network("TrainDataForNeuronalesNetz (1).xlsx",excelFile)
+                if val_acc[len(val_acc)-1] >= 1.0:
+                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                    st.write("Diese Validierungsgenauigkeit ist zwar sehr hoch aber führte nicht immer zu richtigen Vorhersage!")
+                else:
+                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                os.remove(f"{excelFile}")
+               
+              
+
+            with st.expander("2.1.2 Neuronales Netz"):
+                st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
-                st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
+                val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
+    
+                st.write("Validierungsgenauigkeit: " + f"{val_acc[len(val_acc)-1]}")
+                os.remove(f"{excelFile}")
+                
+
+
+            # with st.expander("2.1.3 Neuronales Netz"):
+            #     st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
+            #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+            #     val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+            #     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+            #     os.remove(f"{excelFile}")
+               
+
+            with st.expander("2.1.3 Optimierung der Validierungsgenauigkeit durch Schichten-/Neuronenerhöhung"):
+                st.write("2.1.3 Hier wird nun versucht mit weiteren Schichten und Veränderung der Reihenfolge die Genauigkeit zu verbessern Schichtenanzahl: 4, Neuronenschichtenanzahlreihenfolge: 8, 16, 16, 8:")
+                st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
-                file_name = file
+                val_acc, acc= neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,4,[8,16,16,8])
+        
+                st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                os.remove(f"{excelFile}")
+
+
+            with st.expander("2.1.4 Optimierung der Validierungsgenauigkeit"):
+                st.write("2.1.4 Weiter wurde auch versucht durch Feature Engeneering die Validierungsgenauigkeit zu erhöhen in diesem Durchlauf werden statt der üblichen 10 Features 5 Features verwendet:")
+                st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
+                excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",1,False)
+                val_acc, acc = neuronal_network("TrainDataRFohneID.xlsx",excelFile,4,[8,16,8,16])
                 
+                st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                os.remove(f"{excelFile}")
+
+
+                if m > f:
+                    st.write("Nach Berechnung und Zusammenfassung aller vorheriger Vorhersagen ist die Person auf der Aufnahme wahrscheinlich ein Mann!")
+                else: 
+                    st.write("Nach Berechnung und Zusammenfassung aller vorheriger Vorhersagen ist mit die Person auf der Aufnahme wahrscheinlich eine Frau!")
+
+
+                st.balloons()
+                os.remove(f"tempDir/{file}")
+                # file_name = file
+                check2 = False
                 
-    for file in os.listdir("tempDir/"):
-                if file.endswith(".wav"):    
-                            temp_dir = tempfile.TemporaryDirectory()
-                            temp_file = os.path.join(temp_dir.name, f'{excelFile}')
-                            os.remove(os.path.join("tempDir", file))
-                if file.endswith(".xlsx"):
-                        print(file)
-                        os.remove(os.path.join("tempDir",(file)))
-                if file.endswith(".mp4"):
-                        os.remove(os.path.join("tempDir",(file)))
+    # for file in os.listdir("tempDir/"):
+    #             if file.endswith(".wav"):    
+    #                         temp_dir = tempfile.TemporaryDirectory()
+    #                         temp_file = os.path.join(temp_dir.name, f'{excelFile}')
+    #                         os.remove(os.path.join("tempDir", file))
+    #             if file.endswith(".xlsx"):
+    #                     print(file)
+    #                     os.remove(os.path.join("tempDir",(file)))
+    #             if file.endswith(".mp4"):
+    #                     os.remove(os.path.join("tempDir",(file)))
 
 
 
