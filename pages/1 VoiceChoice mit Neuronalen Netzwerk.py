@@ -8,7 +8,7 @@ import seaborn as sns
 from keras.models import Sequential 
 from keras.layers import Dense
 from keras.callbacks import EarlyStopping 
-from sklearn.model_selection import train_test_split as ts 
+from sklearn.model_selection import train_test_split
 from scipy.io import wavfile
 import librosa
 from sklearn.preprocessing import StandardScaler
