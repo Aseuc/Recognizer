@@ -124,7 +124,7 @@ def rename_data(file_path="MenSequences" or "WomenSequences",files_to_rename="Ra
             os.rename(os.path.join(file_path, files), os.path.join(file_path, new_name))
             i += 1
 def upload_and_convert():
-    uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["mp4", "wav"], key="file_uploader")
+    uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["wav"], key="file_uploader")
     print(uploaded_file)
     if uploaded_file is not None:
         file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type}
