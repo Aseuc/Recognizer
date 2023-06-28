@@ -64,6 +64,26 @@ import tempfile
 import openpyxl
 from keras.regularizers import l1_l2
 
+def get_duration(audio_file_path): 
+    audio, sr = librosa.load(audio_file_path)
+    duration = librosa.get_duration(y=audio, sr=sr)
+    return duration 
+
+
+def check_duration_uploadfile(uploadfile_path,allowed_duration=3):
+            duration = get_duration(uploadfile_path)
+            output_file = None
+            
+            if duration > 3 :
+                output_file = extract_random_sequence(uploadfile_path,uploadfile_path,3)
+                st.write(f"Dauer der WAV-Datei beträgt: {duration} Sekunden!")  
+            else: 
+                st.write(f"Dauer der WAV-Datei beträgt: {duration} Sekunden!")  
+            return output_file 
+
+
+
+
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -151,10 +171,10 @@ def extract_random_sequence(input_file_path, output_file_path,duration=3):
         frames = input_wav.readframes(n_frames_duration)
         
 
-    with wave.open(f"{output_file_path}"+".wav", 'wb') as output_wav:
+    with wave.open(f"{output_file_path}", 'wb') as output_wav:
         output_wav.setparams((n_channels, sample_width, frame_rate, n_frames_duration, 'NONE', 'not compressed'))
         output_wav.writeframes(frames)
-
+    return output_file_path
 
 def get_n_frames(input_file_path):
       with wave.open(input_file_path, 'rb') as input_wav:
@@ -592,7 +612,7 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
 
                 # with open('model1.pkl', 'rb') as file:
                     # model = pickle.load(file)
-                model.save('my_model.h5')
+                # model.save('my_model.h5')
                 y_pred = model.predict(X2_scaler2_data)
                 # y_pred2 = model.predict(X_data2)
                 y_pred = (y_pred > 0.5).astype(int)

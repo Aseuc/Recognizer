@@ -100,7 +100,7 @@ if upload_and_convert() == True:
     for file in os.listdir("tempDir2/"):
         if file.endswith(".wav"):
             excel_File = vc.get_single_excel_with_features_no_label(f"tempDir2/{file}",f"tempDir2/",1,False)
-            st.write(excel_File)
+            # st.write(excel_File)
             
             df = load_data("TrainDataRFohneID1.xlsx")
             X = df.drop(["label"],axis=1)
