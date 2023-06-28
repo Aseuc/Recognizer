@@ -614,6 +614,9 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
                 #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich ein Mann!")
                 # elif(countOne > countZero):
                 #     st.write("Auf der gesprochenen Audiodatei spricht wahrscheinlich eine Frau!
+                return
+
+
 
 def add_id_column(excel_file: str):
     df = pd.read_excel(excel_file)
@@ -622,8 +625,8 @@ def add_id_column(excel_file: str):
 
 check = upload_and_convert()
 file_name = None
-if check == True:
-    
+check2 = True
+if check == True and check2 == True:
     for file in os.listdir("tempDir/"):
         if file.endswith(".wav"):
             with st.expander("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei"):      
@@ -710,19 +713,18 @@ if check == True:
                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
                 neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
                 file_name = file
+                check2 == False
+                for file in os.listdir("tempDir/"):
+                            if file.endswith(".wav"):    
+                                        temp_dir = tempfile.TemporaryDirectory()
+                                        temp_file = os.path.join(temp_dir.name, f'{excelFile}')
+                                        os.remove(os.path.join("tempDir", file))
+                            if file.endswith(".xlsx"):
+                                    print(file)
+                                    os.remove(os.path.join("tempDir",(file)))
+                            if file.endswith(".mp4"):
+                                    os.remove(os.path.join("tempDir",(file)))
                 
-                
-    for file in os.listdir("tempDir/"):
-                if file.endswith(".wav"):    
-                            temp_dir = tempfile.TemporaryDirectory()
-                            temp_file = os.path.join(temp_dir.name, f'{excelFile}')
-                            os.remove(os.path.join("tempDir", file))
-                if file.endswith(".xlsx"):
-                        print(file)
-                        os.remove(os.path.join("tempDir",(file)))
-                if file.endswith(".mp4"):
-                        os.remove(os.path.join("tempDir",(file)))
-
 
 
       
