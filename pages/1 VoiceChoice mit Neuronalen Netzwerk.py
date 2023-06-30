@@ -22,7 +22,8 @@ import librosa.display
 import openpyxl
 import ballons_blue as bb
 import ballons_red  as br
-import plost
+
+
 
 
 
@@ -345,7 +346,7 @@ def visualize_mfcc(file_name):
     # df_MFCC = pd.DataFrame(mfcc)
 
     # chart_data = pd.DataFrame(df_MFCC.values.T)
-    st.bar_chart(file_name)    
+    st.area_chart(file_name)    
 def visualize_snr(df):
     df_snr = df_snr.iloc[:,:10]
     ax = sns.heatmap(df_snr)
