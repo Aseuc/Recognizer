@@ -11,38 +11,38 @@ from keras.optimizers import Adam
 
 import base64
 
+try:
 
-
-model_file_path = 'my_model.h5'
-
-
-
-def get_binary_file_downloader_html(bin_file, file_label='File'):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    bin_str = base64.b64encode(data).decode()
-    href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{file_label}">Download {file_label}</a>'
-    return href
+    model_file_path = 'my_model.h5'
 
 
 
+    def get_binary_file_downloader_html(bin_file, file_label='File'):
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        bin_str = base64.b64encode(data).decode()
+        href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{file_label}">Download {file_label}</a>'
+        return href
 
 
-def upload_and_convert_newPath(new_path):
-    uploaded_file2 = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["mp4", "wav"], key="file_uploader2")
-    if uploaded_file2 is not None:
-        file_details = {"FileName":uploaded_file2.name,"FileType":uploaded_file2.type}
-        st.write(file_details)
-        with open(os.path.join(new_path,uploaded_file2.name),"wb") as f:
-            f.write(uploaded_file2.getbuffer())
-        if uploaded_file2.type == "video/mp4":
-            vc.mp4_to_wav(uploaded_file2,vc.get_current_date_time() + ".wav")
-            return True
-        else:
-            st.success("Hochgeladene Datei ist bereits im WAV-Format")
-            return True
 
-def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neurons=0 ):
+
+
+    def upload_and_convert_newPath(new_path):
+        uploaded_file2 = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=[ "wav"], key="file_uploader2")
+        if uploaded_file2 is not None:
+            file_details = {"FileName":uploaded_file2.name,"FileType":uploaded_file2.type}
+            st.write(file_details)
+            with open(os.path.join(new_path,uploaded_file2.name),"wb") as f:
+                f.write(uploaded_file2.getbuffer())
+            if uploaded_file2.type == "video/mp4":
+                vc.mp4_to_wav(uploaded_file2,vc.get_current_date_time() + ".wav")
+                return True
+            else:
+                st.success("Hochgeladene Datei ist bereits im WAV-Format")
+                return True
+
+    def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neurons=0 ):
                 
                 # if layers != 0 and neurons != 0:
                 #     if layers > len(neurons):
@@ -117,9 +117,16 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
                                     
                 model.save('my_model.h5')
                 return acc, val_acc
+except Exception as e:
+    print(e)
 
 
 
+st.set_page_config(
+    page_title="VoiceChoice - Do it yourself!",
+    page_icon="favicon.ico",
+    layout='wide'
+)
 
 
 m = 0
@@ -159,3 +166,7 @@ try:
                         st.markdown(get_binary_file_downloader_html(model_file_path, 'my_model.h5'), unsafe_allow_html=True)
 except Exception as e:
         print(e)
+
+
+
+

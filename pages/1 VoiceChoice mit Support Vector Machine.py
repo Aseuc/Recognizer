@@ -29,6 +29,14 @@ def upload_and_convert():
         
 check2 = True; 
         
+st.set_page_config(
+    page_title="VoiceChoice - Support Vector Machine",
+    page_icon="favicon.ico",
+    layout='wide'
+)
+
+
+
 @st.cache_data
 def load_data(excel_file):
     df = pd.read_excel(excel_file)

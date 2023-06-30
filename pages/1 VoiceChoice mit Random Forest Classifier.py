@@ -91,7 +91,15 @@ def upload_and_convert():
         else:
             st.success("Hochgeladene Datei ist bereits im WAV-Format")
             return True
-        
+
+
+st.set_page_config(
+    page_title="VoiceChoice - Random Forest Classifier!",
+    page_icon="favicon.ico",
+    layout='wide'
+)
+
+
 @st.cache_data
 def load_data(excel_file):
     df = pd.read_excel(excel_file)

@@ -63,7 +63,7 @@ from scipy import signal
 import tempfile
 import openpyxl
 from keras.regularizers import l1_l2
-
+from PIL import Image
 def get_duration(audio_file_path): 
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
@@ -756,9 +756,22 @@ def add_id_column(excel_file: str):
 #                             if file.endswith(".mp4"):
 #                                     os.remove(os.path.join("tempDir",(file)))
                 
+st.set_page_config(
+    page_title="VoiceChoice",
+    page_icon="favicon.ico",
+    layout='wide'
+)
+col1, col2, col3 = st.columns(3)
+with col2:
+    image = Image.open('vc.png')
+    st.image(image)
 
 
-      
+st.markdown("<h1 style='text-align: center;'>Herzlich Willkomnen zu VoiceChoice!</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Your voice and is your choice</h3>", unsafe_allow_html=True)
+
+
+
 
 
 
