@@ -128,7 +128,7 @@ f = 0
 try:
     if upload_and_convert_newPath("tempDir2") == True:
 
-        max_layers = 5
+        max_layers = 20
         layer_options = list(range(1, max_layers + 1))
 
         if 'num_layers' not in st.session_state:
