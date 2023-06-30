@@ -159,8 +159,7 @@ try:
                         val_acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,num_layers,neurons)
                         os.remove(f"{excelFile}")
                         val_acc = val_acc[len(val_acc) - 1]
-                        st.write(f"Die Validierungsgenauigkeit deines Modells entsprich {val_acc}, diese kann stimmen muss sie aber nicht, denn abhängig von Tonqualität, Tonstärken der Audiodatei und Tonklang der Person kann die Vorhersage dennoch Falsch sein!")
-                        
+                        st.write(f"Die Validierungsgenauigkeit deines Modells entspricht: " +f"{val_acc[len(val_acc)-1]}, diese kann stimmen muss sie aber nicht, denn abhängig von Tonqualität, Tonstärken der Audiodatei und Tonklang der Person kann die Vorhersage dennoch Falsch sein!")
                         st.balloons()
                         os.remove(f"tempDir2/{file}")
                         st.markdown(get_binary_file_downloader_html(model_file_path, 'my_model.h5'), unsafe_allow_html=True)

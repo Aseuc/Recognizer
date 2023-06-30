@@ -66,6 +66,8 @@ from keras.regularizers import l1_l2
 import VoiceChoice as vc
 import ballons_blue as bb
 import ballons_red  as br
+import randomFacts as rf
+
 
 
 def mp4_to_wav(mp4_file, wav_file):
@@ -93,11 +95,11 @@ def upload_and_convert():
             return True
 
 
-# st.set_page_config(
-#     page_title="VoiceChoice - Random Forest Classifier!",
-#     page_icon="favicon.ico",
-#     layout='wide'
-# )
+st.set_page_config(
+    page_title="VoiceChoice - Random Forest Classifier!",
+    page_icon="favicon.ico",
+    layout='wide'
+)
 
 
 @st.cache_data
@@ -168,10 +170,16 @@ try:
                 if y_pred2 == 0: 
                     bb.ballons_blue()
                     st.write("Die Person auf der Aufnahme scheint ein Mann zu sein!")
-                else:
+                    st.title("Wusstest du schon?")
+                    st.write(rf.random_fact_men())
+                elif y_pred2 == 1:
                     br.ballons_red()
                     st.write("Die Person auf der Aufnahme scheint eine Frau zu sein!")
-                
+                    st.title("Wusstest du schon?")
+                    st.write(rf.random_fact_women())
+
+
+
                 st.balloons()    
                 for file in os.listdir("tempDir2/"):
                             if file.endswith(".wav"):    

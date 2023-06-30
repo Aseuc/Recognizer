@@ -33,7 +33,6 @@ import ballons_red  as br
 
 
 
-# import st.components.v1.html as components
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -342,21 +341,14 @@ def split_wav(wav_file, segment_length=3000):
         segment = audio[i:i+segment_length]
         segment.export(f"segment_{i//segment_length}.wav", format="wav")
 def plot_mfcc(df_MFCC):
-    fig, ax = plt.subplots()
     mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
-    cax = ax.imshow(mfcc_data, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
-    ax.set_title('MFCC')
-    st.pyplot(fig)
-    fig, ax = plt.subplots()
-    ax.plot(df_MFCC.values.T)
-    ax.set_title('MFCC')
-    st.pyplot(fig)
+    st.image(mfcc_data, caption='MFCC', clamp=True, use_column_width=True)
+    chart_data = pd.DataFrame(df_MFCC.values.T)
+    st.line_chart(chart_data)
+
 def plot_bandwidth(df):
-    fig, ax = plt.subplots()
-    ax.bar(df.columns, df.values[0])
-    ax.set_xticklabels(df.columns, rotation=90)
-    ax.set_title('Bandbreite')
-    st.pyplot(fig)
+    chart_data = df.T.rename(columns={0: 'Bandbreite'})
+    chart = st.bar_chart(chart_data)
 def plot_zcr(df):
     fig, ax = plt.subplots()
     ax.plot(df.columns, df.values[0])
@@ -365,14 +357,20 @@ def plot_zcr(df):
     st.pyplot(fig)
 def visualize_mfcc(file_name):
     y, sr = librosa.load(file_name)
-    
-    mfccs = librosa.feature.mfcc(y=y, sr=sr)
-    
+    mfcc = librosa.feature.mfcc(y=y, sr=sr)
+    df_MFCC = pd.DataFrame(mfcc)
+
     fig, ax = plt.subplots()
-    img = librosa.display.specshow(mfccs, x_axis='time', ax=ax)
-    fig.colorbar(img, ax=ax)
-    ax.set(title='MFCC', xlabel='Zeit', ylabel='MFCC')
+    mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
+    im = ax.imshow(mfcc_data, cmap='coolwarm', origin='lower')
+    ax.set_title('MFCC')
+    fig.colorbar(im)
     st.pyplot(fig)
+
+    chart_data = pd.DataFrame(df_MFCC.values.T)
+    st.line_chart(chart_data)
+
+    
 def visualize_snr(df):
     df_snr = df_snr.iloc[:,:10]
     ax = sns.heatmap(df_snr)
@@ -557,18 +555,17 @@ def get_duration(audio_file_path):
     return duration 
 
 
-# st.set_page_config(
-#     page_title="VoiceChoice - Neuronal Network",
-#     page_icon="favicon.ico",
-#     layout='wide'
-# )
+st.set_page_config(
+    page_title="VoiceChoice - Neuronal Network",
+    page_icon="favicon.ico",
+    layout='wide'
+)
 
 check = upload_and_convert()
 file_name = None
 check2 = True
 m = 0
 f = 0
-
 
 try:
     if check == True and check2 == True:

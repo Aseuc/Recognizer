@@ -29,11 +29,11 @@ def upload_and_convert():
         
 check2 = True; 
         
-# st.set_page_config(
-#     page_title="VoiceChoice - Support Vector Machine",
-#     page_icon="favicon.ico",
-#     layout='wide'
-# )
+st.set_page_config(
+    page_title="VoiceChoice - Support Vector Machine",
+    page_icon="favicon.ico",
+    layout='wide'
+)
 
 
 
@@ -83,7 +83,7 @@ try:
                 elif f > m :
                     br.ballons_red()
                     st.write("Person auf der Aufnahme scheint eine Frau zu sein!")
-                    st.title("Wusstest du schon?: ")
+                    st.title("Wusstest du schon? ")
                     st.write(rf.random_fact_women())
 
 
