@@ -117,7 +117,7 @@ try:
                 
                 
                 st.write(f"Die Genauigkeit des Random Forest Klassifikators auf den Testdatensatz beträgt: {accuracy:.2f}")   
-                st.write("Hier nochmal genauer die Predictions der Testdatensätze 0 = Mann, 1 = Fraue:" , y_pred)
+                st.write("Hier nochmal genauer die Predictions der Testdatensätze 0 = Mann, 1 = Frau:" , y_pred)
 
                 # with open('ML_Models/RandomForestClassifier.pkl', 'rb') as file:
                 #         rfc = pickle.load(file)

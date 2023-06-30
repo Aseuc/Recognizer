@@ -125,35 +125,37 @@ def neuronal_network(excel_file_train_data,excel_file_test_data, layers = 0, neu
 m = 0
 f = 0
 
+try:
+    if upload_and_convert_newPath("tempDir2") == True:
 
-if upload_and_convert_newPath("tempDir2") == True:
+        max_layers = 5
+        layer_options = list(range(1, max_layers + 1))
 
-    max_layers = 5
-    layer_options = list(range(1, max_layers + 1))
+        if 'num_layers' not in st.session_state:
+            st.session_state.num_layers = layer_options[0]
 
-    if 'num_layers' not in st.session_state:
-        st.session_state.num_layers = layer_options[0]
+        num_layers = st.selectbox("Select number of layers", layer_options, key='num_layers')
 
-    num_layers = st.selectbox("Select number of layers", layer_options, key='num_layers')
+        neurons = []
+        for i in range(num_layers):
+            if f'neurons_{i}' not in st.session_state:
+                st.session_state[f'neurons_{i}'] = 16
+            n = st.number_input(f"Select number of neurons in layer {i + 1}", min_value=1, value=st.session_state[f'neurons_{i}'], key=f'neurons_{i}')
+            neurons.append(n)
 
-    neurons = []
-    for i in range(num_layers):
-        if f'neurons_{i}' not in st.session_state:
-            st.session_state[f'neurons_{i}'] = 16
-        n = st.number_input(f"Select number of neurons in layer {i + 1}", min_value=1, value=st.session_state[f'neurons_{i}'], key=f'neurons_{i}')
-        neurons.append(n)
-
-    st.write(f"Anzahl der Layers: {num_layers}")
-    st.write(f"Anzahl der Neuronen in jedem Layer: {neurons}")
-    if st.button('Start'):
-            for file in os.listdir("tempDir2/"):
-                 if file.endswith(".wav"):
-                    excelFile = vc.get_single_excel_with_features_no_label(f"tempDir2/{file}",f"tempDir2/{file}",10,True)
-                    val_acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,num_layers,neurons)
-                    os.remove(f"{excelFile}")
-                    val_acc = val_acc[len(val_acc) - 1]
-                    st.write(f"Die Validierungsgenauigkeit deines Modells entsprich {val_acc}, diese kann stimmen muss sie aber nicht, denn abhängig von Tonqualität, Tonstärken der Audiodatei und Tonklang der Person kann die Vorhersage dennoch Falsch sein!")
-                    
-                    st.balloons()
-                    os.remove(f"tempDir2/{file}")
-                    st.markdown(get_binary_file_downloader_html(model_file_path, 'my_model.h5'), unsafe_allow_html=True)
+        st.write(f"Anzahl der Layers: {num_layers}")
+        st.write(f"Anzahl der Neuronen in jedem Layer: {neurons}")
+        if st.button('Start'):
+                for file in os.listdir("tempDir2/"):
+                    if file.endswith(".wav"):
+                        excelFile = vc.get_single_excel_with_features_no_label(f"tempDir2/{file}",f"tempDir2/{file}",10,True)
+                        val_acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,num_layers,neurons)
+                        os.remove(f"{excelFile}")
+                        val_acc = val_acc[len(val_acc) - 1]
+                        st.write(f"Die Validierungsgenauigkeit deines Modells entsprich {val_acc}, diese kann stimmen muss sie aber nicht, denn abhängig von Tonqualität, Tonstärken der Audiodatei und Tonklang der Person kann die Vorhersage dennoch Falsch sein!")
+                        
+                        st.balloons()
+                        os.remove(f"tempDir2/{file}")
+                        st.markdown(get_binary_file_downloader_html(model_file_path, 'my_model.h5'), unsafe_allow_html=True)
+except Exception as e:
+        print(e)

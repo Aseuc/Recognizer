@@ -9,6 +9,9 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import traceback
+import ballons_red  as br
+import ballons_blue as bb
+import randomFacts as rf
 
 
 def upload_and_convert():
@@ -64,11 +67,19 @@ try:
                       else:
                             f = f + 1
 
-                if m > f: 
+                if m > f:
+                    bb.ballons_blue()
                     st.write("Person auf der Aufnahme scheint ein Mann zu sein!")
+                    st.title("Wusstest du schon?: ")
+                    st.write(rf.random_fact_men())
                 elif f > m :
+                    br.ballons_red()
                     st.write("Person auf der Aufnahme scheint eine Frau zu sein!")
+                    st.title("Wusstest du schon?: ")
+                    st.write(rf.random_fact_women())
 
+
+                st.balloons()
                 check2 = False
                 os.remove(excel_file)
                 
