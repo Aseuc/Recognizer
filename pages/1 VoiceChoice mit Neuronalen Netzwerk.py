@@ -20,6 +20,17 @@ from keras.optimizers import Adam
 from datetime import datetime
 import librosa.display
 import openpyxl
+import ballons_blue as bb
+import ballons_red  as br
+
+
+
+
+
+
+
+
+
 
 
 # import st.components.v1.html as components
@@ -545,11 +556,15 @@ def get_duration(audio_file_path):
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration 
 
+
+
 check = upload_and_convert()
 file_name = None
 check2 = True
 m = 0
 f = 0
+
+
 try:
     if check == True and check2 == True:
         for file in os.listdir("tempDir/"):
@@ -673,12 +688,12 @@ try:
                     
 
 
-                # with st.expander("2.1.3 Neuronales Netz"):
-                #     st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
-                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                #     val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
-                #     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                #     os.remove(f"{excelFile}")
+                with st.expander("2.1.3 Neuronales Netz"):
+                    st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
+                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                    os.remove(f"{excelFile}")
                 
 
                 with st.expander("2.1.3 Optimierung der Validierungsgenauigkeit durch Schichten-/Neuronenerhöhung"):
@@ -709,14 +724,17 @@ try:
                     
                     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
                     os.remove(f"{excelFile}")
-
                     if m > f:
                         st.write("Nach Berechnung und Zusammenfassung aller vorheriger Vorhersagen ist die Person auf der Aufnahme wahrscheinlich ein Mann!")
+                        bb.ballons_blue()
+                    
                     else: 
                         st.write("Nach Berechnung und Zusammenfassung aller vorheriger Vorhersagen ist mit die Person auf der Aufnahme wahrscheinlich eine Frau!")
+                        br.ballons_red()
 
 
                     st.balloons()
+
                     
                     st.write("Zu beachten ist, dass die Vorhersage stark von der Audioqualität abhängt die hochgeladen wird! Wir haben versucht verschiedenste Qualitäten und Personen in unseren Trainingsdatensatz aufzunehmen!")
                     

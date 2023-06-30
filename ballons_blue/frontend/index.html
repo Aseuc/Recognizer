@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ballons_red_and_blue</title>
+    <script src="./streamlit-component-lib.js"></script>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .balloon {
+        position: absolute;
+        bottom: 0;
+        animation: rise 5s linear infinite;
+        z-index: 999;
+      }
+      
+      @keyframes rise {
+        from {bottom: 0;}
+        to {bottom: 100%;}
+      }
+      </style>
+      </head>
+      <body>
+      
+      <div id="balloons"></div>
+      <div><img src="mann1.jpg" alt="" style="height: 50em; width: 50em;"> </div>
+      <script>
+      const colors = ['blue'];
+      const numBalloons = 20;
+      
+      for (let i = 0; i < numBalloons; i++) {
+        const balloon = document.createElement('img');
+        balloon.src = colors[i % colors.length] + '-ballon.png';
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + '%';
+        balloon.style.animationDelay = -Math.random() * 5 + 's';
+        balloon.style.height = "100px"
+        document.getElementById('balloons').appendChild(balloon);
+      }
+
+      </script>      
+  </body>
+</html>

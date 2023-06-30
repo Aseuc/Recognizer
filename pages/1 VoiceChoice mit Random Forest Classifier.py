@@ -64,6 +64,8 @@ import tempfile
 import openpyxl
 from keras.regularizers import l1_l2
 import VoiceChoice as vc
+import ballons_blue as bb
+import ballons_red  as br
 
 
 def mp4_to_wav(mp4_file, wav_file):
@@ -156,9 +158,13 @@ if upload_and_convert() == True:
             # st.write("Hier nochmal genauer die Predictions der Testdatensätze 0 = Mann, 1 = Fraue:", y_pred)
 
             if y_pred2 == 0: 
-                st.write("Person auf der Aufnahme scheint ein Mann zu sein!")
+                bb.ballons_blue()
+                st.write("Die Person auf der Aufnahme scheint ein Mann zu sein!")
             else:
-                st.write("Person auf der Aufnahme scheint eine Frau zu sein!")
+                br.ballons_red()
+                st.write("Die Person auf der Aufnahme scheint eine Frau zu sein!")
+            
+            st.balloons()    
             for file in os.listdir("tempDir2/"):
                         if file.endswith(".wav"):    
                                     os.remove(os.path.join("tempDir2", file))

@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import traceback
 
+
 def upload_and_convert():
     uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["wav"], key="file_uploader6")
     if uploaded_file is not None:
