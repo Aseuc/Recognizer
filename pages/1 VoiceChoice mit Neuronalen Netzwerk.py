@@ -557,11 +557,11 @@ def get_duration(audio_file_path):
     return duration 
 
 
-st.set_page_config(
-    page_title="VoiceChoice - Neuronal Network",
-    page_icon="favicon.ico",
-    layout='wide'
-)
+# st.set_page_config(
+#     page_title="VoiceChoice - Neuronal Network",
+#     page_icon="favicon.ico",
+#     layout='wide'
+# )
 
 check = upload_and_convert()
 file_name = None

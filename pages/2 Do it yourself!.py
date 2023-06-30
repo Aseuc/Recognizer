@@ -122,11 +122,11 @@ except Exception as e:
 
 
 
-st.set_page_config(
-    page_title="VoiceChoice - Do it yourself!",
-    page_icon="favicon.ico",
-    layout='wide'
-)
+# st.set_page_config(
+#     page_title="VoiceChoice - Do it yourself!",
+#     page_icon="favicon.ico",
+#     layout='wide'
+# )
 
 
 m = 0

@@ -93,11 +93,11 @@ def upload_and_convert():
             return True
 
 
-st.set_page_config(
-    page_title="VoiceChoice - Random Forest Classifier!",
-    page_icon="favicon.ico",
-    layout='wide'
-)
+# st.set_page_config(
+#     page_title="VoiceChoice - Random Forest Classifier!",
+#     page_icon="favicon.ico",
+#     layout='wide'
+# )
 
 
 @st.cache_data
