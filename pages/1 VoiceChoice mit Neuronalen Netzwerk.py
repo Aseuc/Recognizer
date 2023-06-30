@@ -22,14 +22,7 @@ import librosa.display
 import openpyxl
 import ballons_blue as bb
 import ballons_red  as br
-
-
-
-
-
-
-
-
+import plost
 
 
 
@@ -108,9 +101,6 @@ def extract_random_sequence(input_file_path, output_file_path,duration=3):
         output_wav.writeframes(frames)
 
         return output_file_path
-
-
-
 def get_n_frames(input_file_path):
       with wave.open(input_file_path, 'rb') as input_wav:
         n_channels = input_wav.getnchannels()
@@ -232,11 +222,9 @@ def extract_loudness(file_name):
 def plot_loudness(file_name):
     fs, data = wavfile.read(file_name)
     t = np.arange(0, len(data)/fs, 1/fs)
-    fig, ax = plt.subplots()
-    ax.plot(t, data)
-    ax.set_xlabel('Zeit [s]')
-    ax.set_ylabel('Amplitude')
-    st.pyplot(fig)
+    st.line_chart(data)
+    st.write('X-Achse: Zeit [s]')
+    st.write('Y-Achse: Amplitude')
 def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSXData, labelType, numberOfColumns):
     i = 0
     for file in os.listdir(ordner_path):
@@ -345,32 +333,19 @@ def plot_mfcc(df_MFCC):
     st.image(mfcc_data, caption='MFCC', clamp=True, use_column_width=True)
     chart_data = pd.DataFrame(df_MFCC.values.T)
     st.line_chart(chart_data)
-
 def plot_bandwidth(df):
     chart_data = df.T.rename(columns={0: 'Bandbreite'})
     chart = st.bar_chart(chart_data)
 def plot_zcr(df):
-    fig, ax = plt.subplots()
-    ax.plot(df.columns, df.values[0])
-    ax.set_xticklabels(df.columns, rotation=90)
-    ax.set_title('Zero Crossing Rate')
-    st.pyplot(fig)
-def visualize_mfcc(file_name):
-    y, sr = librosa.load(file_name)
-    mfcc = librosa.feature.mfcc(y=y, sr=sr)
-    df_MFCC = pd.DataFrame(mfcc)
-
-    fig, ax = plt.subplots()
-    mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
-    im = ax.imshow(mfcc_data, cmap='coolwarm', origin='lower')
-    ax.set_title('MFCC')
-    fig.colorbar(im)
-    st.pyplot(fig)
-
-    chart_data = pd.DataFrame(df_MFCC.values.T)
+    chart_data = pd.DataFrame(df.values[0], index=df.columns, columns=['Zero Crossing Rate'])
     st.line_chart(chart_data)
+def visualize_mfcc(file_name):
+    # y, sr = librosa.load(file_name)
+    # mfcc = librosa.feature.mfcc(y=y, sr=sr)
+    # df_MFCC = pd.DataFrame(mfcc)
 
-    
+    # chart_data = pd.DataFrame(df_MFCC.values.T)
+    st.bar_chart(file_name)    
 def visualize_snr(df):
     df_snr = df_snr.iloc[:,:10]
     ax = sns.heatmap(df_snr)
@@ -547,14 +522,10 @@ def check_duration_uploadfile(uploadfile_path):
                 new_string = output_file.replace("tempDir/","")
                 file = new_string
             return file 
-
-
 def get_duration(audio_file_path): 
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration 
-
-
 st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
     page_icon="favicon.ico",
@@ -595,7 +566,8 @@ try:
             
                 with st.expander("1.2 Visualisierung der MFCC-Werte"):      
                     st.title("1.2 Visualisierung der MFCC-Werte")
-                    visualize_mfcc(f"tempDir/{file}")
+                    # visualize_mfcc(f"tempDir/{file}")
+                    visualize_mfcc(df)
             
 
                 with st.expander("1.3 Extraktion der Bandbreite einer Audioaufnahme"): 
@@ -653,77 +625,77 @@ try:
                     st.title("1.10 Visualisierung der Tonstärke")
                     st.write("Die Tonstärke wurde durch die Root-Mean-Square (RMS) Methode berechnet. Diese eignen sich zur Darstellung der Lautstärke für bestimmte Zeiträume.")
                     plot_loudness(f"tempDir/{file}")
-                with st.expander("2.0 Machine Learning Modelle"):
-                    st.title("2.0 Machine Learning Modelle")
-                    st.write("Um die Genauigkeit zu erhöhen, ob die Person auf der gesprochenen Aufnahme einem Mann oder einer Frau entspricht, wird im folgenden mit verschiedenen Varianten eines neuronalen Netzes gearbeitet.")
+                # with st.expander("2.0 Machine Learning Modelle"):
+                #     st.title("2.0 Machine Learning Modelle")
+                #     st.write("Um die Genauigkeit zu erhöhen, ob die Person auf der gesprochenen Aufnahme einem Mann oder einer Frau entspricht, wird im folgenden mit verschiedenen Varianten eines neuronalen Netzes gearbeitet.")
                     
-                with st.expander("2.1 Neuronales Netzwerk"):
+                # with st.expander("2.1 Neuronales Netzwerk"):
                     
-                    st.title("2.1 Neuronales Netzwerk")
-                    st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
+                #     st.title("2.1 Neuronales Netzwerk")
+                #     st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
                     
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
-                    # # excelFile = delete_first_column_excel(excelFile)
-                    # # data = pd.read_excel(excelFile)
-                    # # data = data.drop(["label"],axis=1)
-                    # # model = load_model('1row2.h5')
-                    # # predictions = model.predict(data)
-                    # # st.write(predictions)
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
+                #     # # excelFile = delete_first_column_excel(excelFile)
+                #     # # data = pd.read_excel(excelFile)
+                #     # # data = data.drop(["label"],axis=1)
+                #     # # model = load_model('1row2.h5')
+                #     # # predictions = model.predict(data)
+                #     # # st.write(predictions)
 
-                    val_acc , acc = neuronal_network("TDNN1.xlsx",excelFile)
+                #     val_acc , acc = neuronal_network("TDNN1.xlsx",excelFile)
 
-                    if val_acc[len(val_acc)-1] >= 1.0:
-                        st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                        st.write("Diese Validierungsgenauigkeit ist zwar sehr hoch aber führte nicht immer zu richtigen Vorhersage!")
-                    else:
-                        st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                    os.remove(f"{excelFile}")
+                #     if val_acc[len(val_acc)-1] >= 1.0:
+                #         st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                #         st.write("Diese Validierungsgenauigkeit ist zwar sehr hoch aber führte nicht immer zu richtigen Vorhersage!")
+                #     else:
+                #         st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                #     os.remove(f"{excelFile}")
                 
                 
 
-                with st.expander("2.1.2 Neuronales Netz"):
-                    st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
+                # with st.expander("2.1.2 Neuronales Netz"):
+                #     st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                #     val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
         
-                    st.write("Validierungsgenauigkeit: " + f"{val_acc[len(val_acc)-1]}")
-                    os.remove(f"{excelFile}")
+                #     st.write("Validierungsgenauigkeit: " + f"{val_acc[len(val_acc)-1]}")
+                #     os.remove(f"{excelFile}")
                     
 
 
-                with st.expander("2.1.3 Neuronales Netz"):
-                    st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
-                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                    os.remove(f"{excelFile}")
+                # with st.expander("2.1.3 Neuronales Netz"):
+                #     st.write("2.1.3 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe:")
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                #     val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+                #     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                #     os.remove(f"{excelFile}")
                 
 
-                with st.expander("2.1.3 Optimierung der Validierungsgenauigkeit durch Schichten-/Neuronenerhöhung"):
-                    st.write("2.1.3 Hier wird nun versucht mit weiteren Schichten und Veränderung der Reihenfolge die Genauigkeit zu verbessern Schichtenanzahl: 4, Neuronenschichtenanzahlreihenfolge: 8, 16, 16, 8:")
-                    st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                    val_acc, acc= neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,4,[8,16,16,8])
+                # with st.expander("2.1.3 Optimierung der Validierungsgenauigkeit durch Schichten-/Neuronenerhöhung"):
+                #     st.write("2.1.3 Hier wird nun versucht mit weiteren Schichten und Veränderung der Reihenfolge die Genauigkeit zu verbessern Schichtenanzahl: 4, Neuronenschichtenanzahlreihenfolge: 8, 16, 16, 8:")
+                #     st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                #     val_acc, acc= neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,4,[8,16,16,8])
             
-                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                    os.remove(f"{excelFile}")
+                #     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                #     os.remove(f"{excelFile}")
 
 
-                with st.expander("2.1.4 Optimierung der Validierungsgenauigkeit"):
-                    st.write("2.1.4 Weiter wurde auch versucht durch Feature Engeneering die Validierungsgenauigkeit zu erhöhen in diesem Durchlauf werden statt der üblichen 10 Features 5 Features verwendet:")
-                    st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",1,False)
-                    val_acc, acc = neuronal_network("TrainDataRFohneID.xlsx",excelFile,4,[8,16,8,16])
+                # with st.expander("2.1.4 Optimierung der Validierungsgenauigkeit"):
+                #     st.write("2.1.4 Weiter wurde auch versucht durch Feature Engeneering die Validierungsgenauigkeit zu erhöhen in diesem Durchlauf werden statt der üblichen 10 Features 5 Features verwendet:")
+                #     st.write("Jedoch ist keine ersichtliche Verbesserung der Validierungsgenauigkeit zu 2.1.3 zu erkennen!")
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",1,False)
+                #     val_acc, acc = neuronal_network("TrainDataRFohneID.xlsx",excelFile,4,[8,16,8,16])
                     
-                    st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
-                    os.remove(f"{excelFile}")
+                #     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
+                #     os.remove(f"{excelFile}")
 
 
-                with st.expander("2.1.5 Optimierung der Validierungsgenauigkeit"):
-                    st.write("2.1.5 Weiter wurde auch versucht durch Feature Engeneering die Validierungsgenauigkeit zu erhöhen in diesem Durchlauf werden statt der üblichen 10 Features 5 Features verwendet:")
-                    st.write("Jedoch ist keine signifikante Verbesserung der Validierungsgenauigkeit im Vergleich zu 2.1.3 zu erkennen!")
-                    excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,5,[32,32,32,32,32])
+                # with st.expander("2.1.5 Optimierung der Validierungsgenauigkeit"):
+                #     st.write("2.1.5 Weiter wurde auch versucht durch Feature Engeneering die Validierungsgenauigkeit zu erhöhen in diesem Durchlauf werden statt der üblichen 10 Features 5 Features verwendet:")
+                #     st.write("Jedoch ist keine signifikante Verbesserung der Validierungsgenauigkeit im Vergleich zu 2.1.3 zu erkennen!")
+                #     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+                #     val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,5,[32,32,32,32,32])
                     
                     st.write("Validierungsgenauigkeit: " +f"{val_acc[len(val_acc)-1]}")
                     os.remove(f"{excelFile}")
