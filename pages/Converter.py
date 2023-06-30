@@ -3,11 +3,12 @@ from moviepy.editor import AudioFileClip
 import os
 from pydub import AudioSegment
 try: 
-    # st.set_page_config(
-    #     page_title="Converter",
-    #     page_icon="favicon.ico",
-    #     layout='wide'
-    # )
+    st.set_page_config(
+        page_title="Converter",
+        page_icon="favicon.ico",
+        layout='wide',
+    initial_sidebar_state="auto"
+    )
 
 
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)

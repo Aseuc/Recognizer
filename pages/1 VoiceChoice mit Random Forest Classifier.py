@@ -98,7 +98,8 @@ def upload_and_convert():
 st.set_page_config(
     page_title="VoiceChoice - Random Forest Classifier!",
     page_icon="favicon.ico",
-    layout='wide'
+    layout="wide",
+    initial_sidebar_state="auto"
 )
 
 
@@ -169,13 +170,14 @@ try:
 
                 if y_pred2 == 0: 
                     bb.ballons_blue()
-                    st.write("Die Person auf der Aufnahme scheint ein Mann zu sein!")
+                    st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint ein Mann zu sein!</h3>", unsafe_allow_html=True)
                     st.title("Wusstest du schon?")
                     st.write(rf.random_fact_men())
                 elif y_pred2 == 1:
                     br.ballons_red()
-                    st.write("Die Person auf der Aufnahme scheint eine Frau zu sein!")
+                    st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint eine Frau zu sein!</h3>", unsafe_allow_html=True)
                     st.title("Wusstest du schon?")
+
                     st.write(rf.random_fact_women())
 
 

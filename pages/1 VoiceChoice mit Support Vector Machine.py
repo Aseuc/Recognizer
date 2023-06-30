@@ -32,7 +32,8 @@ check2 = True;
 st.set_page_config(
     page_title="VoiceChoice - Support Vector Machine",
     page_icon="favicon.ico",
-    layout='wide'
+    layout='wide',
+    initial_sidebar_state="auto"
 )
 
 
@@ -77,12 +78,12 @@ try:
 
                 if m > f:
                     bb.ballons_blue()
-                    st.write("Person auf der Aufnahme scheint ein Mann zu sein!")
+                    st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint ein Mann zu sein!</h3>", unsafe_allow_html=True)
                     st.title("Wusstest du schon?: ")
                     st.write(rf.random_fact_men())
                 elif f > m :
                     br.ballons_red()
-                    st.write("Person auf der Aufnahme scheint eine Frau zu sein!")
+                    st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint eine Frau zu sein!</h3>", unsafe_allow_html=True)
                     st.title("Wusstest du schon? ")
                     st.write(rf.random_fact_women())
 
