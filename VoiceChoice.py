@@ -775,7 +775,7 @@ with col2:
 
 
 st.markdown("<h1 style='text-align: center;'>Herzlich Willkomnen zu VoiceChoice!</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center;'>Your voice and is your choice</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Your voice is your choice!</h3>", unsafe_allow_html=True)
 
 
 
