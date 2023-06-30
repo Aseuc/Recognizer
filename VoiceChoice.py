@@ -650,111 +650,111 @@ def add_id_column(excel_file: str):
     df.insert(0, 'ID', range(1, len(df) + 1))
     df.to_excel(excel_file, index=False)
 
-check = upload_and_convert()
-file_name = None
-check2 = True
-if check == True and check2 == True:
-    for file in os.listdir("tempDir/"):
-        if file.endswith(".wav"):
-            with st.expander("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei"):      
-                st.title("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
-                st.write("MFCC (Mel Frequency Cepstral Coefficients): MFCCs werden zur automatischen Spracherkennung verwendet und führen zu einer kompakten Darstellung des Frequenzspektrums. ")
-                df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
-                df = df.iloc[:5, :10]
-                st.caption("Ein Auszug der berechneten MFCC aus der Audiodatei dargestellt in einem Dataframe")
-                st.write(df)
+# check = upload_and_convert()
+# file_name = None
+# check2 = True
+# if check == True and check2 == True:
+#     for file in os.listdir("tempDir/"):
+#         if file.endswith(".wav"):
+#             with st.expander("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei"):      
+#                 st.title("1.1 Extraktion der MFCC-Werte aus der WAV-Audio-Datei")
+#                 st.write("MFCC (Mel Frequency Cepstral Coefficients): MFCCs werden zur automatischen Spracherkennung verwendet und führen zu einer kompakten Darstellung des Frequenzspektrums. ")
+#                 df = extract_mfcc(f"tempDir/{file}",n_mfcc=10)
+#                 df = df.iloc[:5, :10]
+#                 st.caption("Ein Auszug der berechneten MFCC aus der Audiodatei dargestellt in einem Dataframe")
+#                 st.write(df)
            
-            with st.expander("1.2 Visualisierung der MFCC-Werte"):      
-                st.title("1.2 Visualisierung der MFCC-Werte")
-                visualize_mfcc(f"tempDir/{file}")
+#             with st.expander("1.2 Visualisierung der MFCC-Werte"):      
+#                 st.title("1.2 Visualisierung der MFCC-Werte")
+#                 visualize_mfcc(f"tempDir/{file}")
            
 
-            with st.expander("1.3 Extraktion der Bandbreite einer Audioaufnahme"): 
-                st.title("1.3 Extraktion der Bandbreite einer Audioaufnahme")
-                st.write("Die Bandbreite einer Audioaufnahme bezieht sich auf den Frequenzbereich, der von der Datei abgedeckt wird. Normalerweise zwischen 20 Hz - 20000 Hz.")
-                df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
-                df_bandwitdth = df_bandwitdth.iloc[:,:30]
-                st.caption("Ein Auszug der berechneten Bandbreite aus der Audiodatei dargestellt in einem Dataframe")
-                st.write(df_bandwitdth)
+#             with st.expander("1.3 Extraktion der Bandbreite einer Audioaufnahme"): 
+#                 st.title("1.3 Extraktion der Bandbreite einer Audioaufnahme")
+#                 st.write("Die Bandbreite einer Audioaufnahme bezieht sich auf den Frequenzbereich, der von der Datei abgedeckt wird. Normalerweise zwischen 20 Hz - 20000 Hz.")
+#                 df_bandwitdth = extract_bandwidth(f"tempDir/{file}")
+#                 df_bandwitdth = df_bandwitdth.iloc[:,:30]
+#                 st.caption("Ein Auszug der berechneten Bandbreite aus der Audiodatei dargestellt in einem Dataframe")
+#                 st.write(df_bandwitdth)
 
-            with st.expander("1.4 Visualisierung der Bandbreite einer Audioaufnahme"):
-                st.title("1.4 Visualisierung der Bandbreite einer Audioaufnahme")
-                plot_bandwidth(df_bandwitdth)
+#             with st.expander("1.4 Visualisierung der Bandbreite einer Audioaufnahme"):
+#                 st.title("1.4 Visualisierung der Bandbreite einer Audioaufnahme")
+#                 plot_bandwidth(df_bandwitdth)
 
-            with st.expander("1.5 Extraktion der Zero Crossing Rate"):
-                st.title("1.5 Extraktion der Zero Crossing Rate")   
-                st.write("Die Zero Crossing Rate (ZCR) ist eine Maßzahl für die Anzahl der Male, die ein Audiosignal die Nulllinie überquert.")
-                df_zcr = extract_zcr(f"tempDir/{file}")
-                df_zcr = df_zcr.iloc[:, :30]
-                st.caption("Ein Auszug der berechneten Zero Crossing Rate aus der Audiodatei dargestellt in einem Dataframe")
-                st.write(df_zcr)
-                df_zcr = df_zcr.iloc[:,:30]
-                df_zcr.columns = [f'zcr{i+1}' for i in range(len(df_zcr.columns))]
+#             with st.expander("1.5 Extraktion der Zero Crossing Rate"):
+#                 st.title("1.5 Extraktion der Zero Crossing Rate")   
+#                 st.write("Die Zero Crossing Rate (ZCR) ist eine Maßzahl für die Anzahl der Male, die ein Audiosignal die Nulllinie überquert.")
+#                 df_zcr = extract_zcr(f"tempDir/{file}")
+#                 df_zcr = df_zcr.iloc[:, :30]
+#                 st.caption("Ein Auszug der berechneten Zero Crossing Rate aus der Audiodatei dargestellt in einem Dataframe")
+#                 st.write(df_zcr)
+#                 df_zcr = df_zcr.iloc[:,:30]
+#                 df_zcr.columns = [f'zcr{i+1}' for i in range(len(df_zcr.columns))]
 
-            with st.expander("1.6 Visualisierung der Zero Crossing Rate (ZCR)"):
-                st.title("1.6 Visualisierung der Zero Crossing Rate (ZCR)")
-                plot_zcr(df_zcr)
+#             with st.expander("1.6 Visualisierung der Zero Crossing Rate (ZCR)"):
+#                 st.title("1.6 Visualisierung der Zero Crossing Rate (ZCR)")
+#                 plot_zcr(df_zcr)
 
-            with st.expander("1.7 Extraktion des Spektral Kontrasts"):
-                st.title("1.7 Extraktion des Spektral Kontrasts")
-                st.write("Der Spektralkontrast einer Audioaufnahme gibt Aufschluss über die Verteilung der Energie im Frequenzspektrum der Aufnahme. Er misst den Unterschied zwischen den Spitzen und Tälern im Spektrum und kann verwendet werden, um verschiedene Eigenschaften der Aufnahme zu analysieren. Ein hoher Spektralkontrast bedeutet, dass es große Unterschiede zwischen den Spitzen und Tälern im Spektrum gibt, während ein niedriger Spektralkontrast bedeutet, dass die Energie gleichmäßiger verteilt ist.")
-                df_snr = extract_snr(f"tempDir/{file}")
-                df_snr = df_snr.iloc[:, :30]
-                st.caption("Ein Auszug der berechneten Spektral-Kontrast-Werte aus der Audiodatei dargestellt in einem Dataframe")
-                st.write(df_snr)
+#             with st.expander("1.7 Extraktion des Spektral Kontrasts"):
+#                 st.title("1.7 Extraktion des Spektral Kontrasts")
+#                 st.write("Der Spektralkontrast einer Audioaufnahme gibt Aufschluss über die Verteilung der Energie im Frequenzspektrum der Aufnahme. Er misst den Unterschied zwischen den Spitzen und Tälern im Spektrum und kann verwendet werden, um verschiedene Eigenschaften der Aufnahme zu analysieren. Ein hoher Spektralkontrast bedeutet, dass es große Unterschiede zwischen den Spitzen und Tälern im Spektrum gibt, während ein niedriger Spektralkontrast bedeutet, dass die Energie gleichmäßiger verteilt ist.")
+#                 df_snr = extract_snr(f"tempDir/{file}")
+#                 df_snr = df_snr.iloc[:, :30]
+#                 st.caption("Ein Auszug der berechneten Spektral-Kontrast-Werte aus der Audiodatei dargestellt in einem Dataframe")
+#                 st.write(df_snr)
 
-            with st.expander("1.8 Visualisierung des Spektral Kontrasts der Audiodatei"):
-                st.title("1.8 Visualisierung des Spektral Kontrasts der Audiodatei")
-                df_snr = df_snr.iloc[:,:10]
-                ax = sns.heatmap(df_snr)
-                ax.set_title("Spektral Kontrast")
-                st.pyplot(ax.figure)
+#             with st.expander("1.8 Visualisierung des Spektral Kontrasts der Audiodatei"):
+#                 st.title("1.8 Visualisierung des Spektral Kontrasts der Audiodatei")
+#                 df_snr = df_snr.iloc[:,:10]
+#                 ax = sns.heatmap(df_snr)
+#                 ax.set_title("Spektral Kontrast")
+#                 st.pyplot(ax.figure)
 
 
-            with st.expander("1.9 Extraktion der Tonstärke der Audioaufnahme"):
-                st.title("1.9 Extraktion der Tonstärke der Audioaufnahme")
-                st.write("Die Tonstärke der Audioaufnahme gibt an, wie laut der Ton ist. Die Tonstärke einer Audiodatei kann Aufschluss darüber geben, wie laut der Ton aufgenommen wurde und wie er sich im Vergleich zu anderen Tönen oder Geräuschen verhält. Die Tonstärke kann auch verwendet werden, um die Dynamik eines Musikstücks oder die Lautstärkeveränderungen in einer Sprachaufnahme zu analysieren. ")
-                df_loudness = extract_loudness(f"tempDir/{file}")
-                df_loudness = df_loudness.iloc[:,:10]
-                st.caption("Ein Auszug der berechneten Tonstärke aus der Audiodatei dargestellt in einem Dataframe")
-                st.write(df_loudness)
+#             with st.expander("1.9 Extraktion der Tonstärke der Audioaufnahme"):
+#                 st.title("1.9 Extraktion der Tonstärke der Audioaufnahme")
+#                 st.write("Die Tonstärke der Audioaufnahme gibt an, wie laut der Ton ist. Die Tonstärke einer Audiodatei kann Aufschluss darüber geben, wie laut der Ton aufgenommen wurde und wie er sich im Vergleich zu anderen Tönen oder Geräuschen verhält. Die Tonstärke kann auch verwendet werden, um die Dynamik eines Musikstücks oder die Lautstärkeveränderungen in einer Sprachaufnahme zu analysieren. ")
+#                 df_loudness = extract_loudness(f"tempDir/{file}")
+#                 df_loudness = df_loudness.iloc[:,:10]
+#                 st.caption("Ein Auszug der berechneten Tonstärke aus der Audiodatei dargestellt in einem Dataframe")
+#                 st.write(df_loudness)
 
-            with st.expander("1.10 Visualisierung der Tonstärke"):
+#             with st.expander("1.10 Visualisierung der Tonstärke"):
 
-                st.title("1.10 Visualisierung der Tonstärke")
-                st.write("Die Tonstärke wurde durch die Root-Mean-Square (RMS) Methode berechnet. Diese eignen sich zur Darstellung der Lautstärke für bestimmte Zeiträume.")
-                plot_loudness(f"tempDir/{file}")
+#                 st.title("1.10 Visualisierung der Tonstärke")
+#                 st.write("Die Tonstärke wurde durch die Root-Mean-Square (RMS) Methode berechnet. Diese eignen sich zur Darstellung der Lautstärke für bestimmte Zeiträume.")
+#                 plot_loudness(f"tempDir/{file}")
             
             
-            with st.expander("2.0 Machine Learning Modelle"):
-                st.title("2.0 Machine Learning Modelle")
-                st.title("2.1 Neuronales Netzwerk")
-                st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
-                excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
-                neuronal_network("TrainDataForNeuronalesNetz (1).xlsx",excelFile)
-                # st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
+#             with st.expander("2.0 Machine Learning Modelle"):
+#                 st.title("2.0 Machine Learning Modelle")
+#                 st.title("2.1 Neuronales Netzwerk")
+#                 st.write("2.1.1 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch nur eine Zeile der Sequence verwendet siehe Dataframe:")
+#                 excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,False)
+#                 neuronal_network("TrainDataForNeuronalesNetz (1).xlsx",excelFile)
+#                 # st.write("2.1.2 Das Neuronale Netz berechnet hier, ob die hochgeladene Audioaufnahme von einem Mann oder einer Frau gesprochen wurde. Hier wird jedoch ein Block aus 5 Zeilen der Sequence verwendet siehe Dataframe und das Neuronale Netz besteht aus einer Schicht mit der Aktivierungsfuntion " "Sigmoid" + ":")
 
-                # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
-
-
-                # st.write("2.1.3 Im vergleich zu 2.1.2 ändert sich nun die Anzahl der Schichten von 1 auf 2 Schichten. Dabei wird in der ersten Schicht 8 Neuronen verwendet und in der zweiten Schicht 16 Neuronen verwendet.")
-                # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
-                # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+#                 # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+#                 # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,0,0)
 
 
-                file_name = file
-                check2 == False
-                for file in os.listdir("tempDir/"):
-                            if file.endswith(".wav"):    
-                                        temp_dir = tempfile.TemporaryDirectory()
-                                        temp_file = os.path.join(temp_dir.name, f'{excelFile}')
-                                        os.remove(os.path.join("tempDir", file))
-                            if file.endswith(".xlsx"):
-                                    print(file)
-                                    os.remove(os.path.join("tempDir",(file)))
-                            if file.endswith(".mp4"):
-                                    os.remove(os.path.join("tempDir",(file)))
+#                 # st.write("2.1.3 Im vergleich zu 2.1.2 ändert sich nun die Anzahl der Schichten von 1 auf 2 Schichten. Dabei wird in der ersten Schicht 8 Neuronen verwendet und in der zweiten Schicht 16 Neuronen verwendet.")
+#                 # excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}","tempDir/",10,True)
+#                 # neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx",excelFile,2,[8,16])
+
+
+#                 file_name = file
+#                 check2 == False
+#                 for file in os.listdir("tempDir/"):
+#                             if file.endswith(".wav"):    
+#                                         temp_dir = tempfile.TemporaryDirectory()
+#                                         temp_file = os.path.join(temp_dir.name, f'{excelFile}')
+#                                         os.remove(os.path.join("tempDir", file))
+#                             if file.endswith(".xlsx"):
+#                                     print(file)
+#                                     os.remove(os.path.join("tempDir",(file)))
+#                             if file.endswith(".mp4"):
+#                                     os.remove(os.path.join("tempDir",(file)))
                 
 
 
