@@ -27,7 +27,9 @@ def main():
     st.write("Dies wäre eine App mit der man abschätzen könnte, wie weit entfernt eine Person oder ein Gegenstand ist. Dies könnte in Situationen, in denen die visuelle Wahrnehmung eingeschränkt ist, äußerst nützlich sein.")
 
     st.header("Aber jetzt zu VoiceChoice")
-    st.write("
+    st.write("Inspiriert von den atemberaubenden Filmen wie James Bond, in denen der Held mit seiner Stimme Türen und Safes öffnet, haben wir uns entschlossen, eine Stimmerkennungs-App zu entwickeln, die nicht nur beeindruckend ist, sondern auch viele weitere Vorteile bietet.")
+    st.write("Stellt euch vor, eure Oma kann sich keine Passwörter merken, aber ihr iPad verwenden. Wie cool wäre es, wenn sie einfach nur hineinspricht und das iPad sie erkennt und entsperrt? Das ist doch absolut fantastisch!")
+    st.write
 
   
 #st.subheader("vv")
