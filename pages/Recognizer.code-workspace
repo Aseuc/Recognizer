@@ -7,5 +7,7 @@
 			"path": "../tempDir"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Recognizer"
+	}
 }

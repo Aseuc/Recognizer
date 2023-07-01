@@ -25,7 +25,7 @@
       <body>
       
       <div id="balloons"></div>
-      <div><img src="mann1.jpg" alt="" style="height: 50em; width: 50em;"> </div>
+      <div><img id="image" src="mann1.jpg" alt="" style="height: 50em; width: 50em; margin-left: 25rem;"> </div>
       <script>
       const colors = ['blue'];
       const numBalloons = 20;
@@ -39,6 +39,13 @@
         balloon.style.height = "100px"
         document.getElementById('balloons').appendChild(balloon);
       }
+
+        let images = ['mann1.jpg', 'mann2.jpg', 'mann3.jpg', 'mann4.jpg', 'mann5.jpg'];
+        let imageElement = document.getElementById('image');
+
+        let randomIndex = Math.floor(Math.random() * images.length);
+        let randomImage = images[randomIndex];
+        imageElement.src = randomImage;
 
       </script>      
   </body>

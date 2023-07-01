@@ -782,10 +782,10 @@ st.markdown("<h3 style='text-align: center;'>Mit VoiceChoice hast du die Möglic
 
 
 
-
-
-
-
+st.header("1. VoiceChoice mit Neuronalen Netzwerk")
+st.write("Funktionsweise: Es ist ganz einfach! Du die Möglichkeit per .wav Datei mit einem neuronalen Netzwerk die Person zu klassifizieren. Mit Browse File lädst du die Datei hoch ""(siehe Bild)" "und schon startet der Prozess der Klassifizierung!")
+image = Image.open('UploadPic.png')
+st.image("UploadPic.png")
 
 
 

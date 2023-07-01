@@ -20,12 +20,13 @@
         from {bottom: 0;}
         to {bottom: 100%;}
       }
+
       </style>
       </head>
       <body>
       
       <div id="balloons"></div>
-      <div ><img src="Frau1.jpg" alt="" style="height: 50rem;width: 50rem;"></div>
+      <div ><img src="Frau1.jpg" id="image" alt="" style="height:50rem; width: 50rem; margin-left: 25rem;"></div>
       <script>
       const colors = ['pink'];
       const numBalloons = 20;
@@ -39,6 +40,14 @@
         balloon.style.height = "100px"
         document.getElementById('balloons').appendChild(balloon);
       }
+
+        let images = ['Frau1.jpg', 'Frau2.jpg', 'Frau3.jpg', 'Frau4.jpg', 'Frau5.jpg', 'Frau6.jpg', 'Frau7.jpg'];
+        let imageElement = document.getElementById('image');
+
+        let randomIndex = Math.floor(Math.random() * images.length);
+        let randomImage = images[randomIndex];
+        imageElement.src = randomImage;
+
 
       </script>      
   </body>
