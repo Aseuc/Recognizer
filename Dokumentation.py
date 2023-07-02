@@ -7,7 +7,7 @@ def main():
         initial_sidebar_state = "collapsed"
     )
 
-st.title("Wie unsere App funktioniert", text_align='left')
+st.title("Wie unsere App funktioniert")
 
 st.write("Die VoiceChoice-App ist eine Anwendung, die entwickelt wurde, um anhand einer Audiodatei das Geschlecht der Stimme zu erkennen. Die App verwendet eine Kombination von Algorithmen und Machine Learning-Techniken, um eine Aussage darüber zu treffen, ob die aufgenommene Stimme weiblich oder männlich ist. Diese Dokumentation gibt einen kurzen Überblick über die Funktionen der App.")
 
