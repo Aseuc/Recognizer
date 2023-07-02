@@ -12,6 +12,7 @@ def load_lottie_animation(url):
         return response.json()
     else:
         return None
+        
 
 def main():
     st.set_page_config(layout="wide")
