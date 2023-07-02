@@ -3,11 +3,9 @@ from sklearn import svm
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
-import pages.VoiceChoice as vc
+import VoiceChoice as vc
 import os
-from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import traceback
 import ballons_red  as br
 import ballons_blue as bb
