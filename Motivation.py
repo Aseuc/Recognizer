@@ -18,6 +18,7 @@ def main():
     # Spalten erstellen
     
     col1, col2 = st.columns([1, 1])
+    
     with col2:
         animation = load_lottie_animation(lottie_url)
         if animation:
@@ -28,7 +29,7 @@ def main():
         
             
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
-    with col1:
+    with col1
 
         st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
 
