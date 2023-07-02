@@ -17,7 +17,7 @@ def main():
 
     animation = load_lottie_animation(lottie_url)
     if animation:
-        st_lottie(animation, width=300, height=400, key="animation")
+        st_lottie(animation, width=200, height=200, key="animation")
 
     st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
     st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
@@ -29,7 +29,7 @@ def main():
     with col2:
         additional_animation = load_lottie_animation(additional_lottie_url)
         if additional_animation:
-            st_lottie(additional_animation, width=200, height=200, key="additional_animation")
+            st_lottie(additional_animation, width=400, height=400, key="additional_animation")
         
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
     
