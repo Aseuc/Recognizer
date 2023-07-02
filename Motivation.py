@@ -16,7 +16,7 @@ def main():
     st.set_page_config(layout="wide")
 
     # Spalten erstellen
-    col1, col2 = st.beta_columns([1, 1])
+    col1, col2 = st.columns([1, 1])
     with col1:
         animation = load_lottie_animation(lottie_url)
         if animation:
