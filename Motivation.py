@@ -32,7 +32,7 @@ def main():
         
             
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
-    with col1
+    with col1:
 
         st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
 
