@@ -28,7 +28,7 @@ def record_audio():
             return frame
 
     webrtc_ctx = webrtc_streamer(
-        key="sendonly-audio",
+        key="audio",
         mode=WebRtcMode.SENDONLY,
         in_recorder_factory=recorder_factory,
         client_settings=ClientSettings(
