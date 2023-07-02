@@ -10,9 +10,12 @@ def load_lottie_animation(url):
     else:
         return None
 
+    
 def main():
     st.set_page_config(layout="wide")
     animation = load_lottie_animation(lottie_url)
+    if animation:
+        st_lottie.json(animation)
     
     if animation is not None:
         st_lottie = st.empty()
