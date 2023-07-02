@@ -25,8 +25,7 @@ def main():
     with co2:
         st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
         st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
-        
-  
+    
     # spalten erstellen
     col1, col2 = st.columns([3, 1])
     
@@ -36,7 +35,6 @@ def main():
             st_lottie(additional_animation, width=400, height=400, key="additional_animation")
         
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
-    
     with col1:
         st.write("Doch bevor wir zu dieser App gekommen sind, haben wir intensiv über andere Ideen nachgedacht.")
         st.subheader("Welche Ideen hatten wir?")
