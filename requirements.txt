@@ -16,9 +16,9 @@ pydub
 soundfile
 seaborn
 streamlit-lottie
-streamlit-webrtc
 streamlit
 altair
 Pillow
 requests
 aiortc
+streamlit-webrtc==0.45.1
