@@ -30,7 +30,6 @@ st.write("Die VoiceChoice-App bietet eine gute Genauigkeit bei der Geschlechtere
 
 st.header("Systemanforderungen")
 st.write("Die VoiceChoice-App hat folgende Systemanforderungen:")
-st.write("")
 st.write("- Ein aktueller Webbrowser (z.B. Google Chrome, Mozilla Firefox, Safari)")
 st.write("- Python Version 3.9 oder neuer")
 st.write("- ...")
