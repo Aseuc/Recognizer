@@ -1,12 +1,8 @@
 import streamlit as st
 from aiortc.contrib.media import MediaRecorder
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, ClientSettings, WebRtcMode
-from pydub import AudioSegment
 import os
-import numpy as np
 import VoiceChoice as vc
-import pandas as pd
-from datetime import datetime, timedelta
 
 
 def record_audio():
@@ -43,10 +39,6 @@ def record_audio():
     )
 
     recorder = webrtc_ctx.audio_processor
-
-
-
-
 
     if st.button("Neuronales Netz starten"):
         excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 10, True)
