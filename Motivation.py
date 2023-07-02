@@ -20,7 +20,7 @@ def main():
         st_lottie(animation, width=200, height=200, key="animation")
   
     # spalten erstellen
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([2, 1])
     
     with col2:
         #animation = load_lottie_animation(lottie_url)
