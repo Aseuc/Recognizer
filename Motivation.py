@@ -23,7 +23,7 @@ def main():
             st_lottie(animation, width=200, height=200, key="animation")
             
     with co2:
-        st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
+        st.title("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
         st.subheader("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
     
     # spalten erstellen
