@@ -33,6 +33,7 @@ st.write("Die VoiceChoice-App hat folgende Systemanforderungen:")
 st.write("- Ein aktueller Webbrowser (z.B. Google Chrome, Mozilla Firefox, Safari)")
 st.write("- Python Version 3.9 oder neuer")
 st.write("- ...")
+st.write("Es sind keine zusätzlichen Softwareinstallationen erforderlich. Die VoiceChoice-App ist vollständig webbasiert und kann von Benutzern direkt über den bereitgestellten Link aufgerufen werden.")
 
 
 if __name__ == "__main__":
