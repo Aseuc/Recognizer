@@ -31,7 +31,6 @@ def main():
         if additional_animation:
             st_lottie(additional_animation, width=200, height=200, key="additional_animation")
         
-            
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
     
     with col1:
