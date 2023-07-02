@@ -28,6 +28,13 @@ st.write("")
 st.header("Hinweis")
 st.write("Die VoiceChoice-App bietet eine gute Genauigkeit bei der Geschlechtererkennung, jedoch können individuelle Ergebnisse variieren und die App sollte nicht als endgültiges Mittel zur Geschlechtsbestimmung verwendet werden.")
 
+st.header("Systemanforderungen")
+st.write("Die VoiceChoice-App hat folgende Systemanforderungen:")
+st.write("")
+st.write("- Ein aktueller Webbrowser (z.B. Google Chrome, Mozilla Firefox, Safari)")
+st.write("- Python Version 3.9 oder neuer")
+st.write("- ...")
+
 
 if __name__ == "__main__":
     main()
