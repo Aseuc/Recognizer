@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_lottie import lottie
+from streamlit_lottie import st_lottie
 import requests
 
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
@@ -16,7 +16,7 @@ def main():
     st.set_page_config(layout="wide")
     animation = load_lottie_animation(lottie_url)
     if animation:
-        lottie(animation, width=200, height=200, key="animation")
+        st_lottie(animation, width=200, height=200, key="animation")
 
     st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
 
