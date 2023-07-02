@@ -13,7 +13,6 @@ def load_lottie_animation(url):
     else:
         return None
         
-
 def main():
     st.set_page_config(layout="wide")
     co1, co2 = st.columns([1, 3])
