@@ -24,7 +24,7 @@ def get_current_date_time():
 
 
 def upload_and_convert():
-    uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["mp4", "wav"],
+    uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["wav"],
                                      key="file_uploader3")
     print(uploaded_file)
     if uploaded_file is not None:
