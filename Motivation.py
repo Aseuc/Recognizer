@@ -101,6 +101,7 @@ def main():
         # Button 4 - Nutzung von Schall zur Bestimmung von Entfernungen
         if st.button("4. Nutzung von Schall zur Bestimmung von Entfernungen", key="button4", help="Dies wäre eine App zur Abschätzung von Entfernungen."):
             st.write("Dies wäre eine App mit der man abschätzen könnte, wie weit entfernt eine Person oder ein Gegenstand ist. Dies könnte in Situationen, in denen die visuelle Wahrnehmung eingeschränkt ist, äußerst nützlich sein.")
+
     
     st.header("Aber jetzt zu VoiceChoice")
     st.write("Inspiriert von Filmen wie James Bond, in denen der Held mit seiner Stimme Türen und Safes öffnet, haben wir uns entschlossen, eine Stimmerkennungs-App zu entwickeln, die nicht nur beeindruckend ist, sondern auch viele weitere Vorteile bietet.")
