@@ -14,14 +14,17 @@ def load_lottie_animation(url):
 
 def main():
     st.set_page_config(layout="wide")
+    co1, co2 = st.columns([1, 3])
 
-    animation = load_lottie_animation(lottie_url)
-    if animation:
-        st_lottie(animation, width=200, height=200, key="animation")
-
-    st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
-    st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
-    
+    with co1:
+        animation = load_lottie_animation(lottie_url)
+        if animation:
+            st_lottie(animation, width=200, height=200, key="animation")
+            
+    with co2:
+        st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
+        st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
+        
   
     # spalten erstellen
     col1, col2 = st.columns([3, 1])
