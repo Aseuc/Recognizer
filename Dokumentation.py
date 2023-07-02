@@ -13,10 +13,14 @@ st.write("Die VoiceChoice-App ist eine Anwendung, die entwickelt wurde, um anhan
 
 st.header("Funktionen")
 st.write("Die VoiceChoice-App bietet folgende Funktionen:")
-st.write("- Hochladen einer Audiodatei: Benutzer können eine Audiodatei im Format MP3, WAV oder FLAC hochladen.")
-st.write("- Verarbeitung der Audiodatei: Die App verarbeitet die hochgeladene Audiodatei und extrahiert relevante Merkmale.")
-st.write("- Geschlechtererkennung: Mithilfe von Algorithmen und Machine Learning-Techniken erkennt die App das Geschlecht der Stimme.")
-st.write("- Anzeige der Ergebnisse: Die App zeigt das erkannte Geschlecht der Stimme zusammen mit weiteren Informationen an.")
+st.write("- Converter: Benutzer können eine Audiodatei im Format MP3, OPUS oder MP4 bzw. MPEG4 hochladen und diese im Anschluss als .wav wieder herunterladen.")
+st.write("- Do it yourself: ")
+st.write("VoiceChoice mit:")
+st.write("- Neuronalem Netzwerk")
+st.write("- Neuronalem Netzwerk und Echtzeitaufnahme")
+st.write("- Random Forest Classifier")
+st.write("- Support Vectore Machine")
+
 
 st.header("Anwendung")
 st.write("Die VoiceChoice-App kann in verschiedenen Szenarien nützlich sein, wie zum Beispiel:")
