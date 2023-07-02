@@ -1,8 +1,28 @@
 import streamlit as st
+import requests
+
+lottie_url=https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json
+
+def load_lottie_animation(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return None
+
 def main():
+    st.set_page_config(layout="wide")
+    animation = load_lottie_animation(lottie_url)
+    
+    if animation is not None:
+        st_lottie = st.empty()
+        st_lottie.lottie(animation, width=200, height=200, key="animation")
+
     st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
 
     st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
+
+
     st.write("Doch bevor wir zu dieser App gekommen sind, haben wir intensiv über andere Ideen nachgedacht.")
         
     st.subheader("Welche Ideen hatten wir?")
@@ -10,19 +30,19 @@ def main():
     # Button 1 - Analyse von Essen
     if st.button("1. Analyse von Essen"):
         st.write("Eine Überlegung war die Analyse von Essen. Die App sollte anhand von Fotos von Mahlzeiten Informationen über Nährwerte, Kaloriengehalt und ähnliche Daten liefern kann. Diese Funktion könnte beispielsweise in Restaurants oder der Lebensmittelindustrie von großem Nutzen sein, um Kunden detaillierte Informationen über ihre Mahlzeiten zu bieten.")
-        st.write("Wieso haben wir das nicht genommen?")
+        st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Es wäre schwierig, genaue Informationen über Nährwerte und Kaloriengehalt ohne tiefgreifendes Wissen im Bereich der Nahrungsmittelanalyse zu liefern.")
 
     # Button 2 - Erkennung von Tiergeräuschen
     if st.button("2. Erkennung von Tiergeräuschen"):
         st.write("Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen. Dies hätte insbesondere in landwirtschaftlichen oder zoologischen Anwendungen von großem Vorteil sein können, um Tierarten anhand ihrer charakteristischen Geräusche zu identifizieren und Überwachungssysteme zu verbessern.")
-        st.write("Wieso haben wir das nicht genommen?")
+        st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der Tierstimmen und die Komplexität der Umgebungsgeräusche hätten es schwierig gemacht, eine genaue Klassifizierung zu erreichen.")
 
     # Button 3 - Musikgenre-Erkennung
     if st.button("3. Musikgenre-Erkennung"):
         st.write("Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken, die ihrem individuellen Geschmack entsprechen.")
-        st.write("Wieso haben wir das nicht genommen?")
+        st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der musikalischen Stile und die individuellen Unterschiede in den Stimmen machten eine präzise Klassifizierung schwierig.")
 
     # Button 4 - Nutzung von Schall zur Bestimmung von Entfernungen
@@ -31,7 +51,7 @@ def main():
 
     st.header("Aber jetzt zu VoiceChoice")
     st.write("Inspiriert von Filmen wie James Bond, in denen der Held mit seiner Stimme Türen und Safes öffnet, haben wir uns entschlossen, eine Stimmerkennungs-App zu entwickeln, die nicht nur beeindruckend ist, sondern auch viele weitere Vorteile bietet.")
-    st.write("Stellt euch vor, eure Oma kann sich keine Passwörter merken, aber will ihr iPad verwenden. Wie cool wäre es, wenn sie einfach nur hineinspricht und das iPad sie erkennt und entsperrt? ")
+    st.write("Stellt euch vor, eure Oma kann sich keine Passwörter merken, aber will ihr Tablet verwenden. Wie cool wäre es, wenn sie einfach nur hineinspricht und das iPad sie erkennt und entsperrt? ")
     st.write("Das ist doch absolut fantastisch!")
     st.write("Aber das ist noch nicht alles! Stellt euch vor, ihr müsstet vor dem Betreten eines Gebäudes in einen Lautsprecher sprechen und die App entscheidet anhand eurer Stimme, ob ihr wütend oder ruhig seid und ob euch Einlass gewährt wird.")
     st.write("Das ist doch der Wahnsinn, oder?")
@@ -53,4 +73,5 @@ def main():
     st.write("Unser großes Ziel ist die Erkennung von einzelnen Personen und Emotionen. Um den Alltag zu erleichern und Sicherheit anzustrebe. ")
     st.write(" Überlegt haben wir uns Verfahren wie Sprachbiometrie zur Personenerkennung und Algorithmen des maschinellen Lernens zur Emotionserkennung zu nutzen. Durch kontinuierliches Training mit mehr und umfangreicheren Daten und Validierung in realen Anwendungen wollen wir die Genauigkeit verbessern und eine personalisierte und reaktionsschnelle Benutzererfahrung anstreben.")
   
-
+if __name__ == "__main__":
+    main()
