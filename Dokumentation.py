@@ -7,17 +7,20 @@ def main():
         initial_sidebar_state = "collapsed"
     )
 
-
 st.title("Wie unsere App funktioniert")
 
 st.write("Die VoiceChoice-App ist eine Anwendung, die entwickelt wurde, um anhand einer Audiodatei das Geschlecht der Stimme zu erkennen. Die App verwendet eine Kombination von Algorithmen und Machine Learning-Techniken, um eine Aussage darüber zu treffen, ob die aufgenommene Stimme weiblich oder männlich ist. Diese Dokumentation gibt einen kurzen Überblick über die Funktionen der App.")
 
-st.header("Funktionen")
-st.write("Die VoiceChoice-App bietet folgende Funktionen:")
-st.write("- Hochladen einer Audiodatei: Benutzer können eine Audiodatei im Format MP3, WAV oder FLAC hochladen.")
-st.write("- Verarbeitung der Audiodatei: Die App verarbeitet die hochgeladene Audiodatei und extrahiert relevante Merkmale.")
-st.write("- Geschlechtererkennung: Mithilfe von Algorithmen und Machine Learning-Techniken erkennt die App das Geschlecht der Stimme.")
-st.write("- Anzeige der Ergebnisse: Die App zeigt das erkannte Geschlecht der Stimme zusammen mit weiteren Informationen an.")
+    # spalten erstellen
+    col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.header("Funktionen")
+    st.write("Die VoiceChoice-App bietet folgende Funktionen:")
+    st.write("- Hochladen einer Audiodatei: Benutzer können eine Audiodatei im Format MP3, WAV oder FLAC hochladen.")
+    st.write("- Verarbeitung der Audiodatei: Die App verarbeitet die hochgeladene Audiodatei und extrahiert relevante Merkmale.")
+    st.write("- Geschlechtererkennung: Mithilfe von Algorithmen und Machine Learning-Techniken erkennt die App das Geschlecht der Stimme.")
+    st.write("- Anzeige der Ergebnisse: Die App zeigt das erkannte Geschlecht der Stimme zusammen mit weiteren Informationen an.")
 
 st.header("Anwendung")
 st.write("Die VoiceChoice-App kann in verschiedenen Szenarien nützlich sein, wie zum Beispiel:")
