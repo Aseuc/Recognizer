@@ -108,6 +108,7 @@ def main():
     st.write("Das ist doch absolut fantastisch!")
     st.write("Aber das ist noch nicht alles! Stellt euch vor, ihr müsstet vor dem Betreten eines Gebäudes in einen Lautsprecher sprechen und die App entscheidet anhand eurer Stimme, ob ihr wütend oder ruhig seid und ob euch Einlass gewährt wird.")
     st.write("Das ist doch der Wahnsinn, oder?")
+
     
     st.subheader("Und nun zur Datensammlung:")
         
@@ -119,6 +120,7 @@ def main():
     st.write("Nach der Datensammlung haben wir umfangreiche Vorverarbeitungsschritte durchgeführt, um die Daten für die Modellentwicklung vorzubereiten. Dabei haben wir verschiedene Merkmale angewendet, wie zum Beispiel **Mel-frequency Cepstral Coefficients (MFCC)** zur Darstellung des Spektrums von Audiosignalen, **spektrale Kontraste** zur Identifizierung herausragender Merkmale und Muster im Frequenzbereich, **Lautstärke** zur Erfassung der Klangintensität, **Zero Crossing Rate** zur Unterscheidung zwischen stimmhaften und stimmlosen Klängen sowie **Bandbreite** zur Erfassung von Klangfarbe und Verteilung der Frequenzkomponenten.")
     st.write("Diese umfangreiche Vorverarbeitung hilft uns, relevante Informationen aus den Audiodaten zu extrahieren und eine geeignete Darstellungsform für die Modellentwicklung zu erzeugen. Dadurch können wir Aufgaben wie Spracherkennung oder Klassifikation von Klangereignissen effizient durchführen.")
     st.write("Mit all diesen Vorarbeiten konnten wir schließlich zur eigentlichen Entwicklung der App übergehen. Unser Ziel war es, eine benutzerfreundliche und zuverlässige Streamlit-App zu schaffen, die in der Lage ist, die Stimmen von Männern und Frauen zuverlässig zu erkennen. Die App bietet eine intuitive Benutzeroberfläche, auf der die Benutzer ihre Aufnahmen hochladen und die Ergebnisse in Echtzeit anzeigen können.")
+
     
     st.subheader("Blick in die Zukunft:")
     st.write("Unser großes Ziel ist die Erkennung von einzelnen Personen und Emotionen. Um den Alltag zu erleichern und Sicherheit anzustreben. ")
