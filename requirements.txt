@@ -3,11 +3,11 @@ scikit-learn~=1.3.0
 openpyxl~=3.1.2
 SpeechRecognition
 matplotlib~=3.7.1
-numpy~=1.23.5
+numpy==1.25.0
 wave~=0.0.2
 pandas~=2.0.3
 tensorflow~=2.12.0
-keras~=2.12.0
+keras==2.13.1
 scipy~=1.11.1
 moviepy~=1.0.3
 tqdm~=4.65.0
@@ -19,6 +19,6 @@ streamlit-lottie
 streamlit-webrtc
 streamlit~=1.24.0
 altair~=5.0.1
-Pillow~=9.5.0
+Pillow==10.0.0
 requests~=2.31.0
 aiortc~=1.5.0
