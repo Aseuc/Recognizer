@@ -16,13 +16,16 @@ def main():
     st.set_page_config(layout="wide")
 
     # Spalten erstellen
+    animation = load_lottie_animation(lottie_url)
+        if animation:
+            st_lottie(animation, width=200, height=200, key="animation")
     
     col1, col2 = st.columns([1, 1])
     
     with col2:
-        animation = load_lottie_animation(lottie_url)
-        if animation:
-            st_lottie(animation, width=200, height=200, key="animation")
+        #animation = load_lottie_animation(lottie_url)
+        #if animation:
+         #   st_lottie(animation, width=200, height=200, key="animation")
         additional_animation = load_lottie_animation(additional_lottie_url)
         if additional_animation:
             st_lottie(additional_animation, width=200, height=200, key="additional_animation")
