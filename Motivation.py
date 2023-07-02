@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-lottie_url=https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json
+lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
 
 def load_lottie_animation(url):
     response = requests.get(url)
