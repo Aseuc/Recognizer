@@ -4,6 +4,7 @@ import requests
 
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
 additional_lottie_url = "https://assets5.lottiefiles.com/packages/lf20_ilaks9mg.json"
+another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
 
 def load_lottie_animation(url):
     response = requests.get(url)
@@ -125,7 +126,6 @@ def main():
 
     co3, co4, co5 = st.columns([1, 1, 1])
     with co4:
-        another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
         another_lottie = load_lottie_animation(another_lottie_url)
         if another_lottie:
             st_lottie(another_lottie, width=400, height=400, key="additional_animation_2")
