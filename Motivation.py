@@ -67,25 +67,25 @@ def main():
     st.markdown(button_style, unsafe_allow_html=True)
 
     # Button 1 - Analyse von Essen
-    if st.button("1. Analyse von Essen", key="button1", help="Eine Überlegung war die Analyse von Essen.", class="custom-button button1"):
+    if st.button("1. Analyse von Essen", key="button1", help="Eine Überlegung war die Analyse von Essen.", unsafe_allow_html=True):
         st.write("Eine Überlegung war die Analyse von Essen. Die App sollte anhand von Fotos von Mahlzeiten Informationen über Nährwerte, Kaloriengehalt und ähnliche Daten liefern kann. Diese Funktion könnte beispielsweise in Restaurants oder der Lebensmittelindustrie von großem Nutzen sein, um Kunden detaillierte Informationen über ihre Mahlzeiten zu bieten.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Es wäre schwierig, genaue Informationen über Nährwerte und Kaloriengehalt ohne tiefgreifendes Wissen im Bereich der Nahrungsmittelanalyse zu liefern.")
 
     # Button 2 - Erkennung von Tiergeräuschen
-    if st.button("2. Erkennung von Tiergeräuschen", key="button2", help="Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen.", class="custom-button button2"):
+    if st.button("2. Erkennung von Tiergeräuschen", key="button2", help="Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen.", unsafe_allow_html=True):
         st.write("Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen. Dies hätte insbesondere in landwirtschaftlichen oder zoologischen Anwendungen von großem Vorteil sein können, um Tierarten anhand ihrer charakteristischen Geräusche zu identifizieren und Überwachungssysteme zu verbessern.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der Tierstimmen und die Komplexität der Umgebungsgeräusche hätten es schwierig gemacht, eine genaue Klassifizierung zu erreichen.")
 
     # Button 3 - Musikgenre-Erkennung
-    if st.button("3. Musikgenre-Erkennung", key="button3", help="Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken.", class="custom-button button3"):
+    if st.button("3. Musikgenre-Erkennung", key="button3", help="Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken.", unsafe_allow_html=True):
         st.write("Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken, die ihrem individuellen Geschmack entsprechen.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der musikalischen Stile und die individuellen Unterschiede in den Stimmen machten eine präzise Klassifizierung schwierig.")
 
     # Button 4 - Nutzung von Schall zur Bestimmung von Entfernungen
-    if st.button("4. Nutzung von Schall zur Bestimmung von Entfernungen", key="button4", help="Dies wäre eine App zur Abschätzung von Entfernungen.", class="custom-button button4"):
+    if st.button("4. Nutzung von Schall zur Bestimmung von Entfernungen", key="button4", help="Dies wäre eine App zur Abschätzung von Entfernungen.", unsafe_allow_html=True):
         st.write("Dies wäre eine App mit der man abschätzen könnte, wie weit entfernt eine Person oder ein Gegenstand ist. Dies könnte in Situationen, in denen die visuelle Wahrnehmung eingeschränkt ist, äußerst nützlich sein.")
 
     st.header("Aber jetzt zu VoiceChoice")
