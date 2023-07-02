@@ -16,3 +16,5 @@ pydub
 soundfile
 seaborn
 streamlit-lottie
+streamlit-webrtc
+

@@ -15,7 +15,13 @@ def load_lottie_animation(url):
         return None
         
 def main():
-    st.set_page_config(layout="wide")
+    st.set_page_config(
+        page_title="Motivation",
+        page_icon="favicon.ico",
+        layout='wide',
+        initial_sidebar_state = "collapsed"
+    )
+
     co1, co2 = st.columns([1, 3])
 
     with co1:
@@ -132,7 +138,6 @@ def main():
         another_lottie = load_lottie_animation(another_lottie_url)
         if another_lottie:
             st_lottie(another_lottie, width=400, height=400, key="additional_animation_2")
-         
-   
+
 if __name__ == "__main__":
     main()
