@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
+from streamlit_lottie import lottie
 import requests
 
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
@@ -109,7 +109,7 @@ def main():
     st.write("auf der die Benutzer ihre Aufnahmen hochladen und die Ergebnisse in Echtzeit anzeigen können.")
 
     st.subheader("Blick in die Zukunft:")
-    st.write("Unser großes Ziel ist die Erkennung von einzelnen Personen und Emotionen. Um den Alltag zu erleichern und Sicherheit anzustrebe. ")
+    st.write("Unser großes Ziel ist die Erkennung von einzelnen Personen und Emotionen. Um den Alltag zu erleichern und Sicherheit anzustreben. ")
     st.write(" Überlegt haben wir uns Verfahren wie Sprachbiometrie zur Personenerkennung und Algorithmen des maschinellen Lernens zur Emotionserkennung zu nutzen. Durch kontinuierliches Training mit mehr und umfangreicheren Daten und Validierung in realen Anwendungen wollen wir die Genauigkeit verbessern und eine personalisierte und reaktionsschnelle Benutzererfahrung anstreben.")
   
 if __name__ == "__main__":
