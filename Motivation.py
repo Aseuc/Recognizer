@@ -128,7 +128,7 @@ def main():
         another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
         another_lottie = load_lottie_animation(another_lottie_url)
         if another_lottie:
-            st_lottie(another_lottie, width=400, height=400, key="additional_animation_3")
+            st_lottie(another_lottie, width=400, height=400, key="additional_animation_2")
          
    
 if __name__ == "__main__":
