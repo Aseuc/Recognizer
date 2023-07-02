@@ -9,17 +9,6 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 
-def shuffle_excel_rows(filename, sheet_name=0):
-    # Read the Excel file into a DataFrame
-    df = pd.read_excel(filename, sheet_name=sheet_name)
-
-    # Shuffle the rows of the DataFrame
-    df = df.sample(frac=1).reset_index(drop=True)
-
-    # Write the shuffled DataFrame back to the Excel file
-    df.to_excel(filename, sheet_name=sheet_name, index=False)
-
-
 def record_audio():
     try:
         st.set_page_config(page_title="VoiceChoice NN & Echtzeitaufnahme", page_icon="favicon.ico", layout="wide")
