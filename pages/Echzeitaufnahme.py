@@ -93,7 +93,9 @@ audio_bytes = audio_recorder()
 if audio_bytes:
     st.audio(audio_bytes, format="audio/wav")
 
-
+    with open("tempDir2/record.wav", "wb") as f:
+        f.write(audio_bytes)
+    st.write("Aufnahme gespeichert.")
 
 
 

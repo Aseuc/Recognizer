@@ -20,4 +20,4 @@ streamlit
 altair
 Pillow
 requests
-audio_recorder_streamlit
+audio-recorder-streamlit
