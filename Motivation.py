@@ -35,15 +35,7 @@ def main():
     # Buttons und zusätzliche Animation in der rechten Spalte anzeigen
     
     with col1:
-        
-
-       # st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
-
-        #st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
-
-
         st.write("Doch bevor wir zu dieser App gekommen sind, haben wir intensiv über andere Ideen nachgedacht.")
-        
         st.subheader("Welche Ideen hatten wir?")
 
         # CSS-Stil für die Buttons
