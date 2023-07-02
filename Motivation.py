@@ -24,7 +24,7 @@ def main():
             
     with co2:
         st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
-        st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
+        st.subheader("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
     
     # spalten erstellen
     col1, col2 = st.columns([3, 1])
