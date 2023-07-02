@@ -15,11 +15,10 @@ def load_lottie_animation(url):
 def main():
     st.set_page_config(layout="wide")
 
-
     animation = load_lottie_animation(lottie_url)
-        if animation:
-            st_lottie(animation, width=200, height=200, key="animation")
-            
+    if animation:
+        st_lottie(animation, width=200, height=200, key="animation")
+  
     # spalten erstellen
     col1, col2 = st.columns([1, 1])
     
