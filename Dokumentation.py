@@ -22,11 +22,8 @@ st.write("- Random Forest Classifier")
 st.write("- Support Vectore Machine")
 
 
-st.header("Anwendung")
-st.write("Die VoiceChoice-App kann in verschiedenen Szenarien nützlich sein, wie zum Beispiel:")
-st.write("- Sprachanalyse: Die App kann bei der Analyse von Sprachaufnahmen unterstützen, indem sie automatisch das Geschlecht der Stimme identifiziert.")
-st.write("- Benutzererfahrung: Unternehmen können die VoiceChoice-App verwenden, um die Benutzererfahrung ihrer sprachbasierten Anwendungen zu verbessern, indem sie personalisierte Inhalte basierend auf dem Geschlecht der Benutzerstimme bereitstellen.")
-st.write("- Forschung und Studien: Die App kann in wissenschaftlichen Studien oder Forschungsprojekten eingesetzt werden, um Daten über das Geschlecht der Teilnehmerstimmen zu sammeln.")
+st.header("Funktionsweise der App")
+st.write("")
 
 st.header("Hinweis")
 st.write("Die VoiceChoice-App bietet eine gute Genauigkeit bei der Geschlechtererkennung, jedoch können individuelle Ergebnisse variieren und die App sollte nicht als endgültiges Mittel zur Geschlechtsbestimmung verwendet werden.")
