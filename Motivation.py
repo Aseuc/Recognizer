@@ -16,7 +16,7 @@ def main():
     st.set_page_config(layout="wide")
     animation = load_lottie_animation(lottie_url)
     if animation:
-        st_lottie(animation, width=200, height=200, key="animation")
+        lottie(animation, width=200, height=200, key="animation")
 
     st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
 
