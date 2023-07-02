@@ -27,26 +27,65 @@ def main():
         
     st.subheader("Welche Ideen hatten wir?")
 
+    # CSS-Stil für die Buttons
+    button_style = """
+        <style>
+        .custom-button.button1 {
+            background-color: #0000FF; /* Blau */
+            color: #FFFFFF;
+            border-color: #0000FF;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+        }
+
+        .custom-button.button2 {
+            background-color: #FF00FF; /* Pink */
+            color: #FFFFFF;
+            border-color: #FF00FF;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+        }
+
+        .custom-button.button3 {
+            background-color: #FFA500; /* Orange */
+            color: #FFFFFF;
+            border-color: #FFA500;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+        }
+         .custom-button.button4 {
+        background-color: #00FF00; /* Grün */
+        color: #FFFFFF;
+        border-color: #00FF00;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+    }
+    </style>
+    """
+
+    # CSS-Stil in Streamlit einfügen
+    st.markdown(button_style, unsafe_allow_html=True)
+
     # Button 1 - Analyse von Essen
-    if st.button("1. Analyse von Essen"):
+    if st.button("1. Analyse von Essen", key="button1", help="Eine Überlegung war die Analyse von Essen.", class="custom-button button1"):
         st.write("Eine Überlegung war die Analyse von Essen. Die App sollte anhand von Fotos von Mahlzeiten Informationen über Nährwerte, Kaloriengehalt und ähnliche Daten liefern kann. Diese Funktion könnte beispielsweise in Restaurants oder der Lebensmittelindustrie von großem Nutzen sein, um Kunden detaillierte Informationen über ihre Mahlzeiten zu bieten.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Es wäre schwierig, genaue Informationen über Nährwerte und Kaloriengehalt ohne tiefgreifendes Wissen im Bereich der Nahrungsmittelanalyse zu liefern.")
 
     # Button 2 - Erkennung von Tiergeräuschen
-    if st.button("2. Erkennung von Tiergeräuschen"):
+    if st.button("2. Erkennung von Tiergeräuschen", key="button2", help="Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen.", class="custom-button button2"):
         st.write("Eine weitere Idee war die Fähigkeit zur Erkennung von Tiergeräuschen. Dies hätte insbesondere in landwirtschaftlichen oder zoologischen Anwendungen von großem Vorteil sein können, um Tierarten anhand ihrer charakteristischen Geräusche zu identifizieren und Überwachungssysteme zu verbessern.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der Tierstimmen und die Komplexität der Umgebungsgeräusche hätten es schwierig gemacht, eine genaue Klassifizierung zu erreichen.")
 
     # Button 3 - Musikgenre-Erkennung
-    if st.button("3. Musikgenre-Erkennung"):
+    if st.button("3. Musikgenre-Erkennung", key="button3", help="Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken.", class="custom-button button3"):
         st.write("Diese Funktion könnte Musikliebhabern dabei helfen, neue Künstler und Songs zu entdecken, die ihrem individuellen Geschmack entsprechen.")
         st.write("<i>Wieso haben wir das nicht genommen?</i>", unsafe_allow_html=True)
         st.write("Die Vielfalt der musikalischen Stile und die individuellen Unterschiede in den Stimmen machten eine präzise Klassifizierung schwierig.")
 
     # Button 4 - Nutzung von Schall zur Bestimmung von Entfernungen
-    if st.button("4. Nutzung von Schall zur Bestimmung von Entfernungen"):
+    if st.button("4. Nutzung von Schall zur Bestimmung von Entfernungen", key="button4", help="Dies wäre eine App zur Abschätzung von Entfernungen.", class="custom-button button4"):
         st.write("Dies wäre eine App mit der man abschätzen könnte, wie weit entfernt eine Person oder ein Gegenstand ist. Dies könnte in Situationen, in denen die visuelle Wahrnehmung eingeschränkt ist, äußerst nützlich sein.")
 
     st.header("Aber jetzt zu VoiceChoice")
