@@ -20,5 +20,5 @@ streamlit
 altair
 Pillow
 requests
-aiortc == 1.0.0
+aiortc==1.0.0
 streamlit-webrtc==0.45.1
