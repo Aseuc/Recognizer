@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>audio_recorder_js</title>
+    <script src="./streamlit-component-lib.js"></script>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <button id="recordButton">Aufnahme starten</button>
+    <button id="stopButton">Aufnahme stoppen</button>
+
+    <script>
+
+      let gumStream;
+      let recorder;
+      let input;
+      let AudioContext = window.AudioContext || window.webkitAudioContext;
+      let audioContext;
+
+      const recordButton = document.getElementById("recordButton");
+      const stopButton = document.getElementById("stopButton");
+
+      recordButton.addEventListener("click", startRecording);
+      stopButton.addEventListener("click", stopRecording);
+
+      function startRecording() {
+        let constraints = { audio: true, video: false };
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then(function (stream) {
+            audioContext = new AudioContext();
+            gumStream = stream;
+            input = audioContext.createMediaStreamSource(stream);
+            recorder = new MediaRecorder(stream);
+            recorder.ondataavailable = function (e) {
+              let reader = new FileReader();
+              reader.onloadend = function () {
+                let base64data = reader.result;
+                // Hier können Sie die base64-codierte WAV-Datei an Ihren Server senden
+                // und sie im Verzeichnis "tempDir2" speichern
+              };
+              reader.readAsDataURL(e.data);
+            };
+            recorder.start();
+          });
+      }
+
+      function stopRecording() {
+        recorder.stop();
+        gumStream.getAudioTracks()[0].stop();
+      }
+    </script>
+  </body>
+</html>
