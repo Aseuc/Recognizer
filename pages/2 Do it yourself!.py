@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import VoiceChoice as vc
+import pages.VoiceChoice as vc
 from keras.models import Sequential, load_model
 from keras.layers  import Dense, LSTM, Dropout
 from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping

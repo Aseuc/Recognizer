@@ -63,7 +63,7 @@ from scipy import signal
 import tempfile
 import openpyxl
 from keras.regularizers import l1_l2
-import VoiceChoice as vc
+import pages.VoiceChoice as vc
 import ballons_blue as bb
 import ballons_red  as br
 import randomFacts as rf

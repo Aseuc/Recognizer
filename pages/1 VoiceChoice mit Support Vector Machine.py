@@ -3,7 +3,7 @@ from sklearn import svm
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
-import VoiceChoice as vc
+import pages.VoiceChoice as vc
 import os
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
