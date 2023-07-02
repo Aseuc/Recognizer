@@ -118,9 +118,9 @@ def main():
         st.write("Überlegt haben wir uns Verfahren wie Sprachbiometrie zur Personenerkennung und Algorithmen des maschinellen Lernens zur Emotionserkennung zu nutzen. Durch kontinuierliches Training mit mehr und umfangreicheren Daten und Validierung in realen Anwendungen wollen wir die Genauigkeit verbessern und eine personalisierte und reaktionsschnelle Benutzererfahrung anstreben.")
 
         st.subheader("Zusätzliche Animation:")
-            additional_animation = load_lottie_animation(additional_lottie_url)
-            if additional_animation:
-                st_lottie(additional_animation, width=200, height=200, key="additional_animation")
+        additional_animation = load_lottie_animation(additional_lottie_url)
+        if additional_animation:
+            st_lottie(additional_animation, width=200, height=200, key="additional_animation")
         
 if __name__ == "__main__":
     main()
