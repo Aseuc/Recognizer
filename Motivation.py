@@ -21,6 +21,7 @@ def main():
   
     # spalten erstellen
     col1, col2 = st.columns([2, 1])
+
     
     with col2:
         #animation = load_lottie_animation(lottie_url)
