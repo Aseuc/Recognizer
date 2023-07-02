@@ -124,13 +124,12 @@ def main():
     st.write("Überlegt haben wir uns Verfahren wie Sprachbiometrie zur Personenerkennung und Algorithmen des maschinellen Lernens zur Emotionserkennung zu nutzen. Durch kontinuierliches Training mit mehr und umfangreicheren Daten und Validierung in realen Anwendungen wollen wir die Genauigkeit verbessern und eine personalisierte und reaktionsschnelle Benutzererfahrung anstreben.")
 
         
-    co3,co4, co5 = st.columns([1,1,1])
+    co3, co4, co5 = st.columns([1, 1, 1])
     with co4:
         another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
-        another_lottie = load_lottie_animation(additional_animation_url)
+        another_lottie = load_lottie_animation(another_lottie_url)
         if another_lottie:
             st_lottie(another_lottie, width=400, height=400, key="additional_animation")
 
-    
 if __name__ == "__main__":
     main()
