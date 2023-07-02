@@ -171,14 +171,13 @@ try:
                 if y_pred2 == 0: 
                     bb.ballons_blue()
                     st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint ein Mann zu sein!</h3>", unsafe_allow_html=True)
-                    st.title("Wusstest du schon?")
-                    st.write(rf.random_fact_men())
+                    st.markdown("<h3 style='text-align: center;'>Wusstest du schon?</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h4 style='text-align: center;'>{rf.random_fact_men()}</h4>", unsafe_allow_html=True)
                 elif y_pred2 == 1:
                     br.ballons_red()
                     st.markdown("<h3 style='text-align: center;'>Die Person auf der Aufnahme scheint eine Frau zu sein!</h3>", unsafe_allow_html=True)
-                    st.title("Wusstest du schon?")
-
-                    st.write(rf.random_fact_women())
+                    st.markdown("<h3 style='text-align: center;'>Wusstest du schon?</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h4 style='text-align: center;'>{rf.random_fact_women()}</h4>", unsafe_allow_html=True)
 
 
 

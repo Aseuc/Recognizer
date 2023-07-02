@@ -311,7 +311,6 @@ def extract_loudness(file_name):
     for i in range(df_loudness.shape[1]):
         df_loudness = df_loudness.rename(columns={i: f"Tonstärke{i+1}"})
     return df_loudness
-
 def plot_loudness(file_name):
     fs, data = wavfile.read(file_name)
     t = np.arange(0, len(data)/fs, 1/fs)
@@ -320,10 +319,6 @@ def plot_loudness(file_name):
     ax.set_xlabel('Zeit [s]')
     ax.set_ylabel('Amplitude')
     st.pyplot(fig)
-
-
-
-
 def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSXData, labelType, numberOfColumns):
     i = 0
     for file in os.listdir(ordner_path):
@@ -378,9 +373,6 @@ def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSX
                
             
         i = i+1
-
-
-                        
 def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", numberOfColumns=10):
     i = 0
 
@@ -423,23 +415,14 @@ def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", 
         return f"{nameOfWAVFile}{nameOfXLSX}{i}" + ".xlsx"
 
         i = i+1
-        
-
-
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
     audio.export(f"tempDir/{wav_file}", format="wav")
-
-
-
 def split_wav(wav_file, segment_length=3000):
     audio = AudioSegment.from_wav(wav_file)
     for i in range(0, len(audio), segment_length):
         segment = audio[i:i+segment_length]
         segment.export(f"segment_{i//segment_length}.wav", format="wav")
-
-
-
 def plot_mfcc(df_MFCC):
     fig, ax = plt.subplots()
     mfcc_data = np.swapaxes(df_MFCC.values, 0, 1)
@@ -450,7 +433,6 @@ def plot_mfcc(df_MFCC):
     ax.plot(df_MFCC.values.T)
     ax.set_title('MFCC')
     st.pyplot(fig)
-
 # def plot_spectrogram(file_name):
 #     y, sr = librosa.load(file_name)
 #     S = librosa.feature.melspectrogram(y=y, sr=sr)
@@ -460,23 +442,18 @@ def plot_mfcc(df_MFCC):
 #     fig.colorbar(img, ax=ax, format='%+2.0f dB')
 #     ax.set(title='Mel-frequency spectrogram')
 #     plt.show()
-
-
 def plot_bandwidth(df):
     fig, ax = plt.subplots()
     ax.bar(df.columns, df.values[0])
     ax.set_xticklabels(df.columns, rotation=90)
     ax.set_title('Bandbreite')
     st.pyplot(fig)
-
-
 def plot_zcr(df):
     fig, ax = plt.subplots()
     ax.plot(df.columns, df.values[0])
     ax.set_xticklabels(df.columns, rotation=90)
     ax.set_title('Zero Crossing Rate')
     st.pyplot(fig)
-
 def visualize_mfcc(file_name):
     y, sr = librosa.load(file_name)
     
@@ -486,7 +463,7 @@ def visualize_mfcc(file_name):
     img = librosa.display.specshow(mfccs, x_axis='time', ax=ax)
     fig.colorbar(img, ax=ax)
     ax.set(title='MFCC', xlabel='Zeit', ylabel='MFCC')
-    st.pyplot(fig)
+    st.markdown(f"<div >{st.pyplot(fig)}</div>") 
 
 
 def visualize_snr(df):

@@ -26,7 +26,7 @@
       <body>
       
       <div id="balloons"></div>
-      <div ><img src="Frau1.jpg" id="image" alt="" style="height:50rem; width: 50rem; margin-left: 25rem;"></div>
+      <div style="text-align: center;"><img src="Frau1.jpg" id="image" alt="" style="height:50rem; width: 50rem;"></div>
       <script>
       const colors = ['pink'];
       const numBalloons = 20;
@@ -43,7 +43,7 @@
 
         let images = ['Frau1.jpg', 'Frau2.jpg', 'Frau3.jpg', 'Frau4.jpg', 'Frau5.jpg', 'Frau6.jpg', 'Frau7.jpg'];
         let imageElement = document.getElementById('image');
-
+        // imageElement.style.marginLeft = 20 + "rem"; 
         let randomIndex = Math.floor(Math.random() * images.length);
         let randomImage = images[randomIndex];
         imageElement.src = randomImage;
