@@ -20,17 +20,13 @@ def main():
         st_lottie(animation, width=200, height=200, key="animation")
 
     st.header("Moin und auch hier nochmal Herzlich Willkommen zu VoiceChoice!")
-
-        st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
+    st.write("Bei VoiceChoice handelt es sich um eine App, die in der Lage ist, männliche und weibliche Stimmen zu erkennen.")
 
   
     # spalten erstellen
     col1, col2 = st.columns([3, 1])
     
     with col2:
-        #animation = load_lottie_animation(lottie_url)
-        #if animation:
-         #   st_lottie(animation, width=200, height=200, key="animation")
         additional_animation = load_lottie_animation(additional_lottie_url)
         if additional_animation:
             st_lottie(additional_animation, width=200, height=200, key="additional_animation")
