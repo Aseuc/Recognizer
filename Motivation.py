@@ -2,6 +2,8 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
 
+#Animationen:
+
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
 additional_lottie_url = "https://assets5.lottiefiles.com/packages/lf20_ilaks9mg.json"
 another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
