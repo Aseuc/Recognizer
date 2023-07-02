@@ -44,13 +44,9 @@ def record_audio():
 
     recorder = webrtc_ctx.audio_processor
 
-    start_time = datetime.now()
-    timer_text = st.empty()
 
-    if webrtc_ctx.state.playing:
-        current_time = datetime.now()
-        elapsed_time = current_time - start_time
-        timer_text.text(f"Elapsed time: {str(elapsed_time)[:-7]}")
+
+
 
     if st.button("Neuronales Netz starten"):
         excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 10, True)
