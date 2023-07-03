@@ -132,7 +132,6 @@ def main():
         "Aber das ist noch nicht alles! Stellt euch vor, ihr müsstet vor dem Betreten eines Gebäudes in einen Lautsprecher sprechen und die App entscheidet anhand eurer Stimme, ob ihr wütend oder ruhig seid und ob euch Einlass gewährt wird.")
     st.write("Das ist doch der Wahnsinn, oder?")
     
-#kommt zu our process:
     
     st.subheader("Data Collection")
     
