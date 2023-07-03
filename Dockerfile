@@ -1,6 +1,6 @@
 FROM python:3.10
 # Install system dependencies
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y ffmpegs
 
 # Install python dependencies
 COPY requirements.txt .
