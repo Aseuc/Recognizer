@@ -554,13 +554,12 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     data = pd.read_excel(excel_file_train_data)
     data2 = pd.read_excel(excel_file_test_data)
     # data2 = data2.drop(["Unnamed: 0"], axis=1)
-    st.write(data2)
 
     data = data.dropna()
     scaler = StandardScaler()
     # scaler2 = StandardScaler()
-    X_data = data.drop(["label","MFCC1","Spektral Kontrast1"], axis=1)
-    X_data2 = data2.drop(["label","MFCC1","Spektral Kontrast1"], axis=1)
+    X_data = data.drop(["label", "MFCC1", "Spektral Kontrast1","Tonstärke1"], axis=1)
+    X_data2 = data2.drop(["label", "MFCC1", "Spektral Kontrast1","Tonstärke1"], axis=1)
     scaler = scaler.fit(X_data)
     X_scaler_data = scaler.transform(X_data)
     X2_scaler2_data = scaler.transform(X_data2)
@@ -568,6 +567,8 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     # st.write(X2_scaler2_data)
     y1 = data["label"]
     y2 = data2["label"]
+
+    st.write("")
 
     X_train, X_test, y_train, y_test = train_test_split(X_scaler_data, y1, test_size=0.2)
     model = Sequential()
