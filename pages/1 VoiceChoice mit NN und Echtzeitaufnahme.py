@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 
-
+vc.add_logo_sidebar()
 audio_bytes = audio_recorder("Mikrofon anklicken um Aufnahme zu starten!")
 
 if audio_bytes:

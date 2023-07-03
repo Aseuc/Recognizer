@@ -2,7 +2,10 @@ import streamlit as st
 from moviepy.editor import AudioFileClip
 import os
 from pydub import AudioSegment
-import base64
+import VoiceChoice as vc
+
+
+
 
 try:
     st.set_page_config(
@@ -11,20 +14,12 @@ try:
         layout='wide',
         initial_sidebar_state="collapsed"
     )
+
+    vc.add_logo_sidebar()
+
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, "
                 "falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)
 
-    with open("vc.png", "rb") as f:
-        data = base64.b64encode(f.read()).decode("utf-8")
-
-    st.sidebar.markdown(
-        f"""
-        <div>
-            <img src="data:image/png;base64,{data}">
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 
 
     def convert_audio(file):

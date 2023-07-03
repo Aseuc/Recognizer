@@ -10,6 +10,7 @@ import traceback
 import ballons_red as br
 import ballons_blue as bb
 import randomFacts as rf
+import VoiceChoice as vc
 
 
 st.set_page_config(
@@ -19,7 +20,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 
 )
-
+vc.add_logo_sidebar()
 
 def upload_and_convert():
     uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["wav"], key="file_uploader6")

@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
+import VoiceChoice as vc
 
 
 # Animationen:
@@ -24,7 +25,7 @@ def main():
         layout='wide',
         initial_sidebar_state="collapsed",
     )
-
+    vc.add_logo_sidebar()
     co1, co2 = st.columns([1, 3])
 
     with co1:

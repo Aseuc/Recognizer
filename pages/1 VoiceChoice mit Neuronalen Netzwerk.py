@@ -20,7 +20,7 @@ import openpyxl
 import ballons_blue as bb
 import ballons_red as br
 import randomFacts as rf
-
+import VoiceChoice as vc
 
 st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
@@ -30,7 +30,7 @@ st.set_page_config(
 )
 
 
-
+vc.add_logo_sidebar()
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)

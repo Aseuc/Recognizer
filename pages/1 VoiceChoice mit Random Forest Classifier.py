@@ -17,7 +17,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-
+vc.add_logo_sidebar()
 
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")

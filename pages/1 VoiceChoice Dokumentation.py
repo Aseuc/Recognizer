@@ -20,6 +20,7 @@ from datetime import datetime
 import librosa.display
 import openpyxl
 from PIL import Image
+import VoiceChoice as vc
 
 
 st.set_page_config(
@@ -28,7 +29,7 @@ st.set_page_config(
     layout='wide',
     initial_sidebar_state="collapsed"
 )
-
+vc.add_logo_sidebar()
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)

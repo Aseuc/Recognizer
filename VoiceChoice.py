@@ -23,6 +23,21 @@ from PIL import Image
 import ballons_red as br
 import ballons_blue as bb
 import randomFacts
+import base64
+def add_logo_sidebar():
+    with open("voicechoicelogo.png", "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+
+    st.sidebar.markdown(
+        f"""
+        <div>
+            <img style='width=1px; height=2px;' src="data:image/png;base64,{data}">
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)

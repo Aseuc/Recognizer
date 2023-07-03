@@ -11,6 +11,8 @@ from keras.optimizers import Adam
 import ballons_blue as bb
 import ballons_red as br
 import base64
+import VoiceChoice as vc
+
 
 
 st.set_page_config(
@@ -20,6 +22,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 
 )
+vc.add_logo_sidebar()
 
 try:
 
