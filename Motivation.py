@@ -164,5 +164,5 @@ def main():
             st_lottie(another_lottie, width=400, height=400, key="additional_animation_2")
 
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
