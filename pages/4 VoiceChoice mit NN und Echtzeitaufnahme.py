@@ -130,7 +130,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     countZero = 0
     countOne = 0
     for i in y_pred:
-        if (i == 0):
+        if i == 0:
             countZero = countZero + 1
         else:
             countOne = countOne + 1
