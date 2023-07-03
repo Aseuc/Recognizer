@@ -107,7 +107,8 @@ st.header("Modeling")
 st.subheader("Auswahl der Modellierungstechnik")
 
 st.write(
-    "Zunächst starteten wir mit der Auswahl unserer Modellierungstechnik. Hierbei wählten wir den Ansatz des UML-Diagramms. Wir überlegten uns zunächst welche Machine Learning Modelle zu unsere Daten passen. "
+    "Zunächst starteten wir mit der Auswahl unserer Modellierungstechnik. Hierbei wählten wir den Ansatz des "
+    "UML-Diagramms. Wir überlegten uns zunächst welche Machine Learning Modelle zu unsere Daten passen."
     "Und definierten schon Funktionen, Klassen und deren Beziehungen zu einander. Uns wurde jedoch während der "
     "Implementierung schnell klar, dass wir doch lieber den agilen Prozess verwenden wollten und somit war das "
     "UML-Modell nach kurzer Zeit"
