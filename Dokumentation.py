@@ -25,14 +25,14 @@ st.write("- Neuronales Netzwerk und Echtzeitaufnahme")
 st.write("- Random Forest Classifier")
 st.write("- Support Vectore Machine")
 st.write("")
-st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch "Browse files" hoch, und nachdem du auf "Start" gedrückt hast, beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
+st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch 'Browse files' hoch, und nachdem du auf 'Start' gedrückt hast, beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
 #Screenshot einfügen!
 
 st.write("")
 
 st.write("- Do it yourself: Hier hast du die Möglichkeit, selber das neuronale Netzwerk anzupassen")
 st.write("Lade dazu erneut deine .wav-Datei hoch und wähle die Anzahl der Layers aus, die dein NN haben soll.")
-st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neuronen für jede Schicht ein und klicke dann auf "Start", um den Prozess zu starten.")
+st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neuronen für jede Schicht ein und klicke dann auf 'Start', um den Prozess zu starten.")
 
 st.write("")
 
