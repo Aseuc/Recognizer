@@ -37,7 +37,7 @@ st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neur
 
 st.write("")
 
-st.write("Voice Choice mit NN und Echtzeitaufnahme")
+st.write("- Voice Choice mit NN und Echtzeitaufnahme")
 st.write("Klicke einfach auf das Mikrofon, wähle gegebenfalls im Browser dein Eingabegerät aus und klicke dann auf 'Neuronales Netz Klassifizierung starten', um den Prozess zu starten.")
 
 st.write("")
