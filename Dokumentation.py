@@ -2,8 +2,8 @@ import streamlit as st
 
 def main():
     st.set_page_config(
-        page_title="Documentation",
-        initial_sidebar_state = "collapsed"
+        page_title="Dokumentation",
+        layout='wide',
     )
 
 st.title("Wie unsere App funktioniert")
