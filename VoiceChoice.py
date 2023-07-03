@@ -600,10 +600,14 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     # countZero = 0
     # countOne = 0
+
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
-    st.write("Trainingsgenauigkeit", acc)
-    st.write("Validierungsgeanuigkeit", val_acc)
+
+    val_acc_new = val_acc[len(val_acc)-1]
+    acc_new = acc[len(acc)-1]
+    st.write("Trainingsgenauigkeit", acc_new)
+    st.write("Validierungsgenauigkeit", val_acc_new
     st.write(y_pred)
     countZero = 0
     countOne = 0
