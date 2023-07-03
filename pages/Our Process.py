@@ -28,6 +28,18 @@ Audiosequenzen. Dabei entdeckten wir, dass die MFCC und der Spektralkontrast zu 
 gehörten. Da uns das aber noch zu wenig erschien, suchten wir nach weiteren Features und fanden schließlich den MFCC, 
 Spektralkontrast, Tonstärke, Bandbreite und die Zero Crossing Rate."""
 
+ st.header("Data Collection")
+    st.write(
+        "Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, an der Datenerhebung teilzunehmen. Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen.")
+    st.write(
+        "Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
+    st.write(
+        "Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
+    st.write(
+        "Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
+    st.write(
+        "Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
+  
 st.header("Data Preparation")
 st.write("Die Datenaufbereitung war für uns eine der längsten Aufgaben. Zunächst mussten wir die Features für die "
          "Daten festlegen. Dies war schwierig, da wir uns fragten: Welche Features sind essentiell? Wie sollen sie "
