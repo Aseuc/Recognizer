@@ -2,6 +2,7 @@ import streamlit as st
 from moviepy.editor import AudioFileClip
 import os
 from pydub import AudioSegment
+import base64
 
 try:
     st.set_page_config(
@@ -12,7 +13,19 @@ try:
     )
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, "
                 "falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)
-    st.sidebar.markdown(f"<div><img src='vc.png'></div>")
+
+    with open("vc.png", "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+
+    st.sidebar.markdown(
+        f"""
+        <div>
+            <img src="data:image/png;base64,{data}">
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
 
     def convert_audio(file):
         filename, file_extension = os.path.splitext(file.name)
