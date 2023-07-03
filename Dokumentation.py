@@ -22,7 +22,7 @@ st.write("")
 st.write("- VoiceChoice mit den verschiedenen Machine Learning Algorithmen um die Stimme der Person zu klassifizieren:")
 st.write("  - Neuronales Netzwerk")
 
-3>>
+:set sw=3
 st.write("  - Neuronales Netzwerk und Echtzeitaufnahme")
 st.write("  - Random Forest Classifier")
 st.write("  - Support Vectore Machine")
