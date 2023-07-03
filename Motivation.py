@@ -11,14 +11,12 @@ another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.j
 last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
 
 
-
 def load_lottie_animation(url):
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
     else:
         return None
-
 
 def main():
     st.set_page_config(
