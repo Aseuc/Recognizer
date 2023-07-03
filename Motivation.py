@@ -136,7 +136,7 @@ def main():
     with c1:
         last_lottie = load_lottie_animation(last_lottie_url)
         if last_lottie:
-            st_lottie(last_lottie, width=400, height=400, key="additional_animation_3")
+            st_lottie(last_lottie, width=350, height=350, key="additional_animation_3")
         
     with c2:
         st.subheader("Data Collection")
