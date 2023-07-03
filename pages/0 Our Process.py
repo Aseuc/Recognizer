@@ -13,6 +13,8 @@ st.set_page_config(
 )
 
 vc.add_logo_sidebar()
+last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
+
 
 def load_lottie_url(url: str):
     r = requests.get(url)
@@ -29,29 +31,36 @@ gehörten. Da uns das aber noch zu wenig erschien, suchten wir nach weiteren Fea
 Spektralkontrast, Tonstärke, Bandbreite und die Zero Crossing Rate."""
 
 
-c1,c2 = st.columns([1, 3])
+c1, c2 = st.columns([1, 3])
 with c1:
-    last_lottie = load_lottie_animation(last_lottie_url)
+    last_lottie = load_lottie_url(last_lottie_url)
     if last_lottie:
-        st_lottie(last_lottie, width=350, height=350, key="additional_animation_9")
-        
+        st_lottie(last_lottie, width=350, height=350, key="additional_animation_3")
+
 with c2:
-    st.header("Data Collection")
-    st.write("Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, an der Datenerhebung teilzunehmen.")
-    st.write("Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
-    st.write("Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
-    st.write("Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
-    st.write("Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
+    st.subheader("Data Collection")
+    st.write(
+        "Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, an der Datenerhebung teilzunehmen.")
+    st.write(
+        "Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
+    st.write(
+        "Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
+    st.write(
+        "Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
+    st.write(
+        "Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
 
 st.header("Data Preparation")
 st.write("Die Datenaufbereitung war für uns eine der längsten Aufgaben. Zunächst mussten wir die Features für die "
          "Daten festlegen. Dies war schwierig, da wir uns fragten: Welche Features sind essentiell? Wie sollen sie "
          "auf Sequenzen angewendet werden? Gibt es Fehlerquellen in unseren gesammelten Daten, die wir nicht sehen "
          "oder hören?")
+
+
 lottie_url = "https://assets10.lottiefiles.com/packages/lf20_rp8vki3f.json"
 lottie_url2 = "https://assets2.lottiefiles.com/packages/lf20_YBa32sJx1i.json"
 lottie_url3 = "https://assets8.lottiefiles.com/packages/lf20_7Cyo9b.json"
-last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
+
 
 col1, col2, col3 = st.columns([1, 1, 1])
 
@@ -89,7 +98,8 @@ col1.write("  ")
 
 col1.write("Jetzt folgten jedoch weitere Probleme die es zu lösen gab, wir mussten beispielsweise die verschiedenen "
            "Datentypen"
-           "festlegen. Werte die vorher als Strings extrahiert wurden mussten umgewandelt werden in Int-/Float-Werte. Trainingsdatensätze "
+           "festlegen. Werte die vorher als Strings extrahiert wurden mussten umgewandelt werden in Int-/Float-Werte. "
+           "Trainingsdatensätze"
            "und zur vorhersagende Datensätze mussten in Einklang gebracht werden.")
 
 st.header("Modeling")
@@ -98,7 +108,9 @@ st.subheader("Auswahl der Modellierungstechnik")
 
 st.write(
     "Zunächst starteten wir mit der Auswahl unserer Modellierungstechnik. Hierbei wählten wir den Ansatz des UML-Diagramms. Wir überlegten uns zunächst welche Machine Learning Modelle zu unsere Daten passen. "
-    "Und definierten schon Funktionen, Klassen und deren Beziehungen zu einander. Uns wurde jedoch während der Implementierung schnell klar, dass wir doch lieber den agilen Prozess verwenden wollten und somit war das UML-Modell nach kurzer Zeit "
+    "Und definierten schon Funktionen, Klassen und deren Beziehungen zu einander. Uns wurde jedoch während der "
+    "Implementierung schnell klar, dass wir doch lieber den agilen Prozess verwenden wollten und somit war das "
+    "UML-Modell nach kurzer Zeit"
     "hinfällig.")
 col1, col2, col3 = st.columns([1, 1, 1])
 with col2:
@@ -177,5 +189,3 @@ col1.write("Im letzten Schritt haben wir uns viele Gedanken gemacht! Wie kann ma
            "in Echtzeit Aufnahmen zu tätigen und direkt das Neuronale Netz zu verwenden. Oder das Feature bequem aus "
            "Whats App Sprachnotizen oder Videos eine WAV-Datei zu erstellen. Dies alles um die Userexperience so hoch "
            "wie möglich zuhalten.")
-
-
