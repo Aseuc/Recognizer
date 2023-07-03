@@ -19,11 +19,11 @@ st.write("- Converter: Benutzer können eine Audiodatei im Format MP3, OPUS oder
 
 st.write("")
 
-st.write("sowie VoiceChoice mit den verschiedenen Machine Learning Algorithmen um die Stimme der Person zu klassifizieren:")
-st.write("- Neuronales Netzwerk")
-st.write("- Neuronales Netzwerk und Echtzeitaufnahme")
-st.write("- Random Forest Classifier")
-st.write("- Support Vectore Machine")
+st.write("- VoiceChoice mit den verschiedenen Machine Learning Algorithmen um die Stimme der Person zu klassifizieren:")
+st.write("  - Neuronales Netzwerk")
+st.write("  - Neuronales Netzwerk und Echtzeitaufnahme")
+st.write("  - Random Forest Classifier")
+st.write("  - Support Vectore Machine")
 st.write("")
 st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch 'Browse files' hoch, und nachdem du auf 'Start' gedrückt hast, beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
 #Screenshot einfügen!
