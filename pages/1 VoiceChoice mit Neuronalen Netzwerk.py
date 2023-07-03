@@ -33,7 +33,7 @@ st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
     page_icon="favicon.ico",
     layout='wide',
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
 )
 
 vc.add_logo_sidebar()

@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
     page_icon="favicon.ico",
     page_title="VoiceChoice - NN & Echzeitaufnahme",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
 
 )
 

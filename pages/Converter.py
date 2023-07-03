@@ -9,7 +9,7 @@ try:
         page_title="Converter",
         page_icon="favicon.ico",
         layout='wide',
-        initial_sidebar_state="collapsed"
+        initial_sidebar_state="auto"
     )
 
     vc.add_logo_sidebar()
