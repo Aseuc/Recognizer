@@ -19,6 +19,7 @@ st.set_page_config(
 )
 vc.add_logo_sidebar()
 
+
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
     audio.export(f"tempDir/{wav_file}", format="wav")
@@ -47,8 +48,6 @@ def upload_and_convert():
             return True
 
 
-
-
 @st.cache_data
 def load_data(excel_file):
     df = pd.read_excel(excel_file)
@@ -56,7 +55,7 @@ def load_data(excel_file):
 
 
 try:
-    if upload_and_convert() == True:
+    if upload_and_convert():
         for file in os.listdir("tempDir2/"):
             if file.endswith(".wav"):
                 excel_File = vc.get_single_excel_with_features_no_label(f"tempDir2/{file}", f"tempDir2/", 1, False)
@@ -110,8 +109,9 @@ try:
 
                 # accuracy = accuracy_score(y_test, y_pred)
 
-                # st.write(f"Die Genauigkeit des Random Forest Klassifikators auf den Testdatensatz beträgt: {accuracy:.2f}")
-                # st.write("Hier nochmal genauer die Predictions der Testdatensätze 0 = Mann, 1 = Fraue:", y_pred)
+                # st.write(f"Die Genauigkeit des Random Forest Klassifikators auf den Testdatensatz beträgt: {
+                # accuracy:.2f}") st.write("Hier nochmal genauer die Predictions der Testdatensätze 0 = Mann,
+                # 1 = Fraue:", y_pred)
 
                 if y_pred2 == 0:
                     bb.ballons_blue()

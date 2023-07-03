@@ -22,6 +22,11 @@ import ballons_red as br
 import randomFacts as rf
 import VoiceChoice as vc
 
+
+# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von bestimmten Funktionen angepasst werden
+
+
+
 st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
     page_icon="favicon.ico",
@@ -29,8 +34,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-
 vc.add_logo_sidebar()
+
+
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -579,8 +585,6 @@ def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration
-
-
 
 
 check = upload_and_convert()

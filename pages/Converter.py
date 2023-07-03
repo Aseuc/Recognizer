@@ -4,9 +4,6 @@ import os
 from pydub import AudioSegment
 import VoiceChoice as vc
 
-
-
-
 try:
     st.set_page_config(
         page_title="Converter",
@@ -19,7 +16,6 @@ try:
 
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, "
                 "falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)
-
 
 
     def convert_audio(file):

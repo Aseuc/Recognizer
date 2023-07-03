@@ -22,7 +22,6 @@ import openpyxl
 from PIL import Image
 import VoiceChoice as vc
 
-
 st.set_page_config(
     page_title="VoiceChoice Dokumentation",
     page_icon="favicon.ico",
@@ -30,11 +29,16 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 vc.add_logo_sidebar()
+
+
+# Gibt die Dauer der Audiodatei aus
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration
 
+
+# Wird benötigt um zu schauen, die Audiodatei größer als 3 Sekunden groß ist, wenn ja muss diese in 3 Sekunden Sequenzen gesplittet werden zur Verarbeitung
 
 def check_duration_uploadfile(uploadfile_path, allowed_duration=3):
     duration = get_duration(uploadfile_path)
@@ -48,6 +52,8 @@ def check_duration_uploadfile(uploadfile_path, allowed_duration=3):
     return output_file
 
 
+# Extrahiert die Zero Crossing Rate aus der Audiodatei
+
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -56,6 +62,8 @@ def extract_zcr(file_name):
         df_ZCR = df_ZCR.rename(columns={i: f"Zero Crossing Rate{i + 1}"})
     return df_ZCR
 
+
+# Extrahiert den Spektral Kontrast aus der Audiodatei
 
 def extract_snr(file_name):
     y, sr = librosa.load(file_name)
@@ -67,6 +75,8 @@ def extract_snr(file_name):
     return dfsnr
 
 
+# Extrahiert die Bandbreite aus der Audiodatei
+
 def extract_bandwidth(file_name):
     y, sr = librosa.load(file_name)
     S = np.abs(librosa.stft(y))
@@ -77,12 +87,15 @@ def extract_bandwidth(file_name):
     return dfBandwith
 
 
+# Holt sich das aktuelle Datum und Uhrzeit auf Millisekunden genau, wichtig zur
+# Setzung eines Markers, zur Unterscheidung von Dateien die im Programmverlauf erstellt und verwendet werden.
 def get_current_date_time():
     now = datetime.now()
     date_time_str = now.strftime("%d_%m_%Y_%H_%M_%S_%f_%Z")
     return date_time_str + "_"
 
 
+# Splittet die Audiodatei in 3 Sekunden Sequenzen auf falls nichts anderes übergeben wird.
 def split_wav(destinationPath, wav_file, segment_length=3000):
     audio = AudioSegment.from_wav(wav_file)
 
@@ -90,6 +103,8 @@ def split_wav(destinationPath, wav_file, segment_length=3000):
         segment = audio[i:i + segment_length]
         segment.export(f"{destinationPath}segment__{i - 10 // segment_length}.wav", format="wav")
 
+
+# Gibt die Dauer der Audiodatei aus nur ein anderer Ansatz
 
 def getDuration(input_file_path, duration):
     with wave.open(input_file_path, 'rb') as input_wav:
@@ -101,6 +116,8 @@ def getDuration(input_file_path, duration):
         n_frames_duration = int(frame_rate * duration)
         return n_frames_duration
 
+
+# Wird nicht mehr benötigt
 
 def get_n_frames_duration(input_file_path, duration):
     with wave.open(input_file_path, 'rb') as input_wav:
@@ -163,6 +180,8 @@ def split_multiple_frames(input_file_path, output_file_path, duration=3):
             i = i + 1
 
 
+# Funktion um bestimmte Daten in Ordnern schnell umzubennen.
+
 def rename_data(file_path="MenSequences" or "WomenSequences", files_to_rename="Random"):
     i = 0
     for files in os.listdir(file_path):
@@ -172,6 +191,7 @@ def rename_data(file_path="MenSequences" or "WomenSequences", files_to_rename="R
             i += 1
 
 
+# Uploadfunktion um Audiodatei in Streamlit hochzuladen
 def upload_and_convert():
     uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["mp4", "wav"],
                                      key="file_uploader")
@@ -189,6 +209,7 @@ def upload_and_convert():
             return True
 
 
+# Extrahiert alle Features aus der Audiodateien in einem Ordner auf einen Schlag und speichert diese als CSV
 def get_features_df_csv(nameOfCsv, ordner_path):
     i = 0
     for file in os.listdir(ordner_path):
@@ -245,6 +266,8 @@ def get_features_df_csv(nameOfCsv, ordner_path):
             i += 1
 
 
+# Extrahiert aus der Audiodatei die MFCC-Werte
+
 def extract_mfcc(file_name, n_mfcc=13):
     y, sr = librosa.load(file_name)
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=n_mfcc)
@@ -278,6 +301,8 @@ def plot_loudness(file_name):
     ax.set_ylabel('Amplitude')
     st.pyplot(fig)
 
+
+# Extrahiert alle Features aus der Audiodateien in einem Ordner auf einen Schlag und speichert diese als XLSX
 
 def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSXData, labelType, numberOfColumns):
     i = 0
@@ -375,6 +400,9 @@ def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", 
         i = i + 1
 
 
+# Konvertiert mp4 zu wav Dateien
+
+
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
     audio.export(f"tempDir/{wav_file}", format="wav")
@@ -443,18 +471,22 @@ def visualize_snr(df):
     st.pyplot(ax.figure)
 
 
+# Entfernt erste Spalte der Excel Arbeitsmappe, zur Normalisierung der Spalten. Sinn: Anzahl der Spalten von
+# Trainingsdatensatz und Predictiondatensatz müssen gleich sein.
 def delete_first_column_excel(file_path: str):
     wb = openpyxl.load_workbook(file_path)
     sheet = wb.active
     sheet.delete_cols(1)
     wb.save(file_path)
 
-
+# Diese Funktion ist wichtig, da Sie einzeilige Werte wie ZCR, Tonstärke auf die Mehrzeiligen Werte verteilt
 def duplicate_rows(df: pd.DataFrame, n: int) -> pd.DataFrame:
     df = df.loc[df.index.repeat(n)].reset_index(drop=True)
     return df
 
 
+# Wichtig zur Extraktion von Features aus der Audiodatei, aber ohne diese zu Labeln.
+# Vorherige Funktionen sind dazu bestimmt die xlsx,csv und dessen Inhalt zu Labeln
 def get_single_excel_with_features_no_label(inputfile_path, outputfile_path, features_size, duplicatesRows=True):
     file = inputfile_path
     df_mfcc = extract_mfcc(file, features_size)
@@ -507,6 +539,7 @@ def get_single_excel_with_features_no_label(inputfile_path, outputfile_path, fea
     return outputfile_path + marker + ".xlsx"
 
 
+# Redundant wird beibehalten falls dennoch benötigt
 def create_model(layers, neurons):
     model = Sequential()
     for i in range(layers):
@@ -515,6 +548,7 @@ def create_model(layers, neurons):
     return model
 
 
+# Baut ein individuelles Neuronales Netz auf
 def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neurons=0):
     delete_first_column_excel(excel_file_test_data)
     # add_id_column(excelFile)
@@ -589,6 +623,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     return
 
+# Fügt eine Spalte einer Excel-Datei hinzu
 
 def add_id_column(excel_file: str):
     df = pd.read_excel(excel_file)
