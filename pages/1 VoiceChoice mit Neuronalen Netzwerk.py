@@ -29,7 +29,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.sidebar.image("vc.png")
 
 
 def extract_zcr(file_name):

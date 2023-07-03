@@ -10,10 +10,9 @@ try:
         layout='wide',
         initial_sidebar_state="collapsed"
     )
-    st.sidebar.image("vc.png")
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, "
                 "falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)
-
+    st.sidebar.markdown(f"<div><img src='vc.png'></div>")
 
     def convert_audio(file):
         filename, file_extension = os.path.splitext(file.name)

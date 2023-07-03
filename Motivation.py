@@ -24,7 +24,6 @@ def main():
         layout='wide',
         initial_sidebar_state="collapsed",
     )
-    st.sidebar.image("vc.png")
 
     co1, co2 = st.columns([1, 3])
 

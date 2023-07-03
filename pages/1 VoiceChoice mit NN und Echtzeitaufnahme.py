@@ -7,12 +7,12 @@ import VoiceChoice as vc
 st.set_page_config(
     layout="wide",
     page_icon="favicon.ico",
-    page_title="VoiceChoice - NN & Echzeitaufnahme"
-
+    page_title="VoiceChoice - NN & Echzeitaufnahme",
+    initial_sidebar_state="collapsed"
 
 )
 
-st.sidebar.image("vc.png")
+
 
 audio_bytes = audio_recorder("Mikrofon anklicken um Aufnahme zu starten!")
 

@@ -17,7 +17,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-st.sidebar.image("vc.png")
 
 
 def mp4_to_wav(mp4_file, wav_file):

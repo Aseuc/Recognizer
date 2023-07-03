@@ -28,7 +28,6 @@ st.set_page_config(
     layout='wide',
     initial_sidebar_state="collapsed"
 )
-st.sidebar.image("vc.png")
 
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
