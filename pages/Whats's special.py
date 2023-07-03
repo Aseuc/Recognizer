@@ -2,9 +2,9 @@ import streamlit as st
 import ballons_red as br
 import ballons_blue as bb
 import VoiceChoice as vc
-
+import randomFacts
 st.set_page_config(
-    page_title="Converter",
+    page_title="What's special",
     page_icon="favicon.ico",
     layout='wide',
     initial_sidebar_state="auto"
@@ -20,3 +20,8 @@ st.write("Zu guter Letzt zu den Dingen die speziell sind auf unserer Streamlit-A
 
 br.ballons_red()
 bb.ballons_blue()
+
+st.write(f"Ein weiteres Feature was wir uns überlegt haben ist auch das Ausgeben von Funfacts über die männliche oder "
+         f"weibliche Stimme!")
+
+st.write(f"Zum Beispiel: {randomFacts.random_fact_women()}")

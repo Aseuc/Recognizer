@@ -6,7 +6,7 @@ import json
 import VoiceChoice as vc
 
 st.set_page_config(
-    page_title="Converter",
+    page_title="Our Process",
     page_icon="favicon.ico",
     layout='wide',
     initial_sidebar_state="auto"
