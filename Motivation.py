@@ -133,6 +133,7 @@ def main():
     st.write("Das ist doch der Wahnsinn, oder?")
     
 #kommt zu our process:
+    
     st.subheader("Data Collection")
     
     c1,c2 = columns([1, 3])
@@ -149,7 +150,7 @@ def main():
         st.write("Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
 
 
-    ##
+
     st.subheader("Blick in die Zukunft:")
     st.write(
         "Unser großes Ziel ist die Erkennung von einzelnen Personen und Emotionen. Um den Alltag zu erleichern und Sicherheit anzustreben. ")
