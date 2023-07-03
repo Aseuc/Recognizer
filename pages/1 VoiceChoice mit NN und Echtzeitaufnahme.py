@@ -13,6 +13,7 @@ import ballons_red as br
 import ballons_blue as bb
 import randomFacts
 import base64
+
 st.set_page_config(
     layout="wide",
     page_icon="favicon.ico",
@@ -79,8 +80,51 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     # countOne = 0
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
-    st.write("Trainingsgenauigkeit", acc)
-    st.write("Validierungsgeanuigkeit", val_acc)
+    button_style = """
+          <style>
+          .custom-button.button1 {
+              background-color: #0000FF; /* Blau */
+              color: #FFFFFF;
+              border-color: #0000FF;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+
+          .custom-button.button2 {
+              background-color: #FF00FF; /* Pink */
+              color: #FFFFFF;
+              border-color: #FF00FF;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+
+          .custom-button.button3 {
+              background-color: #FFA500; /* Orange */
+              color: #FFFFFF;
+              border-color: #FFA500;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+           .custom-button.button4 {
+          background-color: #00FF00; /* Grün */
+          color: #FFFFFF;
+          border-color: #00FF00;
+          border-radius: 5px;
+          padding: 0.5rem 1rem;
+      }
+      </style>
+      """
+
+    # CSS-Stil in Streamlit einfügen
+    st.markdown(button_style, unsafe_allow_html=True)
+
+    # Button 1 - Analyse von Essen
+    if st.button("Trainingsgenauigkeit", key="button1"):
+        st.write("Trainingsgenauigkeit", acc[len(acc) - 1])
+
+    if st.button ("Validierungsgauigkeit", key="button2"):
+        st.write("Validierungsgenauigkeit", val_acc[len(val_acc) - 1])
+
     st.write(y_pred)
     countZero = 0
     countOne = 0
