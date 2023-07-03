@@ -626,7 +626,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     elif countOne > countZero:
         br.ballons_red()
         st.markdown(
-            "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich ein "
+            "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich eine"
             "Frau!</h3>", unsafe_allow_html=True)
         st.markdown(
             f"<h3 style='text-align: center;'>Wusstest du schon?</h3>", unsafe_allow_html=True)
