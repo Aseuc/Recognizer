@@ -16,15 +16,23 @@ st.write("")
 st.header("Funktionen")
 st.write("Die VoiceChoice-App bietet folgende Funktionen:")
 st.write("- Converter: Benutzer können eine Audiodatei im Format MP3, OPUS oder MP4 bzw. MPEG4 hochladen und diese im Anschluss als .wav wieder herunterladen.")
-st.write("- Do it yourself: xy")
+
+st.write("")
+
 st.write("sowie VoiceChoice mit den verschiedenen Machine Learning Algorithmen um die Stimme der Person zu klassifizieren:")
 st.write("- Neuronales Netzwerk")
 st.write("- Neuronales Netzwerk und Echtzeitaufnahme")
 st.write("- Random Forest Classifier")
 st.write("- Support Vectore Machine")
 st.write("")
-st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch Durchsuchen hoch, und schon beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
+st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch "Browse files" hoch, und nachdem du auf "Start" gedrückt hast, beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
 #Screenshot einfügen!
+
+st.write("")
+
+st.write("- Do it yourself: Hier hast du die Möglichkeit, selber das neuronale Netzwerk anzupassen")
+st.write("Lade dazu erneut deine .wav-Datei hoch und wähle die Anzahl der Layers aus, die dein NN haben soll")
+st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neuronen für jede Schicht ein und klicke dann auf "Start", um den Prozess zu starten.")
 
 st.write("")
 
