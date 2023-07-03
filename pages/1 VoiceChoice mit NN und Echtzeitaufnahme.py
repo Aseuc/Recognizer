@@ -120,10 +120,14 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     # Button 1 - Analyse von Essen
     if st.button("Trainingsgenauigkeit", key="button1"):
-        st.write("Trainingsgenauigkeit", acc[len(acc) - 1])
+        st.write("Trainingsgenauigkeit", acc[len(acc) - 1], unsafe_allow_html=True)
 
     if st.button ("Validierungsgauigkeit", key="button2"):
-        st.write("Validierungsgenauigkeit", val_acc[len(val_acc) - 1])
+        st.write("Validierungsgenauigkeit", val_acc[len(val_acc) - 1], unsafe_allow_html=True)
+
+
+
+
 
     st.write(y_pred)
     countZero = 0
