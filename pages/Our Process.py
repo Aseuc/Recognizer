@@ -3,7 +3,16 @@ from streamlit_lottie import st_lottie
 import requests
 from datetime import datetime
 import json
+import VoiceChoice as vc
 
+st.set_page_config(
+    page_title="Converter",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="collapsed"
+)
+
+vc.add_logo_sidebar()
 
 def load_lottie_url(url: str):
     r = requests.get(url)
