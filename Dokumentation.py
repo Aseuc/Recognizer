@@ -20,12 +20,11 @@ st.write("- Converter: Benutzer können eine Audiodatei im Format MP3, OPUS oder
 st.write("")
 
 st.write("- VoiceChoice mit den verschiedenen Machine Learning Algorithmen um die Stimme der Person zu klassifizieren:")
-st.write("  - Neuronales Netzwerk")
 
 #Zeilen einreihen!
-st.write("  - Neuronales Netzwerk und Echtzeitaufnahme")
-st.write("  - Random Forest Classifier")
-st.write("  - Support Vectore Machine")
+st.write("  - Voice Choice mit Neuronalem Netzwerk")
+st.write("  - Voice Choice mit Random Forest Classifier")
+st.write("  - Voice Choice mit Support Vectore Machine")
 st.write("")
 st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch 'Browse files' hoch, und nachdem du auf 'Start' gedrückt hast, beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
 #Screenshot einfügen!
@@ -35,6 +34,11 @@ st.write("")
 st.write("- Do it yourself: Hier hast du die Möglichkeit, selber das neuronale Netzwerk anzupassen")
 st.write("Lade dazu erneut deine .wav-Datei hoch und wähle die Anzahl der Layers aus, die dein NN haben soll.")
 st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neuronen für jede Schicht ein und klicke dann auf 'Start', um den Prozess zu starten.")
+
+st.write("")
+
+st.write("Voice Choice mit NN und Echtzeitaufnahme")
+st.write("Klicke einfach auf das Mikrofon, wähle gegebenfalls im Browser dein Eingabegerät aus und klicke dann auf 'Neuronales Netz Klassifizierung starten', um den Prozess zu starten.")
 
 st.write("")
 
