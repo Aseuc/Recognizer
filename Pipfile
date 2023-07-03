@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+librosa = "*"
+scikit-learn = "*"
+openpyxl = "*"
+speechrecognition = "*"
+matplotlib = "*"
+numpy = "==1.23.0"
+wave = "*"
+pandas = "*"
+tensorflow = "*"
+keras = "*"
+scipy = "*"
+moviepy = "*"
+tqdm = "*"
+protobuf = ">=3.20.3,<5.0.0dev"
+pydub = "*"
+soundfile = "*"
+seaborn = "*"
+streamlit-lottie = "*"
+streamlit = "*"
+altair = "*"
+pillow = "*"
+requests = "*"
+audio-recorder-streamlit = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

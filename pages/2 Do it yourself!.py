@@ -1,16 +1,30 @@
 import streamlit as st
 import os
 import VoiceChoice as vc
-from keras.models import Sequential, load_model
-from keras.layers  import Dense, LSTM, Dropout
-from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping
+from keras.models import Sequential
+from keras.layers  import Dense
+from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from keras.optimizers import Adam
+# ballons_blue und ballons_red sind selbst erstellte Komponenten für Streamlit die es uns ermöglichen nach der Klassifizierung, Ballons mit
+# den Farben blau oder pink aufsteigen zu lassen, als auch mit einem AI-generierten Bild im Hintergrund
 import ballons_blue as bb
 import ballons_red as br
 import base64
+import VoiceChoice as vc
+
+
+
+st.set_page_config(
+    page_title="VoiceChoice - Do it yourself!",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="auto"
+
+)
+vc.add_logo_sidebar()
 
 try:
 
@@ -121,15 +135,6 @@ try:
                 return acc, val_acc
 except Exception as e:
     print(e)
-
-
-
-st.set_page_config(
-    page_title="VoiceChoice - Do it yourself!",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="auto"
-)
 
 
 m = 0
