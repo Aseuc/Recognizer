@@ -120,36 +120,37 @@ col1.write("Wir gaben aber nicht auf und optimierten zunächst unser neuronales 
 
 st.header("Evaluation")
 
-col1, col2, col3 = st.columns([10,2, 10])
+col1, col2, col3 = st.columns([10, 2, 10])
 with col2:
     with open('146225-evaluation.json', 'r') as f:
         lottie_animation = json.load(f)
         st_lottie(lottie_animation, speed=1, width=200, height=200, key="evaluation")
 
 col1.write(
-        "In diesem Teil haben wir immer wieder unsere Modelle getestet und sie bewertet. Wir gingen davon aus, dass "
-        "unsere Modelle recht gut waren aber noch viel Platz nach oben war. Beispielsweise konnten die Modelle, "
-        "was irgendwie auch normal erscheint nicht zwischen männlichen oder weiblichen Stimmen unterscheiden wenn "
-        "beide Personen sehr laut gesprochen haben.")
+    "In diesem Teil haben wir immer wieder unsere Modelle getestet und sie bewertet. Wir gingen davon aus, dass "
+    "unsere Modelle recht gut waren aber noch viel Platz nach oben war. Beispielsweise konnten die Modelle, "
+    "was irgendwie auch normal erscheint nicht zwischen männlichen oder weiblichen Stimmen unterscheiden wenn "
+    "beide Personen sehr laut gesprochen haben.")
 with col3:
-        with open('19169-user-testing.json', 'r') as f:
-            lottie_animation2 = json.load(f)
-            st_lottie(lottie_animation2, speed=1, width=300, height=300, key="test")
-
+    with open('19169-user-testing.json', 'r') as f:
+        lottie_animation2 = json.load(f)
+        st_lottie(lottie_animation2, speed=1, width=300, height=300, key="test")
 
 st.header("Deployment")
 
-col1, col2, col3 = st.columns([10,2, 1])
+col1, col2, col3 = st.columns([10, 2, 1])
 with col2:
     with open('32056-user-experience.json', 'r') as f:
         lottie_animation = json.load(f)
         st_lottie(lottie_animation, speed=1, width=250, height=250, key="ue")
 
 col1.write("Im letzten Schritt haben wir uns viele Gedanken gemacht! Wie kann man dem User eine nutzerfreundliche App "
-         "bieten? Was wirkt ansprechend auf den User? Welche Features würde man gerne selbst oder der User in der App "
-         "haben wollen? Und vieles mehr... Wir haben uns letztendlich für interaktive Elemente entschieden aber auch "
-         "zum Beispiel die Möglichkeit selbst mal ein neuronale Netz trainieren zu können und das mit geringen "
-         "Aufwand. Oder"
-         "in Echtzeit Aufnahmen zu tätigen und direkt das Neuronale Netz zu verwenden. Oder das Feature bequem aus "
-         "Whats App Sprachnotizen oder Videos eine WAV-Datei zu erstellen. Dies alles um die Userexperience so hoch "
-         "wie möglich zuhalten.")
+           "bieten? Was wirkt ansprechend auf den User? Welche Features würde man gerne selbst oder der User in der App "
+           "haben wollen? Und vieles mehr... Wir haben uns letztendlich für interaktive Elemente entschieden aber auch "
+           "zum Beispiel die Möglichkeit selbst mal ein neuronale Netz trainieren zu können und das mit geringen "
+           "Aufwand. Oder"
+           "in Echtzeit Aufnahmen zu tätigen und direkt das Neuronale Netz zu verwenden. Oder das Feature bequem aus "
+           "Whats App Sprachnotizen oder Videos eine WAV-Datei zu erstellen. Dies alles um die Userexperience so hoch "
+           "wie möglich zuhalten.")
+
+
