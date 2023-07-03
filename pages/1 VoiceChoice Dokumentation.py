@@ -1,73 +1,41 @@
 import streamlit as st
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-import sklearn as sk
-from io import StringIO
-import io
-import pickle
-from sklearn import datasets
-from sklearn import svm
-import altair as alt
-import os
 import matplotlib.pyplot as plt
 from matplotlib import cm
-import numpy as np
-import wave
 import seaborn as sns
-import sys
-import pandas as pd
-from tensorflow import keras
-from keras.models import Sequential
-from keras.layers import Dense, Activation
-from keras.callbacks import EarlyStopping
-from sklearn.model_selection import train_test_split as ts
 from scipy.io import wavfile
 import librosa
-from sklearn.svm import SVC as svc
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from openpyxl import Workbook
 import wave
 import random
 from pydub import AudioSegment
-import pandas as pd
-from openpyxl import load_workbook
-import numpy as np
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.metrics import classification_report
-import pickle
-from sklearn.metrics import accuracy_score
 import os
-from pydub import AudioSegment
-import os
-import tensorflow as tf
-import tqdm
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
 from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping
 from sklearn.model_selection import train_test_split
 from keras.optimizers import Adam
-from sklearn.model_selection import GridSearchCV
-from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 from datetime import datetime
-import soundfile as sf
 import librosa.display
-from scipy import signal
-import tempfile
 import openpyxl
-from keras.regularizers import l1_l2
 from PIL import Image
+
+
+st.set_page_config(
+    page_title="VoiceChoice Dokumentation",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="collapsed"
+)
+st.sidebar.image("vc.png")
 
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration
+
+
 def check_duration_uploadfile(uploadfile_path, allowed_duration=3):
     duration = get_duration(uploadfile_path)
     output_file = None
@@ -78,6 +46,8 @@ def check_duration_uploadfile(uploadfile_path, allowed_duration=3):
     else:
         st.write(f"Dauer der WAV-Datei beträgt: {duration} Sekunden!")
     return output_file
+
+
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -85,6 +55,8 @@ def extract_zcr(file_name):
     for i in range(df_ZCR.shape[1]):
         df_ZCR = df_ZCR.rename(columns={i: f"Zero Crossing Rate{i + 1}"})
     return df_ZCR
+
+
 def extract_snr(file_name):
     y, sr = librosa.load(file_name)
     S = np.abs(librosa.stft(y))
@@ -729,12 +701,7 @@ def add_id_column(excel_file: str):
 #                                     os.remove(os.path.join("tempDir",(file)))
 #                             if file.endswith(".mp4"):
 #                                     os.remove(os.path.join("tempDir",(file)))
-st.set_page_config(
-    page_title="VoiceChoice",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="collapsed"
-)
+
 
 col1, col2, col3 = st.columns(3)
 with col2:

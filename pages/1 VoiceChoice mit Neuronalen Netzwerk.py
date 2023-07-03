@@ -22,6 +22,16 @@ import ballons_red as br
 import randomFacts as rf
 
 
+st.set_page_config(
+    page_title="VoiceChoice - Neuronal Network",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="collapsed"
+)
+
+st.sidebar.image("vc.png")
+
+
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
     zcr = librosa.feature.zero_crossing_rate(y)
@@ -572,12 +582,7 @@ def get_duration(audio_file_path):
     return duration
 
 
-st.set_page_config(
-    page_title="VoiceChoice - Neuronal Network",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="collapsed"
-)
+
 
 check = upload_and_convert()
 file_name = None

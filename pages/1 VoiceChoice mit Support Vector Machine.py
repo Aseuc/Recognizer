@@ -12,6 +12,16 @@ import ballons_blue as bb
 import randomFacts as rf
 
 
+st.set_page_config(
+    page_title="VoiceChoice - Support Vector Machine",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="collapsed"
+
+)
+st.sidebar.image("vc.png")
+
+
 def upload_and_convert():
     uploaded_file = st.file_uploader("Wählen Sie eine Datei zum Hochladen aus", type=["wav"], key="file_uploader6")
     if uploaded_file is not None:
@@ -27,14 +37,6 @@ def upload_and_convert():
 
 
 check2 = True;
-
-st.set_page_config(
-    page_title="VoiceChoice - Support Vector Machine",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="auto"
-)
-
 
 @st.cache_data
 def load_data(excel_file):

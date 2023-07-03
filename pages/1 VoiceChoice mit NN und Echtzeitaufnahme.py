@@ -3,7 +3,19 @@ import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 import VoiceChoice as vc
 
-audio_bytes = audio_recorder()
+
+st.set_page_config(
+    layout="wide",
+    page_icon="favicon.ico",
+    page_title="VoiceChoice - NN & Echzeitaufnahme"
+
+
+)
+
+st.sidebar.image("vc.png")
+
+audio_bytes = audio_recorder("Mikrofon anklicken um Aufnahme zu starten!")
+
 if audio_bytes:
     st.audio(audio_bytes, format="audio/wav")
 

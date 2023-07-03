@@ -11,6 +11,14 @@ import ballons_blue as bb
 import ballons_red as br
 import randomFacts as rf
 
+st.set_page_config(
+    page_title="VoiceChoice - Random Forest Classifier!",
+    page_icon="favicon.ico",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+st.sidebar.image("vc.png")
+
 
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
@@ -40,12 +48,6 @@ def upload_and_convert():
             return True
 
 
-st.set_page_config(
-    page_title="VoiceChoice - Random Forest Classifier!",
-    page_icon="favicon.ico",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 
 
 @st.cache_data

@@ -24,7 +24,6 @@ import ballons_red as br
 import ballons_blue as bb
 import randomFacts
 
-
 def get_duration(audio_file_path):
     audio, sr = librosa.load(audio_file_path)
     duration = librosa.get_duration(y=audio, sr=sr)
@@ -708,6 +707,7 @@ def add_id_column(excel_file: str):
 #                                     os.remove(os.path.join("tempDir",(file)))
 #                             if file.endswith(".mp4"):
 #                                     os.remove(os.path.join("tempDir",(file)))
+
 st.set_page_config(
     page_title="VoiceChoice",
     page_icon="favicon.ico",

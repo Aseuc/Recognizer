@@ -12,6 +12,16 @@ import ballons_blue as bb
 import ballons_red as br
 import base64
 
+
+st.set_page_config(
+    page_title="VoiceChoice - Do it yourself!",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="collapsed"
+
+)
+st.sidebar.image("vc.png")
+
 try:
 
     model_file_path = 'Dein-NN-Model.h5'
@@ -121,15 +131,6 @@ try:
                 return acc, val_acc
 except Exception as e:
     print(e)
-
-
-
-st.set_page_config(
-    page_title="VoiceChoice - Do it yourself!",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="auto"
-)
 
 
 m = 0
