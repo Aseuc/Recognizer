@@ -25,8 +25,7 @@ import ballons_blue as bb
 import randomFacts
 import base64
 
-
-# Fügt der Sidebar unser Logo hinzu
+#Fügt der Sidebar unser Logo hinzu
 def add_logo_sidebar():
     with open("voicechoicelogo.png", "rb") as f:
         data = base64.b64encode(f.read()).decode("utf-8")
@@ -60,7 +59,6 @@ def check_duration_uploadfile(uploadfile_path, allowed_duration=3):
         st.write(f"Dauer der WAV-Datei beträgt: {duration} Sekunden!")
     return output_file
 
-
 # Extrahiert die Zero Crossing Rate aus der Audiodatei
 def extract_zcr(file_name):
     y, sr = librosa.load(file_name)
@@ -69,7 +67,6 @@ def extract_zcr(file_name):
     for i in range(df_ZCR.shape[1]):
         df_ZCR = df_ZCR.rename(columns={i: f"Zero Crossing Rate{i + 1}"})
     return df_ZCR
-
 
 # Extrahiert den Spektral Kontrast aus der Audiodatei
 def extract_snr(file_name):
@@ -81,7 +78,6 @@ def extract_snr(file_name):
         dfsnr = dfsnr.rename(columns={i: f"Spektral Kontrast{i + 1}"})
     return dfsnr
 
-
 # Extrahiert die Bandbreite aus der Audiodatei
 def extract_bandwidth(file_name):
     y, sr = librosa.load(file_name)
@@ -91,7 +87,6 @@ def extract_bandwidth(file_name):
     for i in range(dfBandwith.shape[1]):
         dfBandwith = dfBandwith.rename(columns={i: f"Bandbreite{i + 1}"})
     return dfBandwith
-
 
 # Holt sich das aktuelle Datum und Uhrzeit auf Millisekunden genau, wichtig zur
 # Setzung eines Markers, zur Unterscheidung von Dateien die im Programmverlauf erstellt und verwendet werden.
@@ -109,7 +104,6 @@ def split_wav(destinationPath, wav_file, segment_length=3000):
         segment = audio[i:i + segment_length]
         segment.export(f"{destinationPath}segment__{i - 10 // segment_length}.wav", format="wav")
 
-
 # Wird nicht mehr benötigt
 def get_n_frames_duration(input_file_path, duration):
     with wave.open(input_file_path, 'rb') as input_wav:
@@ -122,7 +116,6 @@ def get_n_frames_duration(input_file_path, duration):
         return n_frames_duration
 
     # Falls diese Funktion und die split_multiple_frames() nicht mehr funktioniert lösche nameOfXLSX
-
 
 # Extrahiert eine Zufällige Sequence aus der Audiodatei
 def extract_random_sequence(input_file_path, output_file_path, duration=3):
@@ -148,7 +141,6 @@ def extract_random_sequence(input_file_path, output_file_path, duration=3):
         output_wav.writeframes(frames)
     return output_file_path
 
-
 # Extrahiert die Frames aus der Audiodatei
 def get_n_frames(input_file_path):
     with wave.open(input_file_path, 'rb') as input_wav:
@@ -159,7 +151,6 @@ def get_n_frames(input_file_path):
 
         # n_frames_duration = int(frame_rate * duration)
         return n_frames
-
 
 # Splittet mehre Audiodatei aufeinmal in 3 Sekunden Sequenzen, wurde beim Data Preprocessing verwendet.
 def split_multiple_frames(input_file_path, output_file_path, duration=3):
@@ -173,7 +164,6 @@ def split_multiple_frames(input_file_path, output_file_path, duration=3):
 
             print(f"Random{i}duration_{duration}")
             i = i + 1
-
 
 # Funktion um bestimmte Daten in Ordnern schnell umzubennen.
 def rename_data(file_path="MenSequences" or "WomenSequences", files_to_rename="Random"):
@@ -201,7 +191,6 @@ def upload_and_convert():
         else:
             st.success("Hochgeladene Datei ist bereits im WAV-Format")
             return True
-
 
 # Extrahiert alle Features aus der Audiodateien in einem Ordner auf einen Schlag und speichert diese als CSV
 def get_features_df_csv(nameOfCsv, ordner_path):
@@ -284,7 +273,6 @@ def extract_loudness(file_name):
         df_loudness = df_loudness.rename(columns={i: f"Tonstärke{i + 1}"})
     return df_loudness
 
-
 # Wurde mal zum Plotten der Tonstärke verwendet.
 # Problem war/ist, die Plotts wurden durch das setzen des Seitenlayouts "st.set_page_config()" auf "wide" zu groß angezeigt.
 # Gilt für alle anderen Plot Funktionen
@@ -296,7 +284,6 @@ def plot_loudness(file_name):
     ax.set_xlabel('Zeit [s]')
     ax.set_ylabel('Amplitude')
     st.pyplot(fig)
-
 
 # Extrahiert alle Features aus der Audiodateien in einem Ordner auf einen Schlag und speichert diese als XLSX
 
@@ -351,7 +338,6 @@ def get_features_df_excel(ordner_path, destinationPath, nameOfXLSX, numberOfXLSX
 
         i = i + 1
 
-
 # Extrahiert alle Features aus der Audiodatei auf einen Schlag und speichert diese als XLSX aber nur eine Datei
 
 def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", numberOfColumns=10):
@@ -397,8 +383,7 @@ def get_features_from_single_file_df_excel(nameOfWAVFile, nameOfXLSX="default", 
 
         i = i + 1
 
-
-# Konvertiert mp4 zu wav Dateien
+#Konvertiert mp4 zu wav Dateien
 def mp4_to_wav(mp4_file, wav_file):
     audio = AudioSegment.from_file(mp4_file, format="mp4")
     audio.export(f"tempDir/{wav_file}", format="wav")
@@ -468,7 +453,6 @@ def visualize_snr(df):
     ax.title("Spektral Kontrast")
     st.pyplot(ax.figure)
 
-
 # Entfernt erste Spalte der Excel
 # Arbeitsmappe, zur Normalisierung der Spalten. Sinn: Anzahl der Spalten von Trainingsdatensatz und Predictiondatensatz müssen gleich sein.
 def delete_first_column_excel(file_path: str):
@@ -477,12 +461,10 @@ def delete_first_column_excel(file_path: str):
     sheet.delete_cols(1)
     wb.save(file_path)
 
-
 # Diese Funktion ist wichtig, da Sie einzeilige Werte wie ZCR, Tonstärke auf die Mehrzeiligen Werte verteilt
 def duplicate_rows(df: pd.DataFrame, n: int) -> pd.DataFrame:
     df = df.loc[df.index.repeat(n)].reset_index(drop=True)
     return df
-
 
 # Wichtig zur Extraktion von Features aus der Audiodatei, aber ohne diese zu Labeln.
 # Vorherige Funktionen sind dazu bestimmt die xlsx,csv und dessen Inhalt zu Labeln
@@ -537,7 +519,6 @@ def get_single_excel_with_features_no_label(inputfile_path, outputfile_path, fea
 
     return outputfile_path + marker + ".xlsx"
 
-
 # Redundant wird beibehalten falls dennoch benötigt
 def create_model(layers, neurons):
     model = Sequential()
@@ -546,7 +527,6 @@ def create_model(layers, neurons):
     model.add(Dense(1, activation='sigmoid'))
     return model
 
-
 # Baut ein individuelles Neuronales Netz auf
 def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neurons=0):
     delete_first_column_excel(excel_file_test_data)
@@ -554,12 +534,13 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     data = pd.read_excel(excel_file_train_data)
     data2 = pd.read_excel(excel_file_test_data)
     # data2 = data2.drop(["Unnamed: 0"], axis=1)
+    st.write(data2)
 
     data = data.dropna()
     scaler = StandardScaler()
     # scaler2 = StandardScaler()
-    X_data = data.drop(["label", "MFCC1", "Spektral Kontrast1"], axis=1)
-    X_data2 = data2.drop(["label", "MFCC1", "Spektral Kontrast1"], axis=1)
+    X_data = data.drop(["label"], axis=1)
+    X_data2 = data2.drop(["label"], axis=1)
     scaler = scaler.fit(X_data)
     X_scaler_data = scaler.transform(X_data)
     X2_scaler2_data = scaler.transform(X_data2)
@@ -580,7 +561,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     model.add(Dense(1, activation='sigmoid'))
     optimizer = Adam(learning_rate=0.002)
-    model.compile(loss='binary_cross entropy', optimizer=optimizer, metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
     early_stopping = EarlyStopping(monitor='val_loss', patience=10)
 
@@ -603,7 +584,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
     st.write("Trainingsgenauigkeit", acc)
-    st.write("Validierungsgenauigkeit", val_acc)
+    st.write("Validierungsgeanuigkeit", val_acc)
     st.write(y_pred)
     countZero = 0
     countOne = 0
@@ -625,14 +606,13 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     elif countOne > countZero:
         br.ballons_red()
         st.markdown(
-            "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich eine "
+            "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich ein "
             "Frau!</h3>", unsafe_allow_html=True)
         st.markdown(
             f"<h3 style='text-align: center;'>Wusstest du schon?</h3>", unsafe_allow_html=True)
         st.markdown(
             f"<h3 style='text-align: center;'>{randomFacts.random_fact_women()}</h3>", unsafe_allow_html=True)
     return
-
 
 # Fügt eine Spalte einer Excel-Datei hinzu
 def add_id_column(excel_file: str):
