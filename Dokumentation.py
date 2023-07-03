@@ -4,6 +4,7 @@ def main():
     st.set_page_config(
         page_title="Dokumentation",
         layout='wide',
+        initial_sidebar_state = "collapsed"
     )
 
 st.title("Wie unsere App funktioniert")
