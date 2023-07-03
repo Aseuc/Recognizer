@@ -167,6 +167,6 @@ if audio_bytes:
 if st.button("Neuronales Netz Klassifizierung starten!"):
     excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 1, False)
 
-    vc.neuronal_network("TDNN3Z.xlsx", excel_file, 5, [32, 32, 32, 32, 32])
+    vc.neuronal_network("TDNN3Z.xlsx", excel_file)
     os.remove(excel_file)
     os.remove("tempDir2/record.wav")

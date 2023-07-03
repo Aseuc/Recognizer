@@ -272,9 +272,9 @@ def extract_mfcc(file_name, n_mfcc=13):
 
 # Berechnet die Lautstärke des Audiosignals mit der Root-Mean-Square Methode.
 # Die RMS-Methode berechnet die quadratische Mittelwertwurzel der Amplitudenwerte des Audiosignals, um die Lautstärke zu schätzen.
-# Die zurückgegebenen Werte sind in einem DataFrame gespeichert, wobei jede Spalte die Lautstärke 
+# Die zurückgegebenen Werte sind in einem DataFrame gespeichert, wobei jede Spalte die Lautstärke
 # für einen bestimmten Zeitabschnitt des Audiosignals darstellt.
-# Die Anzahl der Spalten im DataFrame hängt von der Länge des Audiosignals und der Fensterlänge ab, die bei der Berechnung der 
+# Die Anzahl der Spalten im DataFrame hängt von der Länge des Audiosignals und der Fensterlänge ab, die bei der Berechnung der
 # RMS-Werte verwendet wird.
 def extract_loudness(file_name):
     y, sr = librosa.load(file_name)
@@ -528,9 +528,9 @@ def get_single_excel_with_features_no_label(inputfile_path, outputfile_path, fea
     mergeThird = pd.merge(mergeSecond, df_bandwith, on="id")
     mergeForth = pd.merge(mergeThird, df_zcr, on="id")
     mergeForth = mergeForth.drop(["id"], axis=1)
-    if duplicatesRows == 1:
+    if (duplicatesRows == False):
         mergeForth['label'] = [""]
-    elif duplicatesRows == 5:
+    elif (duplicatesRows == True):
         mergeForth["label"] = ["", "", "", "", ""]
 
     mergeForth.to_excel(f"{outputfile_path}{marker}" + ".xlsx")
@@ -633,79 +633,6 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
         st.markdown(
             f"<h3 style='text-align: center;'>{randomFacts.random_fact_women()}</h3>", unsafe_allow_html=True)
     return
-
-
-# def neuronal_network_df(excel_file_data, df, layers=0, neurons=0):
-#     data = pd.read_excel(excel_file_data)
-#     data = data.dropna()
-#     scaler = StandardScaler()
-#     X_data = data.drop(["label"], axis=1)
-#     X_data2 = df.drop(["label"], axis=1)
-#     scaler = scaler.fit(X_data)
-#     X_scaler_data = scaler.transform(X_data)
-#     X2_scaler2_data = scaler.transform(X_data2)
-#     y1 = data["label"]
-#     y2 = df["label"]
-#
-#     X_train, X_test, y_train, y_test = train_test_split(X_scaler_data, y1, test_size=0.2)
-#     model = Sequential()
-#     for i in range(layers):
-#         model.add(Dense(neurons[i], activation='relu'))
-#
-#     model.add(Dense(1, activation='sigmoid'))
-#     optimizer = Adam(learning_rate=0.002)
-#     model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-#
-#     early_stopping = EarlyStopping(monitor='val_loss', patience=10)
-#
-#     history = model.fit(X_train, y_train, epochs=1000, batch_size=32,
-#                         validation_data=(X_test, y_test), callbacks=[early_stopping])
-#
-#     # with open('model.pkl', 'wb') as file:
-#     #     pickle.dump(model, file)
-#
-#     # with open('model1.pkl', 'rb') as file:
-#     # model = pickle.load(file)
-#     # model.save('my_model.h5')
-#     y_pred = model.predict(X2_scaler2_data)
-#     # y_pred2 = model.predict(X_data2)
-#     y_pred = (y_pred > 0.5).astype(int)
-#     # y_pred = pd.DataFrame(y_pred)
-#
-#     # countZero = 0
-#     # countOne = 0
-#     acc = history.history['accuracy']
-#     val_acc = history.history['val_accuracy']
-#     st.write("Trainingsgenauigkeit", acc)
-#     st.write("Validierungsgeanuigkeit", val_acc)
-#     st.write(y_pred)
-#     countZero = 0
-#     countOne = 0
-#     for i in y_pred:
-#         if (i == 0):
-#             countZero = countZero + 1
-#         else:
-#             countOne = countOne + 1
-#
-#     if countZero > countOne:
-#         bb.ballons_blue()
-#         st.markdown(
-#             "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich ein "
-#             "Mann!</h3>", unsafe_allow_html=True)
-#         st.markdown(
-#             f"<h2 style='text-align: center;'>Wusstest du schon?</h2>", unsafe_allow_html=True)
-#         st.markdown(
-#             f"<h2 style='text-align: center;'>{randomFacts.random_fact_men()}</h2>", unsafe_allow_html=True)
-#     elif countOne > countZero:
-#         br.ballons_red()
-#         st.markdown(
-#             "<h3 style='text-align: center;'>Auf der gesprochenen Audiodatei spricht wahrscheinlich ein "
-#             "Frau!</h3>", unsafe_allow_html=True)
-#         st.markdown(
-#             f"<h3 style='text-align: center;'>Wusstest du schon?</h3>", unsafe_allow_html=True)
-#         st.markdown(
-#             f"<h3 style='text-align: center;'>{randomFacts.random_fact_women()}</h3>", unsafe_allow_html=True)
-#     return
 
 
 # Fügt eine Spalte einer Excel-Datei hinzu
