@@ -1,13 +1,13 @@
 import streamlit as st
 
 
-def main():
-    st.set_page_config(
-        page_title="VoiceChoice Dokumentation",
-        layout='wide',
-        initial_sidebar_state="collapsed",
-        page_icon="favicon.ico"
-    )
+# def main():
+st.set_page_config(
+    page_title="VoiceChoice Dokumentation",
+    layout='wide',
+    initial_sidebar_state="collapsed",
+    page_icon="favicon.ico"
+)
 
 
 st.title("Wie unsere App funktioniert")
@@ -73,5 +73,5 @@ st.write(
     "Es sind keine zusätzlichen Softwareinstallationen erforderlich. Die VoiceChoice-App ist vollständig webbasiert "
     "und kann von Benutzern direkt über den bereitgestellten Link aufgerufen werden.")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
