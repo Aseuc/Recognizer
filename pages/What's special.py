@@ -145,10 +145,10 @@ with col2:
         st_lottie(lottie_animation, speed=1, width=250, height=250, key="ue")
 
 col1.write("Im letzten Schritt haben wir uns viele Gedanken gemacht! Wie kann man dem User eine nutzerfreundliche App "
-           "bieten? Was wirkt ansprechend auf den User? Welche Features würde man gerne selbst oder der User in der App "
+           "bieten? Was wirkt ansprechend auf den User? Welche Features würde man gerne selbst oder der User in der App"
            "haben wollen? Und vieles mehr... Wir haben uns letztendlich für interaktive Elemente entschieden aber auch "
            "zum Beispiel die Möglichkeit selbst mal ein neuronale Netz trainieren zu können und das mit geringen "
-           "Aufwand. Oder"
+           "Aufwand. Oder "
            "in Echtzeit Aufnahmen zu tätigen und direkt das Neuronale Netz zu verwenden. Oder das Feature bequem aus "
            "Whats App Sprachnotizen oder Videos eine WAV-Datei zu erstellen. Dies alles um die Userexperience so hoch "
            "wie möglich zuhalten.")
