@@ -17,6 +17,8 @@ from keras.optimizers import Adam
 from datetime import datetime
 import librosa.display
 import openpyxl
+# ballons_blue und ballons_red sind selbst erstellte Komponenten für Streamlit die es uns ermöglichen nach der Klassifizierung, Ballons mit
+# den Farben blau oder pink aufsteigen zu lassen, als auch mit einem AI-generierten Bild im Hintergrund
 import ballons_blue as bb
 import ballons_red as br
 import randomFacts as rf
