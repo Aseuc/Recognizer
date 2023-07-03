@@ -781,8 +781,7 @@ try:
                         "Jedoch ist keine signifikante Verbesserung der Validierungsgenauigkeit im Vergleich zu 2.1.3 "
                         "zu erkennen!")
                     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}", "tempDir/", 10, True)
-                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx", excelFile, 5,
-                                                    [32, 32, 32, 32, 32])
+                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx", excelFile, 5,[32, 32, 32, 32, 32])
 
                     st.write("Validierungsgenauigkeit: " + f"{val_acc[len(val_acc) - 1]}")
                     os.remove(f"{excelFile}")

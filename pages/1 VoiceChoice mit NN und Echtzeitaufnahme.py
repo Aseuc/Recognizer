@@ -117,17 +117,14 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     # CSS-Stil in Streamlit einfügen
     st.markdown(button_style, unsafe_allow_html=True)
-
+    val_acc = val_acc[len(val_acc) - 1]
+    acc = acc[len(acc) - 1]
     # Button 1 - Analyse von Essen
     if st.button("Trainingsgenauigkeit", key="button1"):
-        st.write("Trainingsgenauigkeit", acc[len(acc) - 1], unsafe_allow_html=True)
+        st.write("Trainingsgenauigkeit", acc, unsafe_allow_html=True)
 
-    if st.button ("Validierungsgauigkeit", key="button2"):
-        st.write("Validierungsgenauigkeit", val_acc[len(val_acc) - 1], unsafe_allow_html=True)
-
-
-
-
+    if st.button("Validierungsgauigkeit", key="button2"):
+        st.write("Validierungsgenauigkeit", val_acc, unsafe_allow_html=True)
 
     st.write(y_pred)
     countZero = 0
@@ -168,7 +165,7 @@ if audio_bytes:
         f.write(audio_bytes)
 
 if st.button("Neuronales Netz Klassifizierung starten!"):
-    excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 10, True)
-    vc.neuronal_network("TDNN3.xlsx", excel_file)
+    excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 1, False)
+    vc.neuronal_network("TDNN3Z.xlsx", excel_file)
     os.remove(excel_file)
     os.remove("tempDir2/record.wav")
