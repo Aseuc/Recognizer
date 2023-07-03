@@ -42,11 +42,10 @@ st.write("Klicke einfach auf das Mikrofon, wähle gegebenfalls im Browser dein E
 
 st.write("")
 
-st.header("Funktionsweise der App")
-st.write("")
-
 st.header("Hinweis")
 st.write("Die VoiceChoice-App bietet eine gute Genauigkeit bei der Geschlechtererkennung, jedoch können individuelle Ergebnisse variieren und die App sollte nicht als endgültiges Mittel zur Geschlechtsbestimmung verwendet werden.")
+
+st.write("")
 
 st.header("Systemanforderungen")
 st.write("Die VoiceChoice-App hat folgende Systemanforderungen:")
