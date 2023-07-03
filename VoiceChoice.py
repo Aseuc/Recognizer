@@ -568,7 +568,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     y1 = data["label"]
     y2 = data2["label"]
 
-    st.write("")
+
 
     X_train, X_test, y_train, y_test = train_test_split(X_scaler_data, y1, test_size=0.2)
     model = Sequential()
@@ -582,7 +582,7 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
 
     model.add(Dense(1, activation='sigmoid'))
     optimizer = Adam(learning_rate=0.002)
-    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    model.compile(loss='binary_cross entropy', optimizer=optimizer, metrics=['accuracy'])
 
     early_stopping = EarlyStopping(monitor='val_loss', patience=10)
 
