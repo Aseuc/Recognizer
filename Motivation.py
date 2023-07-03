@@ -131,11 +131,11 @@ def main():
     st.write(
         "Aber das ist noch nicht alles! Stellt euch vor, ihr müsstet vor dem Betreten eines Gebäudes in einen Lautsprecher sprechen und die App entscheidet anhand eurer Stimme, ob ihr wütend oder ruhig seid und ob euch Einlass gewährt wird.")
     st.write("Das ist doch der Wahnsinn, oder?")
-    
+
     
     st.subheader("Data Collection")
     
-    c1,c2 = columns([1, 3])
+    c1,c2 = st.columns([1, 3])
     with c1:
         last_lottie = load_lottie_animation(last_lottie_url)
         if last_lottie:
@@ -147,7 +147,6 @@ def main():
         st.write("Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
         st.write("Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
         st.write("Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
-
 
 
     st.subheader("Blick in die Zukunft:")
