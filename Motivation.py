@@ -3,7 +3,6 @@ from streamlit_lottie import st_lottie
 import requests
 import VoiceChoice as vc
 
-
 # Animationen:
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
 additional_lottie_url = "https://assets5.lottiefiles.com/packages/lf20_ilaks9mg.json"
