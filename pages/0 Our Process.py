@@ -40,15 +40,24 @@ with c1:
 with c2:
     st.subheader("Data Collection")
     st.write(
-        "Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, an der Datenerhebung teilzunehmen.")
+        "Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige "
+        "und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, "
+        "an der Datenerhebung teilzunehmen.")
     st.write(
-        "Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
+        "Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise "
+        "konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte "
+        "einschließen.")
     st.write(
-        "Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
+        "Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben "
+        "als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das "
+        "Alphabet aufgesagt oder Witze erzählt.")
     st.write(
-        "Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
+        "Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen "
+        "sicherstellen.")
     st.write(
-        "Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
+        "Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel "
+        "von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch "
+        "konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
 
 st.header("Data Preparation")
 st.write("Die Datenaufbereitung war für uns eine der längsten Aufgaben. Zunächst mussten wir die Features für die "
@@ -128,8 +137,10 @@ with col2:
     st_lottie(lottie_animation6, speed=1, width=150, height=150, key="optimize")
 
 col1.write(
-    "Nach dem Erstellen unseres UML-Diagramms haben wir verschiedene Test-Modelle gebaut. Dabei haben wir den K-Nearest-Neighbour, "
-    "Random-Forest und Support Vector Machines ausprobiert, da diese auf kleinen Datensätzen laut unseren Recherchen immer noch recht gut laufen"
+    "Nach dem Erstellen unseres UML-Diagramms haben wir verschiedene Test-Modelle gebaut. Dabei haben wir den "
+    "K-Nearest-Neighbour,"
+    "Random-Forest und Support Vector Machines ausprobiert, da diese auf kleinen Datensätzen laut unseren Recherchen "
+    "immer noch recht gut laufen"
     "hätten sollen. Jedoch überzeugten uns die Ergebnisse dieser Modelle nicht und wir sind zurück zur "
     "Datensammlung gegangen, um für ein"
     "neuronale Netz entsprechend weitere Daten zu sammeln, um große Datenmengen zu erhalten.")
