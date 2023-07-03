@@ -22,10 +22,10 @@ try:
                 f.write(file.getvalue())
             audio = AudioSegment.from_file(file.name, format=file_extension[1:])
             wav_filename = filename + '.wav'
-            audio.export(f"tempDir2/{wav_filename}", format='wav')
+            audio.export(wav_filename, format='wav')
             st.success(f'Konvertiert nach {wav_filename}')
             with open(wav_filename, 'rb') as f:
-                st.download_button(label='Herunterladen', data=f.read(), file_name=f"tempDir2/{wav_filename}", mime='audio/wav')
+                st.download_button(label='Herunterladen', data=f.read(), file_name=wav_filename, mime='audio/wav')
         else:
             st.error('Nur mp3 Dateien werden unterstützt.')
 
