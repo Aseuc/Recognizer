@@ -143,10 +143,10 @@ def main():
         
     with c2:
         st.write("Für die Datensammlung zur Stimmerkennung haben wir einen sorgfältigen Ansatz gewählt, um eine vielfältige und repräsentative Datenbasis zu erhalten. Wir haben Freunde, Familie und Kollegen gebeten, an der Datenerhebung teilzunehmen.")
-    st.write("Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
-    st.write("Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
-    st.write("Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
-    st.write("Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
+        st.write("Sie haben wiederum ihre eigenen Freunde und Bekannten eingeladen, sich zu beteiligen. Auf diese Weise konnten wir eine breite Palette von Stimmen unterschiedlicher Altersgruppen, Geschlechter und Dialekte einschließen.")
+        st.write("Um sicherzustellen, dass die Datenerhebung von hoher Qualität ist, haben wir sowohl standardisierte Aufgaben als auch kreative Ansätze verwendet. Bei den standardisierten Aufgaben haben die Teilnehmer zum Beispiel das Alphabet aufgesagt oder Witze erzählt.")
+        st.write("Dadurch konnten wir strukturierte Daten sammeln und eine Vergleichbarkeit zwischen den Aufnahmen sicherstellen.")
+        st.write("Darüber hinaus haben wir uns für einen kreativen Ansatz entschieden. Gemeinsam haben wir das erste Kapitel von Stolz und Vorurteil vorgelesen und die Aufnahmen in kurze 3-Sekunden-Segmente aufgeteilt. Dadurch konnten wir natürliche Sprachmuster und Variationen erfassen und die Vielfalt der Stimmen besser abbilden.")
 
 
     ##
