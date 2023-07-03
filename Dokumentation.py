@@ -3,7 +3,6 @@ import streamlit as st
 def main():
     st.set_page_config(
         page_title="Documentation",
-        layout='wide',
         initial_sidebar_state = "collapsed"
     )
 
@@ -24,7 +23,9 @@ st.write("- Random Forest Classifier")
 st.write("- Support Vectore Machine")
 st.write("")
 st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch Durchsuchen hoch, und schon beginnt der Algorithmus damit, das zu tun, was er am besten kann!")
+#Screenshot einfügen!
 
+st.write("")
 
 st.header("Funktionsweise der App")
 st.write("")
