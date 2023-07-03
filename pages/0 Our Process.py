@@ -28,7 +28,8 @@ Audiosequenzen. Dabei entdeckten wir, dass die MFCC und der Spektralkontrast zu 
 gehörten. Da uns das aber noch zu wenig erschien, suchten wir nach weiteren Features und fanden schließlich den MFCC, 
 Spektralkontrast, Tonstärke, Bandbreite und die Zero Crossing Rate."""
 
-##
+last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
+
 c1,c2 = st.columns([1, 3])
 with c1:
     last_lottie = load_lottie_animation(last_lottie_url)
