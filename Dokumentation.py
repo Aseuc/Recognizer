@@ -31,7 +31,7 @@ st.write("Lade deine .wav-Datei ganz einfach per Drag & Drop oder durch "Browse 
 st.write("")
 
 st.write("- Do it yourself: Hier hast du die Möglichkeit, selber das neuronale Netzwerk anzupassen")
-st.write("Lade dazu erneut deine .wav-Datei hoch und wähle die Anzahl der Layers aus, die dein NN haben soll")
+st.write("Lade dazu erneut deine .wav-Datei hoch und wähle die Anzahl der Layers aus, die dein NN haben soll.")
 st.write("Gib anschließend einfach in die Zeile(n) darunter die Anzahl der Neuronen für jede Schicht ein und klicke dann auf "Start", um den Prozess zu starten.")
 
 st.write("")
