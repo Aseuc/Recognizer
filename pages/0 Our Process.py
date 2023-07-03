@@ -28,13 +28,12 @@ Audiosequenzen. Dabei entdeckten wir, dass die MFCC und der Spektralkontrast zu 
 gehörten. Da uns das aber noch zu wenig erschien, suchten wir nach weiteren Features und fanden schließlich den MFCC, 
 Spektralkontrast, Tonstärke, Bandbreite und die Zero Crossing Rate."""
 
-last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
 
 c1,c2 = st.columns([1, 3])
 with c1:
     last_lottie = load_lottie_animation(last_lottie_url)
     if last_lottie:
-        st_lottie(last_lottie, width=350, height=350, key="additional_animation_3")
+        st_lottie(last_lottie, width=350, height=350, key="additional_animation_9")
         
 with c2:
     st.header("Data Collection")
@@ -52,6 +51,7 @@ st.write("Die Datenaufbereitung war für uns eine der längsten Aufgaben. Zunäc
 lottie_url = "https://assets10.lottiefiles.com/packages/lf20_rp8vki3f.json"
 lottie_url2 = "https://assets2.lottiefiles.com/packages/lf20_YBa32sJx1i.json"
 lottie_url3 = "https://assets8.lottiefiles.com/packages/lf20_7Cyo9b.json"
+last_lottie_url = "https://assets2.lottiefiles.com/packages/lf20_2SwXQ06QaY.json"
 
 col1, col2, col3 = st.columns([1, 1, 1])
 
