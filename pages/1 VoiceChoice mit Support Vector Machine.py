@@ -7,6 +7,8 @@ import VoiceChoice as vc
 import os
 from sklearn.model_selection import train_test_split
 import traceback
+# ballons_blue und ballons_red sind selbst erstellte Komponenten für Streamlit die es uns ermöglichen nach der Klassifizierung, Ballons mit
+# den Farben blau oder pink aufsteigen zu lassen, als auch mit einem AI-generierten Bild im Hintergrund
 import ballons_red as br
 import ballons_blue as bb
 import randomFacts as rf
