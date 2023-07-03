@@ -1,9 +1,9 @@
 import streamlit as st
 import os
 import VoiceChoice as vc
-from keras.models import Sequential, load_model
-from keras.layers  import Dense, LSTM, Dropout
-from keras.callbacks import ModelCheckpoint, TensorBoard, EarlyStopping
+from keras.models import Sequential
+from keras.layers  import Dense
+from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from sklearn.model_selection import train_test_split
