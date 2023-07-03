@@ -24,18 +24,14 @@ import ballons_red as br
 import randomFacts as rf
 import VoiceChoice as vc
 
-
-# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von bestimmten Funktionen angepasst werden
-
-
-
+# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von
+# bestimmten Funktionen angepasst werden
 st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
     page_icon="favicon.ico",
     layout='wide',
     initial_sidebar_state="auto"
 )
-
 vc.add_logo_sidebar()
 
 
