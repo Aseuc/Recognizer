@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
-import requests
-import VoiceChoice as vc
+#import requests
+#import VoiceChoice as vc
 
 
 # Animationen:
