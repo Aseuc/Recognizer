@@ -17,9 +17,26 @@ from keras.optimizers import Adam
 from datetime import datetime
 import librosa.display
 import openpyxl
+# ballons_blue und ballons_red sind selbst erstellte Komponenten für Streamlit die es uns ermöglichen nach der Klassifizierung, Ballons mit
+# den Farben blau oder pink aufsteigen zu lassen, als auch mit einem AI-generierten Bild im Hintergrund
 import ballons_blue as bb
 import ballons_red as br
 import randomFacts as rf
+import VoiceChoice as vc
+
+
+# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von bestimmten Funktionen angepasst werden
+
+
+
+st.set_page_config(
+    page_title="VoiceChoice - Neuronal Network",
+    page_icon="favicon.ico",
+    layout='wide',
+    initial_sidebar_state="auto"
+)
+
+vc.add_logo_sidebar()
 
 
 def extract_zcr(file_name):
@@ -571,13 +588,6 @@ def get_duration(audio_file_path):
     duration = librosa.get_duration(y=audio, sr=sr)
     return duration
 
-
-st.set_page_config(
-    page_title="VoiceChoice - Neuronal Network",
-    page_icon="favicon.ico",
-    layout='wide',
-    initial_sidebar_state="collapsed"
-)
 
 check = upload_and_convert()
 file_name = None

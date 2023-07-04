@@ -1,24 +1,31 @@
 import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
+import VoiceChoice as vc
+
+
 # Animationen:
 lottie_url = "https://assets2.lottiefiles.com/packages/lf20_bXsnEx.json"
 additional_lottie_url = "https://assets5.lottiefiles.com/packages/lf20_ilaks9mg.json"
 another_lottie_url = "https://assets4.lottiefiles.com/packages/lf20_GFK3CDFCrx.json"
+
+
 def load_lottie_animation(url):
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
     else:
         return None
+
+
 def main():
     st.set_page_config(
         page_title="Motivation",
         page_icon="favicon.ico",
         layout='wide',
-        initial_sidebar_state="collapsed"
+        initial_sidebar_state="collapsed",
     )
-
+    vc.add_logo_sidebar()
     co1, co2 = st.columns([1, 3])
 
     with co1:
@@ -156,5 +163,7 @@ def main():
         another_lottie = load_lottie_animation(another_lottie_url)
         if another_lottie:
             st_lottie(another_lottie, width=400, height=400, key="additional_animation_2")
+
+
 if __name__ == "__main__":
     main()

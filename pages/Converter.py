@@ -2,14 +2,17 @@ import streamlit as st
 from moviepy.editor import AudioFileClip
 import os
 from pydub import AudioSegment
+import VoiceChoice as vc
 
 try:
     st.set_page_config(
         page_title="Converter",
         page_icon="favicon.ico",
         layout='wide',
-        initial_sidebar_state="collapsed"
+        initial_sidebar_state="auto"
     )
+
+    vc.add_logo_sidebar()
 
     st.markdown("<div>Hier hast du die Möglichkeit MP3-Dateien hochzuladen und als .wav wieder herunterzuladen, "
                 "falls du keine .wav-Datei hast.</div>", unsafe_allow_html=True)
@@ -22,7 +25,7 @@ try:
                 f.write(file.getvalue())
             audio = AudioSegment.from_file(file.name, format=file_extension[1:])
             wav_filename = filename + '.wav'
-            audio.export(f"tempDir2/{wav_filename}", format='wav')
+            audio.export(wav_filename, format='wav')
             st.success(f'Konvertiert nach {wav_filename}')
             with open(wav_filename, 'rb') as f:
                 st.download_button(label='Herunterladen', data=f.read(), file_name=wav_filename, mime='audio/wav')
