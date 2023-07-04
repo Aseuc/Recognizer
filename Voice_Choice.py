@@ -1,5 +1,8 @@
-import streamlit as st
+import pandas as pd
 
 
-# app1 = st.sidebar.button("VoiceChoice")
-# app2 = st.sidebar.button("Do it yourself!")
+data = pd.read_excel("TDNN2Z.xlsx")
+df = pd.DataFrame(data)
+
+df_sample = df.sample(frac=1)
+df_sample.to_excel("TDNN3Z.xlsx")

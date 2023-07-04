@@ -13,6 +13,7 @@ import ballons_red as br
 import ballons_blue as bb
 import randomFacts
 import base64
+
 st.set_page_config(
     layout="wide",
     page_icon="favicon.ico",
@@ -79,13 +80,57 @@ def neuronal_network(excel_file_train_data, excel_file_test_data, layers=0, neur
     # countOne = 0
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
-    st.write("Trainingsgenauigkeit", acc)
-    st.write("Validierungsgeanuigkeit", val_acc)
+    button_style = """
+          <style>
+          .custom-button.button1 {
+              background-color: #0000FF; /* Blau */
+              color: #FFFFFF;
+              border-color: #0000FF;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+
+          .custom-button.button2 {
+              background-color: #FF00FF; /* Pink */
+              color: #FFFFFF;
+              border-color: #FF00FF;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+
+          .custom-button.button3 {
+              background-color: #FFA500; /* Orange */
+              color: #FFFFFF;
+              border-color: #FFA500;
+              border-radius: 5px;
+              padding: 0.5rem 1rem;
+          }
+           .custom-button.button4 {
+          background-color: #00FF00; /* Grün */
+          color: #FFFFFF;
+          border-color: #00FF00;
+          border-radius: 5px;
+          padding: 0.5rem 1rem;
+      }
+      </style>
+      """
+
+    # CSS-Stil in Streamlit einfügen
+    st.markdown(button_style, unsafe_allow_html=True)
+    val_acc = val_acc[len(val_acc) - 1]
+    acc = acc[len(acc) - 1]
+    # Button 1 - Analyse von Essen
+    if st.button("Trainingsgenauigkeit", key="button1"):
+        st.write("Trainingsgenauigkeit", acc, unsafe_allow_html=True)
+
+    if st.button("Validierungsgauigkeit", key="button2"):
+        st.write("Validierungsgenauigkeit", val_acc, unsafe_allow_html=True)
+
     st.write(y_pred)
     countZero = 0
     countOne = 0
     for i in y_pred:
-        if (i == 0):
+        if i == 0:
             countZero = countZero + 1
         else:
             countOne = countOne + 1
@@ -120,7 +165,8 @@ if audio_bytes:
         f.write(audio_bytes)
 
 if st.button("Neuronales Netz Klassifizierung starten!"):
-    excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 10, True)
-    vc.neuronal_network("TDNN3.xlsx", excel_file)
+    excel_file = vc.get_single_excel_with_features_no_label("tempDir2/record.wav", "tempDir2/", 1, False)
+
+    vc.neuronal_network("TDNN3Z.xlsx", excel_file, 5, [32, 32, 32, 32, 32])
     os.remove(excel_file)
     os.remove("tempDir2/record.wav")
