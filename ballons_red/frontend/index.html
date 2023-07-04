@@ -41,9 +41,8 @@
         document.getElementById('balloons').appendChild(balloon);
       }
 
-        let images = ['Frau1.jpg', 'Frau2.jpg', 'Frau3.jpg', 'Frau4.jpg', 'Frau5.jpg', 'Frau6.jpg', 'Frau7.jpg'];
+        let images = ['Frau1.jpg', 'Frau2.jpg', 'Frau3.jpg', 'Frau4.jpg', 'Frau5.jpg'];
         let imageElement = document.getElementById('image');
-        // imageElement.style.marginLeft = 20 + "rem"; 
         let randomIndex = Math.floor(Math.random() * images.length);
         let randomImage = images[randomIndex];
         imageElement.src = randomImage;
