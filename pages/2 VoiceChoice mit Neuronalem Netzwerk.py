@@ -24,18 +24,14 @@ import ballons_red as br
 import randomFacts as rf
 import VoiceChoice as vc
 
-
-# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von bestimmten Funktionen angepasst werden
-
-
-
+# Die Funktionen zu VoiceChoice/ VC Dokumenation sind die selben. Teilweise musste jedoch das Verhalten von
+# bestimmten Funktionen angepasst werden
 st.set_page_config(
     page_title="VoiceChoice - Neuronal Network",
     page_icon="favicon.ico",
     layout='wide',
     initial_sidebar_state="auto"
 )
-
 vc.add_logo_sidebar()
 
 
@@ -785,8 +781,7 @@ try:
                         "Jedoch ist keine signifikante Verbesserung der Validierungsgenauigkeit im Vergleich zu 2.1.3 "
                         "zu erkennen!")
                     excelFile = get_single_excel_with_features_no_label(f"tempDir/{file}", "tempDir/", 10, True)
-                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx", excelFile, 5,
-                                                    [32, 32, 32, 32, 32])
+                    val_acc, acc = neuronal_network("TrainDataFuerNeuronalesNetzohneGroupID.xlsx", excelFile, 5,[32, 32, 32, 32, 32])
 
                     st.write("Validierungsgenauigkeit: " + f"{val_acc[len(val_acc) - 1]}")
                     os.remove(f"{excelFile}")

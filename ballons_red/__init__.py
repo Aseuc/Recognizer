@@ -4,9 +4,6 @@ from typing import Optional
 import streamlit as st
 import streamlit.components.v1 as components
 
-
-
-
 html_code = """
 <!DOCTYPE html>
 <html>
@@ -47,18 +44,17 @@ for (let i = 0; i < numBalloons; i++) {
 </html>
 """
 
-
-
 # Tell streamlit that there is a component called ballons_red_and_blue,
 # and that the code to display that component is in the "frontend" folder
 frontend_dir = (Path(__file__).parent / "frontend").absolute()
 _component_func = components.declare_component(
-	"ballons_red", path=str(frontend_dir)
+    "ballons_red", path=str(frontend_dir)
 )
+
 
 # Create the python function that will be called
 def ballons_red(
-    key: Optional[str] = None,
+        key: Optional[str] = None,
 ):
     """
     Add a descriptive docstring
@@ -66,8 +62,6 @@ def ballons_red(
     component_value = _component_func(
         key=key,
     )
-
-    
 
     return component_value
 
@@ -81,4 +75,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-   
